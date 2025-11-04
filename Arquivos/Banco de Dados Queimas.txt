@@ -1,0 +1,61 @@
+CREATE DATABASE Queimas;
+
+USE Quimas;
+
+
+CREATE TABLE Plataforma (
+    ID_Plataforma INT PRIMARY KEY NOT NULL,
+    Nome VARCHAR(100) NOT NULL,
+    Localizacao VARCHAR(200) NOT NULL,
+    Responsavel VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE Funcionario (
+    ID_Funcionario INT PRIMARY KEY NOT NULL,
+    Nome VARCHAR(100) NOT NULL,
+    Cargo VARCHAR(100) NOT NULL,
+    Email VARCHAR(100) NOT NULL UNIQUE,
+    Telefone VARCHAR(15) NOT NULL UNIQUE,
+    CPF VARCHAR(15) NOT NULL UNIQUE,
+    Turno VARCHAR(50) NOT NULL,
+    Empresa VARCHAR(100) NOT NULL,
+    Setor VARCHAR(100) NOT NULL,
+    Matricula VARCHAR(20) NOT NULL UNIQUE,
+    ID_Plataforma INT,
+    FOREIGN KEY (ID_Plataforma) REFERENCES Plataforma(ID_Plataforma)
+);
+
+CREATE TABLE OcorrenciaQueima (
+    ID_OcorrenciaQueima INT PRIMARY KEY NOT NULL,
+    ID_Plataforma INT NOT NULL,
+    ID_Funcionario INT NOT NULL,
+    Responsavel VARCHAR(100) NOT NULL,
+    Data_Hora DATETIME NOT NULL,
+    Vazao DECIMAL(10,2) NOT NULL,
+    Gas VARCHAR(100) NOT NULL,
+    ClassificacaoQueima VARCHAR(50) NOT NULL,
+    StatusComunicacao VARCHAR(20) NOT NULL,
+    FOREIGN KEY (ID_Plataforma) REFERENCES Plataforma(ID_Plataforma),
+    FOREIGN KEY (ID_Funcionario) REFERENCES Funcionario(ID_Funcionario)
+);
+
+CREATE TABLE Equipamento (
+    ID_Equipamento INT PRIMARY KEY NOT NULL,
+    Nome VARCHAR(100) NOT NULL,
+    Tipo VARCHAR(100) NOT NULL,
+    Fabricante VARCHAR(100) NULL,
+    Modelo VARCHAR(100) NULL,
+    Status VARCHAR(50) NOT NULL,
+    ID_Plataforma INT,
+    FOREIGN KEY (ID_Plataforma) REFERENCES Plataforma(ID_Plataforma)
+);
+
+CREATE TABLE RegistroEquipamento (
+    ID_Registro INT PRIMARY KEY NOT NULL,
+    ID_Equipamento INT NOT NULL,
+    ID_Funcionario INT NOT NULL,
+    Data_Hora DATETIME NOT NULL,
+    Status_Operacional VARCHAR(50) NOT NULL,
+    FOREIGN KEY (ID_Equipamento) REFERENCES Equipamento(ID_Equipamento),
+    FOREIGN KEY (ID_Funcionario) REFERENCES Funcionario(ID_Funcionario)
+);
