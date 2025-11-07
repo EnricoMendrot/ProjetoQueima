@@ -55,24 +55,18 @@ class Equipamento(models.Model):
     Tipo = models.CharField(max_length=100)
     Fabricante = models.CharField(max_length=100, null=True, blank=True)
     Modelo = models.CharField(max_length=100, null=True, blank=True)
-    Status = models.CharField(max_length=50)
-    ID_Plataforma = models.ForeignKey(
-        Plataforma,
+    Status_Operacional = models.CharField(max_length=50)
+    Plataforma = models.ForeignKey(
+        'Plataforma',
         on_delete=models.SET_NULL,
         null=True,
-        blank=True
+        db_column='ID_Plataforma'
+    )
+    Funcionario = models.ForeignKey(
+        'Funcionario',
+        on_delete=models.CASCADE,
+        db_column='ID_Funcionario'
     )
 
     def __str__(self):
-        return self.Nome
-
-
-class RegistroEquipamento(models.Model):
-    ID_Registro = models.AutoField(primary_key=True)
-    ID_Equipamento = models.ForeignKey(Equipamento, on_delete=models.CASCADE)
-    ID_Funcionario = models.ForeignKey(Funcionario, on_delete=models.CASCADE)
-    Data_Hora = models.DateTimeField()
-    Status_Operacional = models.CharField(max_length=50)
-
-    def __str__(self):
-        return f"Registro {self.ID_Registro} - {self.Status_Operacional}"
+        return f"{self.Nome} - {self.Tipo}"
