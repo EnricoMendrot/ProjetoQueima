@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'operadores',
     'equipamentos',
     'database',
+    'DadosQueima',
 ]
 
 MIDDLEWARE = [
