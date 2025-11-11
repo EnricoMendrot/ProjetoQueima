@@ -5,14 +5,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Visualizar Equipamento</title>
+    <title>Cadastrar Equipamento</title>
     <link rel="stylesheet" href="{% static '/Cadastro/CadastroEquipamento.css' %}">
 </head>
 <body>
     <div class="page-container">
         <div class="header">
-            <h1>Equipamento Cadastrado</h1>
-            <p class="subtitle">Visualizar Equipamento</p>
+            <h1>Cadastrar Equipamento</h1>
+            <p class="subtitle">Preencha os dados abaixo</p>
             <button class="btn-voltar" onclick="window.history.back()">Voltar</button>
         </div>
 
@@ -21,8 +21,24 @@
                 {% csrf_token %}
 
                 <div class="form-row">
+                    <label for="{{ form.Codigo.id_for_label }}">Código:</label>
+                    {{ form.Codigo }}
+                </div>
+
+                <div class="form-row">
                     <label for="{{ form.Nome.id_for_label }}">Nome do Equipamento:</label>
                     {{ form.Nome }}
+                </div>
+
+                <div class="form-row-inline">
+                    <div>
+                        <label for="{{ form.Modelo.id_for_label }}">Modelo:</label>
+                        {{ form.Modelo }}
+                    </div>
+                    <div>
+                        <label for="{{ form.Numero_Patrimonio.id_for_label }}">Nº de Patrimônio:</label>
+                        {{ form.Numero_Patrimonio }}
+                    </div>
                 </div>
 
                 <div class="form-row">
@@ -52,8 +68,13 @@
                     </div>
                 </div>
 
+                <div class="form-row">
+                    <label for="{{ form.Observacoes.id_for_label }}">Observações:</label>
+                    {{ form.Observacoes }}
+                </div>
+
                 <div class="form-actions">
-                    <button type="submit" class="btn-editar">Salvar Alterações</button>
+                    <button type="submit" class="btn-editar">Salvar Equipamento</button>
                 </div>
             </form>
         </div>

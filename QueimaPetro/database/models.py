@@ -54,8 +54,13 @@ class Equipamento(models.Model):
     Nome = models.CharField(max_length=100)
     Tipo = models.CharField(max_length=100)
     Fabricante = models.CharField(max_length=100, null=True, blank=True)
-    Modelo = models.CharField(max_length=100, null=True, blank=True)
     Status_Operacional = models.CharField(max_length=50)
+
+    Codigo = models.CharField(max_length=50, null=True, blank=True)
+    Modelo = models.CharField(max_length=100, blank=True, null=True)
+    Numero_Patrimonio = models.CharField(max_length=50, blank=True, null=True)
+    Observacoes = models.TextField(blank=True, null=True)
+
     Plataforma = models.ForeignKey(
         'Plataforma',
         on_delete=models.SET_NULL,
