@@ -1,0 +1,97 @@
+# views.py
+from django.shortcuts import render
+from datetime import datetime, timedelta
+from database.models import Plataforma
+from DadosQueima.models import MaterialQueimado
+import io
+import base64
+from datetime import timedelta
+from django.utils import timezone
+import matplotlib.pyplot as plt
+
+
+# # Usado para ativar/desativar o teste
+modo_teste = True
+# ==================================== Função de Mostrar os gráficos ==================================== #     
+
+# =============== LINHAS =============== #
+def gerar_grafico_linha(dados):
+    plt.figure(figsize=(5,5))
+    horas = [d.data_queima.strftime("%H:%M") for d in dados]
+    volumes = [d.volume_gas for d in dados]
+    plt.plot(horas, volumes, marker="o", color="red")
+    plt.fill_between(horas, volumes, color="red", alpha=0.1)
+    plt.title("VQ do Gás Total Queimado na Plataforma")
+    plt.xlabel("Horário")
+    plt.ylabel("Volume Total (m³)")
+    plt.grid(True)
+
+    return salvar_grafico_em_base64()
+
+# =============== PIZZA =============== #
+def gerar_grafico_pizza(dados):
+    tipos = {"Rotineira": 0, "Emergencial": 0, "Programada": 0}
+    for d in dados:
+        tipos[d.tipo_queima] = tipos.get(d.tipo_queima, 0) + d.volume_gas
+
+    plt.figure(figsize=(4,4))
+    labels = list(tipos.keys())
+    valores = list(tipos.values())
+    plt.pie(valores, labels=labels, autopct='%1.1f%%')
+    plt.title("Tipo de Queima (Diário)")
+    return salvar_grafico_em_base64()
+
+# =============== BARRAS =============== #
+def gerar_grafico_barras(dados):
+    gases = {}
+    for d in dados:
+        gases[d.nome_gas] = gases.get(d.nome_gas, 0) + d.volume_gas
+
+    plt.figure(figsize=(5,3))
+    chaves = list(gases.keys())
+    valores = list(gases.values())
+    plt.barh(chaves, valores, color="green")
+    plt.title("VQ por Gás")
+    plt.xlabel("Volume (m³)")
+    return salvar_grafico_em_base64()
+
+# ====================== SALVA OS GRAFICOS =================  #
+def salvar_grafico_em_base64():
+    buffer = io.BytesIO()
+    plt.tight_layout()
+    plt.savefig(buffer, format='png')
+    buffer.seek(0)
+    imagem_base64 = base64.b64encode(buffer.getvalue()).decode('utf-8')
+    plt.close()
+
+    print("[DEBUG] Gráfico gerado com sucesso!")  # <-- Adicione isso
+    return imagem_base64
+
+# =============== DASHBOARD =============== #
+def visualizacao_grafico(request):
+    agora = timezone.now()
+    if modo_teste:
+        inicio_periodo = agora - timedelta(minutes=5)
+    else:
+        inicio_periodo = agora.replace(hour=0, minute=0, second=0)
+
+    dados = MaterialQueimado.objects.filter(data_queima__gte=inicio_periodo)
+
+    # Gera os gráficos
+    grafico_linha = gerar_grafico_linha(dados)
+    grafico_pizza = gerar_grafico_pizza(dados)
+    grafico_barras = gerar_grafico_barras(dados)
+
+    # Calcula eficiência média
+    eficiencia_media = round(sum(d.eficiencia for d in dados)/len(dados), 2) if dados else 0
+
+    contexto = {
+        "grafico_linha": grafico_linha,
+        "grafico_pizza": grafico_pizza,
+        "grafico_barras": grafico_barras,
+        "eficiencia_media": eficiencia_media,
+        "data_atualizacao": agora.strftime("%d/%m/%Y %H:%M"),
+        "titulo": "Plataforma 1"
+    }
+
+    return render(request, 'grafico/plataforma.html', contexto)
