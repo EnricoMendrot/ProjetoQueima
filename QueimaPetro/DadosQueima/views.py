@@ -56,7 +56,7 @@ def plataforma_dashboard(request):
         inicio_periodo = agora.replace(hour=0, minute=0, second=0)
 
     # --- Busca os dados no banco ---
-    dados = MaterialQueimado.objects.order_by("nome_gas")
+    dados = MaterialQueimado.objects.all()
 
     # --- Gera estatísticas básicas ---
     total_vq = sum(d.volume_gas for d in dados)

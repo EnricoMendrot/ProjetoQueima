@@ -6,7 +6,16 @@ class Plataforma(models.Model):
     ID_Plataforma = models.AutoField(primary_key=True)
     Nome = models.CharField(max_length=100)
     Localizacao = models.CharField(max_length=200)
-    Responsavel = models.CharField(max_length=100)
+    Tipo = models.CharField(max_length=100)
+    DataComissionamento = models.DateTimeField()
+    DataInspecao = models.DateTimeField()
+    Status = models.CharField(max_length=100)
+    Supervisor = models.CharField(max_length=100)
+    ResponsavelTecnico = models.CharField(max_length=100)
+    OperadorPrincipal = models.CharField(max_length=100)
+    EquipeManutencao = models.CharField(max_length=100)
+    Observacoes = models.TextField(blank=True, null=True)
+    
 
     def __str__(self):
         return self.Nome

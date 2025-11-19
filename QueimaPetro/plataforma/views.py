@@ -1,5 +1,5 @@
 # views.py
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from datetime import datetime, timedelta
 from database.models import Plataforma
 from DadosQueima.models import MaterialQueimado
@@ -8,6 +8,7 @@ import base64
 from datetime import timedelta
 from django.utils import timezone
 import matplotlib.pyplot as plt
+from .forms import PlataformaForm
 
 
 # # Usado para ativar/desativar o teste
@@ -95,3 +96,18 @@ def visualizacao_grafico(request):
     }
 
     return render(request, 'grafico/plataforma.html', contexto)
+
+#=============================================== Cadastrar ===============================================#
+
+def cadastrar(request):
+
+    if request.method == "POST":
+        formulario = PlataformaForm(request.POST)
+        if formulario.is_valid():
+            formulario.save()
+            return redirect("plataforma:home")
+        
+    contexto = {
+        "form": PlataformaForm
+    }
+    return render(request, "Cadastro/cadastro.html", contexto)
