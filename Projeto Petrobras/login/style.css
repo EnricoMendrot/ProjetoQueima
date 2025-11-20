@@ -1,0 +1,218 @@
+body {
+    background-image: url(../img/background.png);
+    background-position: center top;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.base {
+
+    height: 59.5rem;
+    width: 119.4rem;
+}
+
+header {
+    display: flex;
+    width: 15rem;
+    height: 6rem;
+}
+
+header>.logo>img {
+
+    height: 3rem;
+    width: 10rem;
+    margin: 2rem 0 0 2rem;
+}
+
+main {
+    display: flex;
+}
+
+.title>p {
+    height: 10rem;
+    width: 45rem;
+    margin: 3rem 0 0 20rem;
+    font-family: rubik;
+    font-size: 4rem;
+    font-weight: 500;
+    color: white;
+}
+
+.container {
+    border: 1px solid rgb(255, 255, 255);
+    margin: 18rem 0 0 -45rem;
+    height: 21rem;
+    width: 50rem;
+    border-radius: 0.5rem;
+    background-color: rgba(255, 255, 255, 0.096);
+}
+
+.text>p {
+
+    margin: 3rem 0 0 3rem;
+    height: 15rem;
+    width: 44rem;
+    flex-wrap: wrap;
+    font-family: Montserrat;
+    font-size: 1.3rem;
+    color: white;
+
+}
+
+.cta-back {
+    height: 2.5rem;
+    width: 10rem;
+}
+
+.cta-back>a>button {
+    border: 1px solid rgb(255, 255, 255);
+    height: 2.5rem;
+    width: 10rem;
+    border-radius: 0.5rem;
+    font-family: rubik;
+    color: white;
+    background-color: rgba(255, 255, 255, 0.26);
+    cursor: pointer;
+    font-weight: 300;
+    font-size: 1rem;
+    margin: 2rem 0 0 30rem;
+
+}
+
+.gradient-block {
+    margin: -6rem 0 0 7rem;
+    height: 59.6rem;
+    width: 42.4rem;
+    display: flex;
+    background: linear-gradient(-45deg, #F2B544, #86A244, #238B3B, #006233);
+}
+
+.block-white {
+    border: 1px solid white;
+    margin: 9rem 0 0 -3.5rem;
+    width: 30rem;
+    height: 40rem;
+    background-color: white;
+    border-radius: 0.3rem;
+}
+
+.title-login {
+    font-family: rubik;
+    font-weight: 500;
+    font-size: 1.5rem;
+    text-align: center;
+    margin: 4rem 0 0 0;
+}
+
+.form>.lab-usuario {
+    width: 25.4rem;
+    height: 5.8rem;
+    margin: 4rem 0 0 2.4rem;
+    display: flex;
+
+}
+
+.form>.lab-usuario>.usuario>p {
+    font-family: rubik;
+    font-weight: 400;
+    font-size: 1.2rem;
+    margin: 1rem 0 0 0;
+
+}
+
+.form>.lab-usuario>.material-icons {
+    margin: 0.9rem 0 0 0.5rem;
+    height: 1.5rem;
+}
+
+.form>.lab-usuario>input {
+    width: 25rem;
+    height: 2.5rem;
+    margin: 3rem 0 0 -6.2rem;
+    border: 1px solid rgb(187, 187, 187);
+    border-radius: 5px;
+    font-family: rubik;
+}
+
+.form>.lab-password {
+    width: 25.4rem;
+    height: 5.8rem;
+    margin: 0.5rem 0 0 2.4rem;
+    display: flex;
+}
+
+.form>.lab-password>.password>p {
+    font-family: rubik;
+    font-weight: 400;
+    font-size: 1.2rem;
+    margin: 1rem 0 0 0;
+}
+
+.form>.lab-password>.material-icons {
+    height: 1.6rem;
+    width: 1.5rem;
+    margin: 0.9rem 0 0 0.5rem;
+}
+
+.form>.lab-password>input {
+    width: 26rem;
+    height: 2.5rem;
+    margin: 3rem 0 0 -7.4rem;
+    border: 1px solid rgb(187, 187, 187);
+    border-radius: 5px;
+    font-family: rubik;
+}
+
+.form>.save>.remember-me {
+    margin: 1rem 0 0 2.4rem;
+    width: 12rem;
+    height: 2rem;
+    display: flex;
+}
+
+.form>.save>.remember-me>input {
+    margin: 0.5rem 0 0 0.1rem;
+    height: 1.1rem;
+    width: 1.1rem;
+}
+
+
+.form>.save>.remember-me>span {
+    font-family: rubik;
+    font-weight: 100;
+    font-size: 1rem;
+    margin: 0.5rem 0 0 0.5rem;
+    color: rgb(168, 168, 168);
+}
+
+.form>.save>a {
+    display: flex;
+    width: 9.7rem;
+    font-size: 1rem;
+    font-family: rubik;
+    text-decoration: none;
+    color: rgb(168, 168, 168);
+    font-weight: 100;
+    margin: -1.6rem 0 0 18.1rem;
+}
+
+.form>.cta {
+    display: flex;
+    width: 10.5rem;
+    height: 2.5rem;
+    margin: 4.5rem 0 0 9.5rem;
+}
+
+.form>.cta>a>button {
+    width: 10.5rem;
+    height: 2.5rem;
+    font-family: rubik;
+    font-size: 1rem;
+    font-weight: 350;
+    background-color: #00793F;
+    color: white;
+    border-radius: 0.3rem;
+    border: none;
+    cursor: pointer;
+}
