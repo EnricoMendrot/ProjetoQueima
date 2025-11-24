@@ -9,13 +9,14 @@ html {
   width: 100%;
   height: 100%;
   font-family: "Rubik", sans-serif;
+  display: flex;
 }
 
 /* ===== FUNDO ===== */
 .fundo {
   width: 100%;
   height: 100vh;
-  background:  linear-gradient(-45deg, #F2B544, #86A244, #238B3B, #006233 );
+  background: linear-gradient(-45deg, #F2B544, #86A244, #238B3B, #006233);
   position: relative;
   overflow: hidden;
 }
@@ -79,7 +80,7 @@ html {
   width: 341px;
   height: 100vh;
   flex-shrink: 0;
-  background:  linear-gradient(-45deg, #F2B544, #86A244, #238B3B, #006233 );
+  background: linear-gradient(-45deg, #F2B544, #86A244, #238B3B, #006233);
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -142,20 +143,25 @@ html {
 
 /* ===== ESTILIZAR OS PARÁGRAFOS ===== */
 .info-box p {
-  margin: 10px 0;         /* Espaçamento entre linhas */
-  font-size: 13px;        /* Tamanho da fonte */
-  font-weight: normal;    /* Peso da fonte */
-  line-height: 1.4;       /* Espaçamento entre linhas */
+  margin: 10px 0;
+  /* Espaçamento entre linhas */
+  font-size: 13px;
+  /* Tamanho da fonte */
+  font-weight: normal;
+  /* Peso da fonte */
+  line-height: 1.4;
+  /* Espaçamento entre linhas */
   margin-left: 6%;
   margin-top: 6%;
-  
+
 }
 
 /* ===== ESTILIZAR APENAS OS TÍTULOS===== */
 .info-box p strong {
   font-weight: bold;
   font-size: 14px;
-  margin-bottom: 3px;   /* Pequeno espaço abaixo do título */
+  margin-bottom: 3px;
+  /* Pequeno espaço abaixo do título */
   color: #008445;
 }
 
@@ -184,9 +190,12 @@ html {
   font-weight: 400;
   line-height: normal;
   text-transform: uppercase;
-  display: flex; /* alinha SVG e texto em linha */
-  align-items: center; /* centraliza verticalmente */
-  gap: 8px; /* espaço entre ícone e texto */
+  display: flex;
+  /* alinha SVG e texto em linha */
+  align-items: center;
+  /* centraliza verticalmente */
+  gap: 8px;
+  /* espaço entre ícone e texto */
   padding: 0 16px;
   cursor: pointer;
   background: #FFF;
@@ -222,11 +231,14 @@ html {
 .white-box {
   width: 88.95%;
   height: 85%;
+  display: flex;
   flex-shrink: 0;
   border-radius: 3px;
   background: #F5F7FB;
-  margin-top: 75px;   /* move para baixo */
-  margin-left: 6%; /* move para a direita */
+  margin-top: -5px;
+  /* move para baixo */
+  margin-left: 6%;
+  /* move para a direita */
 }
 
 /* ===== DESFOQUE DO FUNDO ===== */
@@ -243,9 +255,7 @@ body.blurred::before {
   pointer-events: none;
 }
 
-@media (width <= 768px) {
-  
-}
+@media (width <=768px) {}
 
 /* ===== CONTAINER PRINCIPAL ===== */
 .menu-cadastros {
@@ -268,7 +278,8 @@ body.blurred::before {
 
 /* ===== SUBMENU2 PARA ALTERAR OS SUBBOTÕES ===== */
 .sub-menu {
-  display: none;      /* invisível até clicar */
+  display: none;
+  /* invisível até clicar */
   flex-direction: column;
   width: 100%;
   border-left: 1px solid #008445;
@@ -335,7 +346,7 @@ body.blurred::before {
 }
 
 /* =====  BOTÃO DE CADASTRO ===== */
-#btnCadastros{
+#btnCadastros {
   width: 285px;
   height: 51.818px;
   border-radius: 3px;
@@ -350,9 +361,12 @@ body.blurred::before {
   font-weight: 400;
   line-height: normal;
   text-transform: uppercase;
-  display: flex; /* alinha SVG e texto em linha */
-  align-items: center; /* centraliza verticalmente */
-  gap: 8px; /* espaço entre ícone e texto */
+  display: flex;
+  /* alinha SVG e texto em linha */
+  align-items: center;
+  /* centraliza verticalmente */
+  gap: 8px;
+  /* espaço entre ícone e texto */
   padding: 0 16px;
   background: #FFF;
 }
@@ -365,5 +379,194 @@ body.blurred::before {
 
 /* ======== REMOVE A BORDA DE BAIXO DO CADASTRO QUANDO OS SUBBOTÕES ESTIVEREM APARECENDO ======== */
 #btnCadastros.active {
-  border-bottom: none; /* remove a borda */
+  border-bottom: none;
+  /* remove a borda */
+}
+
+.title {
+  height: 5rem;
+  width: 24.3rem;
+  display: flex;
+  margin: 0 0 0 15rem;
+}
+
+.title>p {
+  display: flex;
+  font-family: Rubik;
+  font-size: 1.9rem;
+  font-weight: 550;
+  width: 24.2rem;
+  height: 2.5rem;
+  margin: 7rem 0 0 0;
+}
+
+.title>.subtitle {
+  width: 13rem;
+  height: 2.5rem;
+  display: flex;
+  font-family: Montserrat;
+  font-weight: 300;
+  font-size: 1.3rem;
+  margin: 9.5rem 0 0 -15rem;
+}
+
+.decoration {
+  border: 1px solid #F2B544;
+  display: flex;
+  margin: 10rem 0 0 -22.2rem;
+  width: 2.5rem;
+  height: 0.4rem;
+  background-color: #F2B544;
+}
+
+.sub-box {
+  border: 1px solid rgb(255, 255, 255);
+  display: flex;
+  width: 90rem;
+  height: 34rem;
+  margin: 8rem 0 0 8rem;
+  background-color: white;
+  border-radius: 0.3rem;
+  box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.25);
+}
+
+.forms {
+
+  display: flex;
+  height: 20.6rem;
+  width: 80rem;
+  margin: 3.5rem 0 0 5rem;
+  font-size: 1.1rem;
+}
+
+.forms>.name {
+
+  height: 4rem;
+  width: 46rem;
+}
+
+.forms>.name>input {
+  border: 1px solid #B3B3B3;
+  border-radius: 0.2rem;
+  width: 45.9rem;
+  font-family: rubik;
+  height: 2.6rem;
+  padding: 0.5rem;
+}
+
+.forms>.manufacturer {
+
+  margin: 5.5rem 0 0 -46rem;
+  height: 4rem;
+  width: 46rem;
+}
+
+.forms>.manufacturer>input {
+  border: 1px solid #B3B3B3;
+  border-radius: 0.2rem;
+  width: 45.9rem;
+  font-family: rubik;
+  height: 2.6rem;
+  padding: 0.5rem;
+}
+
+.forms>.code {
+
+  margin: 11rem 0 0 -46rem;
+  height: 4rem;
+  width: 19.5rem;
+}
+
+.forms>.code>input {
+  border: 1px solid #B3B3B3;
+  border-radius: 0.2rem;
+  width: 19.4rem;
+  height: 2.6rem;
+  font-family: rubik;
+  padding: 0.5rem;
+}
+
+.forms>.platform {
+
+  margin: 11rem 0 0 7rem;
+  height: 4rem;
+  width: 19.5rem;
+}
+
+.forms>.platform>input {
+  border: 1px solid #B3B3B3;
+  border-radius: 0.2rem;
+  width: 19.4rem;
+  height: 2.6rem;
+  font-family: rubik;
+  padding: 0.5rem;
+}
+
+.forms>.heritage {
+
+  margin: 16.5rem 0 0 -46rem;
+  height: 4rem;
+  width: 19.5rem;
+}
+
+.forms>.heritage>input {
+  border: 1px solid #B3B3B3;
+  border-radius: 0.2rem;
+  width: 19.4rem;
+  height: 2.6rem;
+  font-family: rubik;
+  padding: 0.5rem;
+}
+
+
+.forms>.status {
+  margin: 16.5rem 0 0 7rem;
+  height: 4rem;
+  width: 19.5rem;
+  
+}
+
+.forms>.status>select {
+  border: 1px solid #B3B3B3;
+  border-radius: 0.2rem;
+  width: 19.4rem;
+  height: 2.6rem;
+  font-family: rubik;
+  font-size: 0.9rem;
+  padding: 0.2rem;
+}
+
+.forms>.obs {
+  margin: 0rem 0 0 7rem;
+  height: 20.5rem;
+  width: 26.9rem;
+  resize: none;
+}
+
+.forms>.obs>textarea {
+  border: 1px solid #B3B3B3;
+  border-radius: 0.2rem;
+  width: 26.8rem;
+  height: 19.1rem;
+  font-family: rubik;
+  padding: 0.5rem;
+  resize: none;
+}
+
+.cta-register {
+  display: flex;
+}
+
+.cta-register>a>button {
+  border: 1px solid #00793F;
+  background-color: #006233;
+  color: white;
+  font-family: rubik;
+  border-radius: 0.2rem;
+  font-weight: 300;
+  width: 9.3rem;
+  height: 2.3rem;
+  margin: 28rem 0 0 -44.7rem;
+  cursor: pointer;
+
 }
