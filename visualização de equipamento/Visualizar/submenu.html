@@ -4,8 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cadastro de Equipamento</title>
-  <link rel="stylesheet" href="../Cadastro/submenu.css">
+  <title>Visualizar Cadastro de Equipamento</title>
+  <link rel="stylesheet" href="../Visualizar/submenu.css">
   <link rel="stylesheet" href="../reset.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
   <style>
@@ -28,14 +28,15 @@
     </header>
 
     <!-- ÍCONE DE LOGOUT -->
-    <span class="logout-icon">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-        <path
-          d="M5 21C4.45 21 3.97917 20.8042 3.5875 20.4125C3.19583 20.0208 3 19.55 3 19V15H5V19H19V5H5V9H3V5C3 4.45 3.19583 3.97917 3.5875 3.5875C3.97917 3.19583 4.45 3 5 3H19C19.55 3 20.0208 3.19583 20.4125 3.5875C20.8042 3.97917 21 4.45 21 5V19C21 19.55 20.8042 20.0208 20.4125 20.4125C20.0208 20.8042 19.55 21 19 21H5ZM10.5 17L9.1 15.55L11.65 13H3V11H11.65L9.1 8.45L10.5 7L15.5 12L10.5 17Z"
-          fill="white" />
-      </svg>
-    </span>
-
+    <a href="/login/index.html">
+      <span class="logout-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path
+            d="M5 21C4.45 21 3.97917 20.8042 3.5875 20.4125C3.19583 20.0208 3 19.55 3 19V15H5V19H19V5H5V9H3V5C3 4.45 3.19583 3.97917 3.5875 3.5875C3.97917 3.19583 4.45 3 5 3H19C19.55 3 20.0208 3.19583 20.4125 3.5875C20.8042 3.97917 21 4.45 21 5V19C21 19.55 20.8042 20.0208 20.4125 20.4125C20.0208 20.8042 19.55 21 19 21H5ZM10.5 17L9.1 15.55L11.65 13H3V11H11.65L9.1 8.45L10.5 7L15.5 12L10.5 17Z"
+            fill="white" />
+        </svg>
+      </span>
+    </a>
     <!-- ÍCONE MENU PRINCIPAL (3x3) -->
     <div class="menu-icon" id="menuToggle">
       <svg xmlns="http://www.w3.org/2000/svg" width="29" height="27" viewBox="0 0 29 27" fill="none">
@@ -49,10 +50,14 @@
       <p>Cadastro de Equipamento </p>
 
       <!-- Subtítulo indicando a ação -->
-      <div class="subtitle"><i>Inserir Informações</i></div>
+      <div class="subtitle"><i>Visualizar Informações</i></div>
 
       <!-- Elemento decorativo abaixo do título -->
       <div class="decoration"></div>
+    </div>
+
+    <div class="cta-back">
+      <a href="#"><button>Voltar</button></a>
     </div>
 
     <div class="white-box">
@@ -152,16 +157,17 @@
 
       <!--PERFIL-->
       <div class="info-box">
-        <p><strong>NOME:</strong><br>RAFAEL MONTEIRO DA SILVA</p>
-        <p><strong>FUNÇÃO:</strong><br>ANALISTA DE DADOS JÚNIOR</p>
-        <div class="icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36">
-            <path
-              d="M18 0C20.3869 0 22.6761 0.948211 24.364 2.63604C26.0518 4.32387 27 6.61305 27 9C27 11.3869 26.0518 13.6761 24.364 15.364C22.6761 17.0518 20.3869 18 18 18C15.6131 18 13.3239 17.0518 11.636 15.364C9.94821 13.6761 9 11.3869 9 9C9 6.61305 9.94821 4.32387 11.636 2.63604C13.3239 0.948211 15.6131 0 18 0ZM18 22.5C27.945 22.5 36 26.5275 36 31.5V36H0V31.5C0 26.5275 8.055 22.5 18 22.5Z" />
-          </svg>
-        </div>
+        <a href="">
+          <p><strong>NOME:</strong><br>RAFAEL MONTEIRO DA SILVA</p>
+          <p><strong>FUNÇÃO:</strong><br>ANALISTA DE DADOS JÚNIOR</p>
+          <div class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36">
+              <path
+                d="M18 0C20.3869 0 22.6761 0.948211 24.364 2.63604C26.0518 4.32387 27 6.61305 27 9C27 11.3869 26.0518 13.6761 24.364 15.364C22.6761 17.0518 20.3869 18 18 18C15.6131 18 13.3239 17.0518 11.636 15.364C9.94821 13.6761 9 11.3869 9 9C9 6.61305 9.94821 4.32387 11.636 2.63604C13.3239 0.948211 15.6131 0 18 0ZM18 22.5C27.945 22.5 36 26.5275 36 31.5V36H0V31.5C0 26.5275 8.055 22.5 18 22.5Z" />
+            </svg>
+          </div>
       </div>
-
+      </a>
       <!--ÍCONES DO SUBMENU-->
       <a href="">
         <button class="menu-item"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 19 19"
@@ -337,9 +343,8 @@
 
 
     </div>
-  </div>
 
-  <script src="/js/SubMenu.js"></script>
+    <script src="/js/SubMenu.js"></script>
 </body>
 
 </html>
