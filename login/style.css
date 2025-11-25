@@ -1,35 +1,39 @@
 body {
+    /* Configuração da imagem de fundo da página */
     background-image: url(../img/background.png);
-    background-position: center top;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+    background-position: center top; /* Centraliza horizontalmente */
+    background-size: cover; /* Cobre toda a tela */
+    background-repeat: no-repeat; /* Não repete a imagem */
+    background-attachment: fixed; /* Fundo fixo ao rolar a página */
 }
 
 .base {
-
+    /* Dimensões principais do container base */
     height: 59.5rem;
     width: 119.4rem;
 }
 
 header {
+    /* Organiza os itens do header lado a lado */
     display: flex;
     width: 15rem;
     height: 6rem;
 }
 
 header>.logo>img {
-
+    /* Tamanho e posicionamento da logo */
     height: 3rem;
     width: 10rem;
     margin: 2rem 0 0 2rem;
 }
 
 main {
+    /* Deixa a estrutura do main em linha (horizontal) */
     display: flex;
 }
 
 .title>p {
+    /* Estilização do título principal */
     height: 10rem;
     width: 45rem;
     margin: 3rem 0 0 20rem;
@@ -40,6 +44,7 @@ main {
 }
 
 .container {
+    /* Caixa que contém o texto introdutório */
     border: 1px solid rgb(255, 255, 255);
     margin: 18rem 0 0 -45rem;
     height: 21rem;
@@ -49,7 +54,7 @@ main {
 }
 
 .text>p {
-
+    /* Estilo do parágrafo de introdução */
     margin: 3rem 0 0 3rem;
     height: 15rem;
     width: 44rem;
@@ -57,15 +62,16 @@ main {
     font-family: Montserrat;
     font-size: 1.3rem;
     color: white;
-
 }
 
 .cta-back {
+    /* Espaço reservado para o botão "Voltar" */
     height: 2.5rem;
     width: 10rem;
 }
 
 .cta-back>a>button {
+    /* Estilização do botão "Voltar" */
     border: 1px solid rgb(255, 255, 255);
     height: 2.5rem;
     width: 10rem;
@@ -77,10 +83,10 @@ main {
     font-weight: 300;
     font-size: 1rem;
     margin: 2rem 0 0 30rem;
-
 }
 
 .gradient-block {
+    /* Bloco lateral com fundo em gradiente */
     margin: -6rem 0 0 7rem;
     height: 59.6rem;
     width: 42.4rem;
@@ -89,6 +95,7 @@ main {
 }
 
 .block-white {
+    /* Card branco onde está o formulário */
     border: 1px solid white;
     margin: 9rem 0 0 -3.5rem;
     width: 30rem;
@@ -98,6 +105,7 @@ main {
 }
 
 .title-login {
+    /* Título da área de login */
     font-family: rubik;
     font-weight: 500;
     font-size: 1.5rem;
@@ -106,27 +114,29 @@ main {
 }
 
 .form>.lab-usuario {
+    /* Container do campo de usuário */
     width: 25.4rem;
     height: 5.8rem;
     margin: 4rem 0 0 2.4rem;
     display: flex;
-
 }
 
 .form>.lab-usuario>.usuario>p {
+    /* Estilo do label "Usuário" */
     font-family: rubik;
     font-weight: 400;
     font-size: 1.2rem;
     margin: 1rem 0 0 0;
-
 }
 
 .form>.lab-usuario>.material-icons {
+    /* Ícone de usuário */
     margin: 0.9rem 0 0 0.5rem;
     height: 1.5rem;
 }
 
 .form>.lab-usuario>input {
+    /* Campo de input do usuário */
     width: 25rem;
     height: 2.5rem;
     margin: 3rem 0 0 -6.2rem;
@@ -136,6 +146,7 @@ main {
 }
 
 .form>.lab-password {
+    /* Container do campo de senha */
     width: 25.4rem;
     height: 5.8rem;
     margin: 0.5rem 0 0 2.4rem;
@@ -143,6 +154,7 @@ main {
 }
 
 .form>.lab-password>.password>p {
+    /* Estilo do label "Password" */
     font-family: rubik;
     font-weight: 400;
     font-size: 1.2rem;
@@ -150,12 +162,14 @@ main {
 }
 
 .form>.lab-password>.material-icons {
+    /* Ícone de cadeado */
     height: 1.6rem;
     width: 1.5rem;
     margin: 0.9rem 0 0 0.5rem;
 }
 
 .form>.lab-password>input {
+    /* Campo de input da senha */
     width: 26rem;
     height: 2.5rem;
     margin: 3rem 0 0 -7.4rem;
@@ -165,6 +179,7 @@ main {
 }
 
 .form>.save>.remember-me {
+    /* Área contendo o checkbox "Lembre meu acesso" */
     margin: 1rem 0 0 2.4rem;
     width: 12rem;
     height: 2rem;
@@ -172,13 +187,14 @@ main {
 }
 
 .form>.save>.remember-me>input {
+    /* Estilo do checkbox */
     margin: 0.5rem 0 0 0.1rem;
     height: 1.1rem;
     width: 1.1rem;
 }
 
-
 .form>.save>.remember-me>span {
+    /* Texto ao lado do checkbox */
     font-family: rubik;
     font-weight: 100;
     font-size: 1rem;
@@ -187,6 +203,7 @@ main {
 }
 
 .form>.save>a {
+    /* Link "Esqueci minha senha" */
     display: flex;
     width: 9.7rem;
     font-size: 1rem;
@@ -198,6 +215,7 @@ main {
 }
 
 .form>.cta {
+    /* Container do botão "Entrar" */
     display: flex;
     width: 10.5rem;
     height: 2.5rem;
@@ -205,6 +223,7 @@ main {
 }
 
 .form>.cta>a>button {
+    /* Botão "Entrar" do formulário */
     width: 10.5rem;
     height: 2.5rem;
     font-family: rubik;

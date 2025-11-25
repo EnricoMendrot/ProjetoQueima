@@ -11,15 +11,19 @@
     <link rel="stylesheet" href="../reset.css" />
     <title>Login</title>
   </head>
-
-  <body>
+<body>
+    <!-- Cabeçalho contendo a logo -->
     <header>
       <div class="logo"><img src="../img/logo.png" alt="" /></div>
     </header>
+
     <main>
+      <!-- Título principal da página -->
       <div class="title">
         <p>Sistema Integrado de Controle de Queima</p>
       </div>
+
+      <!-- Bloco de apresentação/descrição do sistema -->
       <div class="container">
         <div class="text">
           <p>
@@ -34,38 +38,62 @@
           </p>
         </div>
       </div>
+
+      <!-- Bloco que contém o formulário de login + botão de voltar -->
       <div class="gradient-block">
+
+        <!-- Botão para voltar à página inicial -->
         <div class="cta-back">
           <a href="../Inicio/index.html"><button>Voltar</button></a>
         </div>
+
+        <!-- Caixa branca que contém o formulário -->
         <div class="block-white">
+
+          <!-- Título do formulário -->
           <div class="title-login">
             <p>Portal de Prestadores de <br />Serviços</p>
           </div>
+
+          <!-- Formulário de login -->
           <div class="form">
+
+            <!-- Campo de usuário -->
             <div class="lab-usuario">
               <label class="usuario"><p>Usuário</p></label>
-             <i class="material-icons">person</i><br>
+              <i class="material-icons">person</i><br>
               <input type="usuario" id="usuario" />
             </div>
+
+            <!-- Campo de senha -->
             <div class="lab-password">
-            <label class="password"><p>Password</p></label>
-             <i class="material-icons">lock</i><br>
-            <input type="password" id="password" />
-          </div>
-          <div class="save">
-          <div class="remember-me">
-            <input type="checkbox" id="checkbox"/>
-            <span>Lembre meu acesso</span>
-          </div>  
-            <a href="../password/index.html">Esqueci minha senha</a> 
-          </div>
-          <div class="cta">
-            <a href=""><button>Entrar</button></a>
-          </div>
+              <label class="password"><p>Password</p></label>
+              <i class="material-icons">lock</i><br>
+              <input type="password" id="password" />
+            </div>
+
+            <!-- Área com checkbox e link de recuperação -->
+            <div class="save">
+
+              <!-- Lembrar acesso -->
+              <div class="remember-me">
+                <input type="checkbox" id="checkbox"/>
+                <span>Lembre meu acesso</span>
+              </div>
+
+              <!-- Link para recuperar a senha -->
+              <a href="../password/index.html">Esqueci minha senha</a> 
+            </div>
+
+            <!-- Botão de entrar -->
+            <div class="cta">
+              <a href=""><button>Entrar</button></a>
+            </div>
+
           </div>
         </div>
       </div>
     </main>
-  </body>
+</body>
+
 </html>

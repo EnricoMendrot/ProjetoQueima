@@ -1,4 +1,5 @@
 body {
+    /* Configura o fundo da página com imagem, posição centralizada e efeito fixo */
     background-image: url(../img/background.png);
     background-position: center top;
     background-size: cover;
@@ -7,29 +8,32 @@ body {
 }
 
 .base {
-
+    /* Dimensões gerais do container base */
     height: 59.5rem;
     width: 119.4rem;
 }
 
 header {
+    /* Organiza o conteúdo do header em linha */
     display: flex;
     width: 15rem;
     height: 6rem;
 }
 
 header>.logo>img {
-
+    /* Define o tamanho e posicionamento da logo */
     height: 3rem;
     width: 10rem;
     margin: 2rem 0 0 2rem;
 }
 
 main {
+    /* Deixa o conteúdo principal em layout horizontal */
     display: flex;
 }
 
 .title>p {
+    /* Estilização do título principal */
     height: 10rem;
     width: 45rem;
     margin: 3rem 0 0 20rem;
@@ -40,6 +44,7 @@ main {
 }
 
 .container {
+    /* Caixa transparente com texto explicativo */
     border: 1px solid rgb(255, 255, 255);
     margin: 18rem 0 0 -45rem;
     height: 21rem;
@@ -49,7 +54,7 @@ main {
 }
 
 .text>p {
-
+    /* Estilo do texto dentro da caixa */
     margin: 3rem 0 0 3rem;
     height: 15rem;
     width: 44rem;
@@ -57,15 +62,16 @@ main {
     font-family: Montserrat;
     font-size: 1.3rem;
     color: rgb(255, 255, 255);
-
 }
 
 .cta-back {
+    /* Ocupa o espaço reservado ao botão de voltar */
     height: 2.5rem;
     width: 10rem;
 }
 
 .cta-back>a>button {
+    /* Estilo do botão de voltar */
     border: 1px solid rgb(255, 255, 255);
     height: 2.5rem;
     width: 10rem;
@@ -77,10 +83,10 @@ main {
     font-weight: 300;
     font-size: 1rem;
     margin: 2rem 0 0 30rem;
-
 }
 
 .gradient-block {
+    /* Bloco lateral com gradiente de cores */
     margin: -6rem 0 0 7rem;
     height: 59.6rem;
     width: 42.4rem;
@@ -89,6 +95,7 @@ main {
 }
 
 .block-white {
+    /* Card branco onde fica o conteúdo de recuperação de senha */
     border: 1px solid white;
     margin: 13rem 0 0 -3.5rem;
     width: 30rem;
@@ -98,6 +105,7 @@ main {
 }
 
 .title-login {
+    /* Estilo do título do card "Recuperação de Senha" */
     font-family: rubik;
     font-weight: 500;
     font-size: 1.5rem;
@@ -106,6 +114,7 @@ main {
 }
 
 .text-recovery {
+    /* Estilo do parágrafo explicativo dentro do card */
     font-family: rubik;
     font-size: 0.9rem;
     margin: 2rem 0 0 1.5rem;
@@ -115,27 +124,29 @@ main {
 }
 
 .form>.lab-usuario {
+    /* Container do input + label + ícone do usuário */
     width: 25.4rem;
     height: 5.8rem;
     margin: 2rem 0 0 2.4rem;
     display: flex;
-
 }
 
 .form>.lab-usuario>.usuario>p {
+    /* Estilo da label "Usuário" */
     font-family: rubik;
     font-weight: 400;
     font-size: 1.2rem;
     margin: 1rem 0 0 0;
-
 }
 
 .form>.lab-usuario>.material-icons {
+    /* Ícone de usuário ao lado do input */
     margin: 0.9rem 0 0 0.5rem;
     height: 1.5rem;
 }
 
 .form>.lab-usuario>input {
+    /* Input do usuário */
     width: 25rem;
     height: 2.5rem;
     margin: 3rem 0 0 -6.2rem;
@@ -145,6 +156,7 @@ main {
 }
 
 .form>.cta {
+    /* Container do botão "Enviar" */
     display: flex;
     width: 10.5rem;
     height: 2.5rem;
@@ -152,6 +164,7 @@ main {
 }
 
 .form>.cta>a>button {
+    /* Estilo do botão de envio */
     width: 10.5rem;
     height: 2.5rem;
     font-family: rubik;
