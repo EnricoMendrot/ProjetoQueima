@@ -402,7 +402,12 @@ box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.25);
   border-radius: 3px;
   border: 1px solid #b3b3b3;
   background: #fff;
+  display: flex;
+  align-items: center;
 }
+
+
+
 
 .status {
   width: 53px;
@@ -421,6 +426,7 @@ box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.25);
   border-radius: 3px;
   border: 1px solid #b3b3b3;
   background: #fff;
+  align-items: center;
 }
 
 .area {
@@ -494,84 +500,111 @@ box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.25);
 
 }
 
-/* AJUSTES INDIVIDUAIS SE PRECISAR */
+/* AJUSTES INDIVIDUAIS*/
 .id {
-  margin-left: 130px;
+  margin-left: 180px;
 }
 
 .nome_do_equipamento {
-  margin-left: 130px;
+  margin-left: 70px;
 }
 
 .status2 {
-  margin-left: 130px;
+  margin-left: 90px;
 }
 
 .area2 {
-  margin-left: 130px;
+  margin-left: 65px;
 }
 
-
-
-
-
-/* ----------------------------------------------------------
-   ÁREA DE FILTROS (Status / Área)
-   - Organiza os filtros lado a lado
-   - Aplica espaçamento horizontal entre eles
------------------------------------------------------------ */
-.filters {
-  display: flex;
-  gap: 30px;
-  margin: 20px 0;
+.icone-pesquisa {
+  width: 21px;
+  height: 21px;
+  fill: #B3B3B3;
+  margin-left: 490px; /* move para a esquerda */
 }
 
-/* ----------------------------------------------------------
-   ESTILO DOS SELECTS DOS FILTROS
-   - Define tamanho dos selects
------------------------------------------------------------ */
-.filter-item select {
-  width: 200px;
-  height: 40px;
+.icone-seta {
+  width: 14px;
+  height: 10px;
+  fill: #B3B3B3;
+  margin-left: 170px; /* move para a esquerda */
+  margin-top: 18px;
 }
 
-/* ----------------------------------------------------------
-   CONTAINER DA TABELA
-   - Cria espaço superior
-   - Aplica scroll vertical caso a lista de itens seja muito grande
------------------------------------------------------------ */
-.table-box {
-  margin-top: 20px;
-  max-height: 450px;
-  overflow-y: auto;
+.icone-seta2 {
+  width: 14px;
+  height: 10px;
+  fill: #B3B3B3;
+  margin-left: 170px; /* move para a esquerda */
+  margin-top: 18px;
 }
 
-/* ----------------------------------------------------------
-   ESTILO DA TABELA
-   - Remove espaçamentos padrão
-   - Força a tabela a ocupar 100% do espaço
------------------------------------------------------------ */
-table {
-  width: 100%;
-  border-collapse: collapse;
-}
+/* IMPUT DO ID NOME EQUIPAMENTO STATUS E ÁREA */
+.imput {
+  width: 1198px;
+  height: 46px;
+  border-radius: 3px;
+  border: 1px solid #B3B3B3;
+  background: #FFF;
+  margin-left: 55px;
+  margin-top: 15px;
+  text-align: center;
+  }
 
-/* ----------------------------------------------------------
-   CABEÇALHO DA TABELA
-   - Define estilo dos títulos (ID, Nome do Equipamento...)
------------------------------------------------------------ */
-thead th {
-  font-weight: bold;
-  padding: 10px;
-  text-align: left;
-}
+  .quadrado-imput {
+    width: 26px;
+    height: 26px;
+    border-radius: 3px;
+    border: 0.5px solid #B3B3B3;
+    margin-left: 15px; /* move para a esquerda */
+    margin-top: 9px;
+  }
 
-/* ----------------------------------------------------------
-   CÉLULAS DO CORPO DA TABELA
-   - Aplica espaçamento nas células
-   - Adiciona linha divisória entre os itens
------------------------------------------------------------ */
-tbody td {
-  padding: 12px;
-  border-bottom: 1px solid #ccc;
-}
+  .id-teste {
+    width: 75px;
+    color: #5C5C5C;
+    font-family: Rubik;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    margin-left: 130px; /* move para a esquerda */
+    margin-top: -20px;
+  }
+
+  .equipamento-teste {
+    width: 174px;
+    color: #5C5C5C;
+    font-family: Rubik;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-left: 395px; /* move para a esquerda */
+    margin-top: -20px;
+  }
+
+  .status-teste {
+    width: 54px;
+    color: #5C5C5C;
+    font-family: Rubik;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-left: 805px; /* move para a esquerda */
+    margin-top: -20px;
+  }
+
+  .area-teste {
+    width: 39px;
+    color: #5C5C5C;
+    font-family: Rubik;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-left: 1070px; /* move para a esquerda */
+    margin-top: -20px;
+  }
