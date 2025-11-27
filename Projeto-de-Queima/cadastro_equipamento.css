@@ -4,6 +4,14 @@
   box-sizing: border-box;
 }
 
+
+.montserrat {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: italic;
+}
+
 body,
 html {
   width: 100%;
@@ -369,9 +377,9 @@ body.blurred::before {
   width: 90rem;
   height: 40rem;
   margin: 8rem 0 0 8rem;
-border-radius: 3px;
-background: #FFF;
-box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.25);
+  border-radius: 3px;
+  background: #FFF;
+  box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.25);
   top: 3.5rem;
 }
 
@@ -404,10 +412,10 @@ box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.25);
   background: #fff;
   display: flex;
   align-items: center;
+  margin-top: 10px;
+  cursor: pointer;
+  margin-left: -2px;
 }
-
-
-
 
 .status {
   width: 53px;
@@ -417,6 +425,7 @@ box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.25);
   font-style: normal;
   font-weight: 300;
   line-height: normal;
+  
 }
 
 .preencher2 {
@@ -427,6 +436,27 @@ box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.25);
   border: 1px solid #b3b3b3;
   background: #fff;
   align-items: center;
+  margin-top: 10px;
+}
+
+.id-input {
+  width: 53px;
+  color: #5c5c5c;
+  font-family: Rubik;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+}
+
+.preencher4 {
+  width: 200px;
+  height: 46px;
+  flex-shrink: 0;
+  border-radius: 3px;
+  border: 1px solid #b3b3b3;
+  background: #fff;
+  margin-top: 10px;
 }
 
 .area {
@@ -446,7 +476,7 @@ box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.25);
   border-radius: 3px;
   border: 1px solid #b3b3b3;
   background: #fff;
-  margin-top: 0;
+  margin-top: 10px;
 }
 
 .title-equipamento {
@@ -466,13 +496,11 @@ box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.25);
     position: absolute;
     width: 308px;
     color: #5C5C5C;
-    font-family: Montserrat;
     font-size: 24px;
-    font-style: italic;
     font-weight: 300;
     line-height: normal;
     margin-top: 3.7%;
-    margin-left: 17.5%;
+    margin-left: 15.4%;
 }
 
 .title-icone {
@@ -488,9 +516,9 @@ box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.25);
 /* CONTAINER */
 .tabela-cabecalho {
   display: flex;
-  gap: 150px;
-  margin-top: 40px;
-  margin-left: 40px;
+  margin-top: 30px;
+  margin-left: 55px;
+
 }
 
 .tabela-cabecalho div {
@@ -500,28 +528,43 @@ box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.25);
 
 }
 
+.input {
+  width: 1300px;
+  height: 46px;
+  border-radius: 3px;
+  border: 1px solid #B3B3B3;
+  background: #FFF;
+  text-align: center;
+  margin-top: 15px;
+  margin-left: 55px;
+  }
+
+
 /* AJUSTES INDIVIDUAIS*/
-.id {
-  margin-left: 180px;
+
+.id{
+  margin-left: 160px;
 }
 
-.nome_do_equipamento {
-  margin-left: 70px;
+.nome_do_equipamento{
+   margin-left: 225px;
 }
 
-.status2 {
-  margin-left: 90px;
+.status2{
+  margin-left: 240px;
 }
 
-.area2 {
-  margin-left: 65px;
+.area2{
+  margin-left: 295px;
 }
+
 
 .icone-pesquisa {
   width: 21px;
   height: 21px;
   fill: #B3B3B3;
   margin-left: 490px; /* move para a esquerda */
+  cursor: pointer;
 }
 
 .icone-seta {
@@ -530,6 +573,7 @@ box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.25);
   fill: #B3B3B3;
   margin-left: 170px; /* move para a esquerda */
   margin-top: 18px;
+  cursor: pointer;
 }
 
 .icone-seta2 {
@@ -538,28 +582,38 @@ box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.25);
   fill: #B3B3B3;
   margin-left: 170px; /* move para a esquerda */
   margin-top: 18px;
+  cursor: pointer;
 }
 
 /* IMPUT DO ID NOME EQUIPAMENTO STATUS E ÁREA */
-.imput {
-  width: 1198px;
-  height: 46px;
-  border-radius: 3px;
-  border: 1px solid #B3B3B3;
-  background: #FFF;
-  margin-left: 55px;
-  margin-top: 15px;
-  text-align: center;
-  }
 
-  .quadrado-imput {
+  .quadrado-input {
     width: 26px;
     height: 26px;
     border-radius: 3px;
     border: 0.5px solid #B3B3B3;
     margin-left: 15px; /* move para a esquerda */
     margin-top: 9px;
+    cursor: pointer;
   }
+
+/* SVG começa invisível */
+.icone-check {
+  opacity: 0;
+  width: 20px;
+  height: 15px;
+  fill: #008445;
+  stroke: #008445;
+  stroke-width: 1px;
+  transition: opacity 0.2s ease;
+  margin-top: 5px;
+}
+
+/* quando clicado */
+.quadrado-input.ativo .icone-check {
+  opacity: 1;
+}
+
 
   .id-teste {
     width: 75px;
@@ -598,13 +652,13 @@ box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.25);
   }
 
   .area-teste {
-    width: 39px;
+    width: 65px;
     color: #5C5C5C;
     font-family: Rubik;
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-    margin-left: 1070px; /* move para a esquerda */
-    margin-top: -20px;
+    margin-left: 1140px; /* move para a esquerda */
+    margin-top: -18px;
   }

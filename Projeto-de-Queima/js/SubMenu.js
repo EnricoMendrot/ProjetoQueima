@@ -65,4 +65,10 @@ setaCadastros.addEventListener('click', (e) => {
   btnCadastros.classList.toggle("active");
 });
 
+// === Ativa o icone de check no quadrado
+const quadrado = document.getElementById("q1");
+
+quadrado.addEventListener("click", () => {
+  quadrado.classList.toggle("ativo");
+});
 
