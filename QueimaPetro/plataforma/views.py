@@ -9,19 +9,31 @@ from datetime import timedelta
 from django.utils import timezone
 import matplotlib.pyplot as plt
 from .forms import PlataformaForm
+import matplotlib.dates as mdates
 
 
 # # Usado para ativar/desativar o teste
-modo_teste = True
+modo_teste = False
 # ==================================== Função de Mostrar os gráficos ==================================== #     
 
 # =============== LINHAS =============== #
 def gerar_grafico_linha(dados):
     plt.figure(figsize=(5,5))
-    horas = [d.data_queima.strftime("%H:%M") for d in dados]
+
+    # PEGUE A DATA REAL
+    horas = [d.data_queima for d in dados]
     volumes = [d.volume_gas for d in dados]
+
     plt.plot(horas, volumes, marker="o", color="red")
     plt.fill_between(horas, volumes, color="red", alpha=0.1)
+
+    # =======Controlar o tempo do gráfico de linhas======== #
+    ax = plt.gca()
+    ax.xaxis.set_major_locator(mdates.MinuteLocator(interval=10))   # a cada 10 min
+    ax.xaxis.set_major_formatter(mdates.DateFormatter("%H:%M"))     # formato do tick
+
+    plt.gcf().autofmt_xdate()
+
     plt.title("VQ do Gás Total Queimado na Plataforma")
     plt.xlabel("Horário")
     plt.ylabel("Volume Total (m³)")
@@ -65,7 +77,7 @@ def salvar_grafico_em_base64():
     imagem_base64 = base64.b64encode(buffer.getvalue()).decode('utf-8')
     plt.close()
 
-    print("[DEBUG] Gráfico gerado com sucesso!")  # <-- Adicione isso
+    print("[DEBUG] Gráfico gerado com sucesso!")
     return imagem_base64
 
 # =============== DASHBOARD =============== #

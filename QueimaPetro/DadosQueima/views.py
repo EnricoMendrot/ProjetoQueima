@@ -5,7 +5,7 @@ from .models import MaterialQueimado
 from django.views.decorators.csrf import csrf_exempt
 
 # Usado para ativar/desativar o teste
-modo_teste = True
+modo_teste = False
 
 # =========== Gera dados Diarios =========== #
 def dados_diarios():

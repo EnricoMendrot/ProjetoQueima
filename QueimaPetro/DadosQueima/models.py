@@ -6,7 +6,7 @@ class MaterialQueimado(models.Model):
     massa_kg = models.FloatField(verbose_name="Massa (kg)")
     temperatura_c = models.FloatField(verbose_name="Temperatura de Queima (°C)")
     duracao_s = models.FloatField(verbose_name="Duração (segundos)")
-    data_queima = models.DateTimeField(verbose_name="Data/Hora da Queima")
+    data_queima = models.DateTimeField(auto_now_add=True)
     tipo_queima = models.CharField(max_length=50, default='Rotineira')  # Emergencial, Rotineira, etc.
     volume_gas = models.FloatField()               # Em m³
     eficiencia = models.FloatField()    
