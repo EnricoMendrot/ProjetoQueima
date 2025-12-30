@@ -1,5 +1,3 @@
-                                    /*Página Finalizada*/
-
 * {
   margin: 0;
   padding: 0;
@@ -18,7 +16,7 @@ html {
 .fundo {
   width: 100%;
   height: 100vh;
-  background: linear-gradient(-45deg, #F2B544, #86A244, #238B3B, #006233);
+  background: linear-gradient(-45deg, #f2b544, #86a244, #238b3b, #006233);
   position: relative;
   overflow: hidden;
 }
@@ -67,7 +65,7 @@ html {
 .logout-icon {
   position: absolute;
   top: 75px;
-  right: 28px;
+  right: 4vh;
   color: white;
   cursor: pointer;
   opacity: 0.9;
@@ -82,7 +80,7 @@ html {
   width: 341px;
   height: 100vh;
   flex-shrink: 0;
-  background: linear-gradient(-45deg, #F2B544, #86A244, #238B3B, #006233);
+  background: linear-gradient(-45deg, #f2b544, #86a244, #238b3b, #006233);
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -134,9 +132,8 @@ html {
   color: #008445;
   border-radius: 3px;
   border: 0.3px solid #008445;
-  background: #FFF;
+  background: #fff;
   cursor: pointer;
-
 }
 
 .info-box:hover {
@@ -155,7 +152,6 @@ html {
   /* Espaçamento entre linhas */
   margin-left: 6%;
   margin-top: 6%;
-
 }
 
 /* ===== ESTILIZAR APENAS OS TÍTULOS===== */
@@ -176,7 +172,6 @@ html {
   margin-left: 82%;
   margin-top: -37%;
   fill: #008445;
-
 }
 
 /* ===== BOTÕES ===== */
@@ -200,7 +195,7 @@ html {
   /* espaço entre ícone e texto */
   padding: 0 16px;
   cursor: pointer;
-  background: #FFF;
+  background: #fff;
 }
 
 .menu-item:hover {
@@ -236,8 +231,8 @@ html {
   display: flex;
   flex-shrink: 0;
   border-radius: 3px;
-  background: #F5F7FB;
-  margin-top: -5px;
+  background: #f5f7fb;
+  margin-top: -39px;
   /* move para baixo */
   margin-left: 6%;
   /* move para a direita */
@@ -257,14 +252,14 @@ body.blurred::before {
   pointer-events: none;
 }
 
-@media (width <=768px) {}
+@media (width <=768px) {
+}
 
 /* ===== CONTAINER PRINCIPAL ===== */
 .menu-cadastros {
   width: 285px;
   font-family: sans-serif;
 }
-
 
 /* Ajuste da seta */
 .icone-seta {
@@ -313,11 +308,10 @@ body.blurred::before {
   font-weight: 400;
 }
 
-
 /* ===== HOVER ===== */
 .menu-item2:hover,
 .sub-btn:hover {
-  background: #E9F5E8;
+  background: #e9f5e8;
 }
 
 /* =====  ÍCONE LÁPIS DE CADASTRO DE EQUIPAMENTO ===== */
@@ -370,7 +364,7 @@ body.blurred::before {
   gap: 8px;
   /* espaço entre ícone e texto */
   padding: 0 16px;
-  background: #FFF;
+  background: #fff;
 }
 
 /* ===== HOVER ===== */
@@ -378,209 +372,73 @@ body.blurred::before {
   background: #e5f3e7;
 }
 
-
 /* ======== REMOVE A BORDA DE BAIXO DO CADASTRO QUANDO OS SUBBOTÕES ESTIVEREM APARECENDO ======== */
 #btnCadastros.active {
   border-bottom: none;
   /* remove a borda */
 }
+.base {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+}
+
+.container.base {
+  gap: clamp(16px, 4vh, 32px);
+  width: 85%;
+  height: 80vh;
+  background-color: #f5f7fb;
+  margin: auto;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
 .title {
-  /* Área do título principal, define tamanho e posição */
-  height: 5rem;
-  width: 24.3rem;
+  position: relative;
+  width: 80%;
+  height: 18%;
+  margin-top: 20px;
+  margin-left: 12vw;
+}
+
+.title > h1 {
+  font-size: clamp(15px, 5vw, 36px);
+  font-weight: 600;
+}
+
+.base-title > .title > .subtitle {
   display: flex;
-  margin: 0 0 0 15rem;
+  align-items: center;
+  gap: clamp(30px, 15vw, 130px);
 }
 
-.title>p {
-  /* Estilo do texto do título */
-  display: flex;
-  font-family: Rubik;
-  font-size: 1.9rem;
-  font-weight: 550;
-  width: 24.2rem;
-  height: 2.5rem;
-  margin: 7rem 0 0 0;
+.base-title > .title > .subtitle > .detail {
+  width: clamp(40px, 1.5vw, 40px);
+  height: clamp(2px, 1.5vw, 8px);
+  background-color: #f2b544;
+  position: relative;
+  top: 1.3%;
 }
 
-.title>.subtitle {
-  /* Subtítulo logo abaixo do título principal */
-  width: 13rem;
-  height: 2.5rem;
-  display: flex;
-  font-family: Montserrat;
-  font-weight: 300;
-  font-size: 1.3rem;
-  margin: 9.5rem 0 0 -15rem;
+.base-title > .title > .subtitle > p {
+  top: 1.3%;
+  font-size: clamp(10px, 3vw, 20px);
+  color: #606060;
+  font-family: montserrat;
+  font-weight: 400;
 }
 
-.decoration {
-  /* Pequena faixa colorida usada como decoração */
-  border: 1px solid #F2B544;
-  display: flex;
-  margin: 10rem 0 0 -22.2rem;
-  width: 2.5rem;
-  height: 0.4rem;
-  background-color: #F2B544;
-}
-
-.sub-box {
-  /* Caixa branca principal que envolve o formulário */
-  border: 1px solid rgb(255, 255, 255);
-  display: flex;
-  width: 90rem;
-  height: 34rem;
-  margin: 8rem 0 0 8rem;
-  background-color: white;
-  border-radius: 0.3rem;
-  box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.25);
-}
-
-.forms {
-  /* Container de todos os campos do formulário */
-  display: flex;
-  height: 20.6rem;
-  width: 80rem;
-  margin: 3.5rem 0 0 5rem;
-  font-size: 1.1rem;
-}
-
-.forms>.name {
-  /* Campo: Nome do Equipamento */
-  height: 4rem;
-  width: 46rem;
-}
-
-.forms>.name>input {
-  /* Input do Nome do Equipamento */
-  border: 1px solid #B3B3B3;
-  border-radius: 0.2rem;
-  width: 45.9rem;
-  font-family: rubik;
-  height: 2.6rem;
-  padding: 0.5rem;
-}
-
-.forms>.manufacturer {
-  /* Campo: Fabricante */
-  margin: 5.5rem 0 0 -46rem;
-  height: 4rem;
-  width: 46rem;
-}
-
-.forms>.manufacturer>input {
-  /* Input do fabricante */
-  border: 1px solid #B3B3B3;
-  border-radius: 0.2rem;
-  width: 45.9rem;
-  font-family: rubik;
-  height: 2.6rem;
-  padding: 0.5rem;
-}
-
-.forms>.code {
-  /* Campo: Código do Equipamento */
-  margin: 11rem 0 0 -46rem;
-  height: 4rem;
-  width: 19.5rem;
-}
-
-.forms>.code>input {
-  /* Input do código */
-  border: 1px solid #B3B3B3;
-  border-radius: 0.2rem;
-  width: 19.4rem;
-  height: 2.6rem;
-  font-family: rubik;
-  padding: 0.5rem;
-}
-
-.forms>.platform {
-  /* Campo: Plataforma */
-  margin: 11rem 0 0 7rem;
-  height: 4rem;
-  width: 19.5rem;
-}
-
-.forms>.platform>input {
-  /* Input da plataforma */
-  border: 1px solid #B3B3B3;
-  border-radius: 0.2rem;
-  width: 19.4rem;
-  height: 2.6rem;
-  font-family: rubik;
-  padding: 0.5rem;
-}
-
-.forms>.heritage {
-  /* Campo: Número de Patrimônio */
-  margin: 16.5rem 0 0 -46rem;
-  height: 4rem;
-  width: 19.5rem;
-}
-
-.forms>.heritage>input {
-  /* Input do patrimônio */
-  border: 1px solid #B3B3B3;
-  border-radius: 0.2rem;
-  width: 19.4rem;
-  height: 2.6rem;
-  font-family: rubik;
-  padding: 0.5rem;
-}
-
-.forms>.status {
-  /* Campo de seleção do Status */
-  margin: 16.5rem 0 0 7rem;
-  height: 4rem;
-  width: 19.5rem;
-}
-
-.forms>.status>select {
-  /* Select do Status */
-  border: 1px solid #B3B3B3;
-  border-radius: 0.2rem;
-  width: 19.4rem;
-  height: 2.6rem;
-  font-family: rubik;
-  font-size: 0.9rem;
-  padding: 0.2rem;
-}
-
-.forms>.obs {
-  /* Campo de Observações */
-  margin: 0rem 0 0 7rem;
-  height: 20.5rem;
-  width: 26.9rem;
-  resize: none;
-}
-
-.forms>.obs>textarea {
-  /* Textarea das observações */
-  border: 1px solid #B3B3B3;
-  border-radius: 0.2rem;
-  width: 26.8rem;
-  height: 19.1rem;
-  font-family: rubik;
-  padding: 0.5rem;
-  resize: none;
-}
-
-.cta-register {
-  /* Área do botão de cadastro */
-  display: flex;
-}
-
-.cta-register>a>button {
-  /* Botão "Cadastrar" */
-  border: 1px solid #00793F;
-  background-color: #006233;
-  color: white;
-  font-family: rubik;
-  border-radius: 0.2rem;
-  font-weight: 300;
-  width: 9.3rem;
-  height: 2.3rem;
-  margin: 28rem 0 0 -44.7rem;
-  cursor: pointer;
+/* CONTAINER CENTRALIZADO */
+.content {
+  background-color: rgb(255, 255, 255);
+  width: 80%;
+  height: 55vh;
+  border-radius: 5px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: auto;
+  margin-bottom: auto;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
 }

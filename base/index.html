@@ -4,8 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Visualizar Cadastro de Equipamento</title>
-  <link rel="stylesheet" href="../Visualizar/submenu.css">
+  <title>Base</title>
+  <link rel="stylesheet" href="../base/style.css">
   <link rel="stylesheet" href="../reset.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
   <style>
@@ -13,7 +13,7 @@
   </style>
 
 
-  <!--Página Finalizada-->
+
 
 
 </head>
@@ -22,9 +22,14 @@
 
   <div class="fundo">
 
+
+
+    <!-- BASE DO SUBMENU -->
+
+
     <!-- LOGO TOPO DIREITO -->
     <header class="topo">
-      <img src="../img/Principal_h_negativa.png" alt="Petrobras" class="logo">
+      <img src="../img/logo.png" alt="Petrobras" class="logo">
     </header>
 
     <!-- ÍCONE DE LOGOUT -->
@@ -45,105 +50,12 @@
           fill="white" />
       </svg>
     </div>
-    <div class="title">
-      <!-- Título principal da página -->
-      <p>Cadastro de Equipamento </p>
-
-      <!-- Subtítulo indicando a ação -->
-      <div class="subtitle"><i>Visualizar Informações</i></div>
-
-      <!-- Elemento decorativo abaixo do título -->
-      <div class="decoration"></div>
-    </div>
-    
-    <div class="cta-back">
-      <a href="#"><button>Voltar</button></a>
-    </div>
-    
-    <div class="white-box">
-      <!-- Container principal branco que agrupa o formulário -->
-
-      <div class="sub-box">
-        <!-- Sub container interno do formulário -->
-
-        <div class="forms">
-          <!-- Área que agrupa todos os campos do formulário -->
-
-          <div class="name">
-            <!-- Campo: Nome do Equipamento -->
-            <label for="name">
-              <p>Nome do Equipamento:</p>
-            </label>
-            <input type="text" id="name">
-          </div>
-
-          <div class="manufacturer">
-            <!-- Campo: Fabricante do equipamento -->
-            <label for="manufacturer">
-              <p>Fabricante:</p>
-            </label>
-            <input type="text" id="manufacturer">
-          </div>
-
-          <div class="code">
-            <!-- Campo: Código do Equipamento -->
-            <label for="code">
-              <p>Código do Equipamento:</p>
-            </label>
-            <input type="text" id="code">
-          </div>
-
-          <div class="platform">
-            <!-- Campo: Plataforma associada ao equipamento -->
-            <label for="platform">
-              <p>Plataforma:</p>
-            </label>
-            <input type="text" id="platform">
-          </div>
-
-          <div class="heritage">
-            <!-- Campo: Número de patrimônio -->
-            <label for="heritage">
-              <p>N° de Patrimônio</p>
-            </label>
-            <input type="text" id="heritage">
-          </div>
-
-          <div class="status">
-            <!-- Campo seletor: Status do equipamento -->
-            <label for="status">
-              <p>Status:</p>
-            </label>
-
-            <select name="status" id="status">
-              <option value="ativo">Ativo</option>
-              <option value="inativo">Inativo</option>
-              <option value="manutenção">Em Manutenção</option>
-            </select>
-          </div>
-
-          <div class="obs">
-            <!-- Campo: Observações adicionais -->
-            <label for="obs">
-              <p>Observações:</p>
-            </label>
-            <textarea name="obs" id="obs"></textarea>
-          </div>
-
-        </div>
-
-        <div class="cta-register">
-          <!-- Botão para enviar o cadastro -->
-          <a href=""><button>Cadastrar</button></a>
-        </div>
-
-      </div>
-    </div>
+  
 
     <!-- ===== SUBMENU ===== -->
     <div class="submenu" id="submenu">
       <div class="submenu-header">
-        <img src="../img/Principal_h_negativa.png" alt="Petrobras" class="logo-submenu">
+        <img src="../img/logo.png" alt="Petrobras" class="logo-submenu">
 
         <!-- ÍCONE MENU DENTRO DO SUBMENU (FECHAR) -->
         <div class="menu-close" id="submenuClose">
@@ -323,6 +235,31 @@
 
     </div>
 
+
+
+
+
+    <section class="base">
+      <div class="container base">
+        <div class="base-title">
+      <div class="title">
+        <h1>Cadastro de Equipamento</h1>
+        <div class="subtitle">
+        <div class="detail"></div>
+        <p><i>Inserir Informações</i>
+        </p></div>
+      </div>
+       <div class="content">
+        
+      </div>
+      </div>
+
+      <!-- Informações do cadastro -->
+
+
+
+
+    </section>
     <script src="/js/SubMenu.js"></script>
 </body>
 
