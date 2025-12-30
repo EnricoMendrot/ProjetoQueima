@@ -225,18 +225,7 @@ html {
 }
 
 /* ===== QUADRADO BRANCO ===== */
-.white-box {
-  width: 88.95%;
-  height: 85%;
-  display: flex;
-  flex-shrink: 0;
-  border-radius: 3px;
-  background: #f5f7fb;
-  margin-top: -39px;
-  /* move para baixo */
-  margin-left: 6%;
-  /* move para a direita */
-}
+
 
 /* ===== DESFOQUE DO FUNDO ===== */
 body.blurred::before {
