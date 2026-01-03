@@ -440,6 +440,7 @@ body.blurred::before {
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(3, minmax(55px, auto));
   max-width: 100%;
+  margin-top: 10px;
  
   overflow-x: hidden; /* 🔥 */
 }
