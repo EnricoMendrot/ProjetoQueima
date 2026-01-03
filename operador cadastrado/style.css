@@ -467,6 +467,7 @@ body.blurred::before {
   width: 90%;
   display: grid;
   gap: 20px;
+  margin: clamp(10px, 4vh, 40px) auto 0 auto;
   grid-template-columns: repeat(6, 1fr);
   grid-template-rows: repeat(3, minmax(55px, auto));
   max-width: 100%;
@@ -534,8 +535,9 @@ body.blurred::before {
   border-radius: 5px;
   font-size: clamp(10px, 2.5vw, 16px);
   cursor: pointer;
-  margin: 0 auto;
+
   display: block;
+  margin: 0 auto 16px auto;
 }
 
 /* ===== MOBILE ===== */
@@ -548,6 +550,7 @@ body.blurred::before {
     width: 100%;
     grid-template-columns: 1fr;
     gap: 16px;
+    margin-top: 200px;
   }
 
   .item1,
