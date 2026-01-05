@@ -101,6 +101,12 @@ main {
 }
 
 /* ===== BOTÃO VOLTAR ===== */
+.cta-back {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+}
+
 .cta-back button {
     border: 1px solid #fff;
     height: 2.4rem;
@@ -113,12 +119,6 @@ main {
     font-size: 0.95rem;
 }
 
-.cta-back {
-    position: absolute;
-    top: 2rem;
-    right: 2rem;
-}
-
 /* ===== CARD LOGIN ===== */
 .login-card {
     background-color: #fff;
@@ -126,7 +126,10 @@ main {
     color: #000;
     margin: auto;
     min-width: 70%;
-    max-height: 85%;
+
+    /* 🔹 AJUSTE DE ALTURA */
+    max-height: calc(100vh - 10rem);
+    overflow-y: auto;
 }
 
 /* ===== GRID ESQUERDA ===== */
@@ -144,6 +147,7 @@ main {
     padding: 2rem;
 }
 
+/* ===== ITENS ===== */
 .item1 {
     grid-column: 1 / -1;
     text-align: center;
@@ -167,7 +171,6 @@ main {
 
 .item2 input,
 .item3 input {
-    grid-column: 1 / -1;
     height: 2.6rem;
     padding: 5px;
     margin-top: 10px;
@@ -235,13 +238,12 @@ main {
 
     .login-card {
         min-width: 100%;
-        min-height: auto;
+        max-height: calc(100vh - 6rem);
         overflow-y: auto;
         margin-top: 3rem;
     }
 
     .forms {
-        display: grid;
         grid-template-columns: 1fr;
         gap: 20px;
         padding: 1rem;
@@ -250,24 +252,8 @@ main {
     .item4,
     .item5 {
         grid-column: 1 / -1;
-        display: flex;
         justify-content: center;
-        align-items: center;
         gap: 1rem;
-        width: 100%;
-        margin: 0;
-    }
-
-    .item4 {
-        margin-bottom: 0.5rem;
-    }
-
-    .item5 a {
-        display: inline-block;
-    }
-
-    .item4 input[type="checkbox"] {
-        transform: translateY(0);
     }
 
     .item6 button {
@@ -276,10 +262,9 @@ main {
     }
 
     .cta-back {
-        position: absolute;
         top: 1rem;
-        margin-top: 10px;
         left: 40px;
+        right: auto;
     }
 }
 
@@ -294,7 +279,6 @@ main {
     }
 
     .cta-back button {
-        width: 100%;
         max-width: 120px;
         height: 2rem;
         font-size: 0.85rem;
