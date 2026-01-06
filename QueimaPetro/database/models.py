@@ -59,12 +59,21 @@ class OcorrenciaQueima(models.Model):
 
 
 class Equipamento(models.Model):
+    STATUS_CHOICES = [
+        ('ativo', 'Ativo'),
+        ('inativo', 'Inativo'),
+        ('manutencao', 'Em Manutenção'),
+    ]
+
+    Status_Operacional = models.CharField(
+        max_length=20,
+        choices=STATUS_CHOICES
+    )
+
     ID_Equipamento = models.AutoField(primary_key=True)
     Nome = models.CharField(max_length=100)
     Tipo = models.CharField(max_length=100)
     Fabricante = models.CharField(max_length=100, null=True, blank=True)
-    Status_Operacional = models.CharField(max_length=50)
-
     Codigo = models.CharField(max_length=50, null=True, blank=True)
     Modelo = models.CharField(max_length=100, blank=True, null=True)
     Numero_Patrimonio = models.CharField(max_length=50, blank=True, null=True)

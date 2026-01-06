@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     'equipamentos',
     'plataforma',
     'database',
+    'inicio',
     'DadosQueima',
 ]
 

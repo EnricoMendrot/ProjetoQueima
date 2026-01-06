@@ -31,4 +31,4 @@ def cadastroequipamento(request):
     contexto = {
         'form': formulario
     }
-    return render(request, "Cadastro/CadastroEquipamento.html", contexto)
+    return render(request, "Cadastro/index.html", contexto)

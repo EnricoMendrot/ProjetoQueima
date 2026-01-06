@@ -3,7 +3,6 @@ from database.models import Equipamento
 
 class EquipamentoForm(forms.ModelForm):
     class Meta:
-        model = Equipamento
         fields = [
             'Codigo',
             'Nome',
@@ -33,31 +32,18 @@ class EquipamentoForm(forms.ModelForm):
         widgets = {
             'Codigo': forms.TextInput(attrs={
                 'class': 'form-control',
-                'placeholder': 'Informe o código do equipamento'
             }),
             'Nome': forms.TextInput(attrs={
                 'class': 'form-control',
-                'placeholder': 'Digite o nome do equipamento'
-            }),
-            'Tipo': forms.TextInput(attrs={
-                'class': 'form-control',
-                'placeholder': 'Informe o tipo'
             }),
             'Fabricante': forms.TextInput(attrs={
                 'class': 'form-control',
-                'placeholder': 'Informe o fabricante'
-            }),
-            'Modelo': forms.TextInput(attrs={
-                'class': 'form-control',
-                'placeholder': 'Informe o modelo'
             }),
             'Numero_Patrimonio': forms.TextInput(attrs={
                 'class': 'form-control',
-                'placeholder': 'Informe o número de patrimônio'
             }),
-            'Status_Operacional': forms.TextInput(attrs={
-                'class': 'form-control',
-                'placeholder': 'Ex: Ativo, Inativo, Em Manutenção'
+             'Status_Operacional': forms.Select(attrs={
+                'class': 'form-control'
             }),
             'Plataforma': forms.Select(attrs={
                 'class': 'form-control'
@@ -68,6 +54,5 @@ class EquipamentoForm(forms.ModelForm):
             'Observacoes': forms.Textarea(attrs={
                 'class': 'form-control',
                 'rows': 4,
-                'placeholder': 'Digite observações adicionais, se houver'
             }),
         }
