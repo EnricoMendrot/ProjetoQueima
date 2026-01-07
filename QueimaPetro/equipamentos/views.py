@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import EquipamentoForm
 from django.contrib import messages
+from django.http import HttpRequest
 from database.models import Equipamento
 # Create your views here.
 
@@ -26,21 +27,31 @@ def exibicaoequipamentoID(request, ID_Equipamento):
     }
     return render(request, "VisualizacaoID/index.html", contexto)
 
+# ===== Editar Equipamento ====== #
+def editar_equipamento(request:HttpRequest, ID_Equipamento):
+    equipamento = get_object_or_404(Equipamento, ID_Equipamento=ID_Equipamento)
+    if request.method == 'POST':
+        form = EquipamentoForm(request.POST, instance=equipamento)
+        
+        if form.is_valid:
+            form.save()
+            return redirect("equipamento:visualizacaoid", ID_Equipamento=equipamento.ID_Equipamento)
+        
+    form = EquipamentoForm(instance=equipamento)
+    context = {
+        'form': form,
+        'equipamento': equipamento
+    }
+    return render(request, 'VisualizacaoID/index_editar.html',context)
+
 # ===== Cadastro do Equipamento ======= #
 def cadastroequipamento(request):
     if request.method == 'POST':
         form = EquipamentoForm(request.POST)
-        print("\n=== NOVO POST RECEBIDO ===")
-        print("Dados recebidos:", request.POST)
-        print("Formulário válido?", form.is_valid())
-        print("Erros encontrados:", form.errors)
-        print("Erros não ligados a campo:", form.non_field_errors())
-
         if form.is_valid():
             equipamento = form.save()
-            print("SALVOU COM SUCESSO! ID:", Equipamento.pk)
             messages.success(request, f'Equipamento "{Equipamento.Nome}" cadastrado com sucesso!')
-            return redirect("equipamentos:visualizacao")
+            return redirect("equipamento:visualizacao")
         else:
             print("FORMULÁRIO INVÁLIDO - NÃO SALVOU")
             messages.error(request, 'Corrija os erros abaixo antes de enviar.')

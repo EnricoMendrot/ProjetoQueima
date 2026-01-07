@@ -247,79 +247,91 @@
 
         <!-- BOTÃO DE VOLTAR -->
         <div class="cta-back">
-            <a href="{% url 'equipamentos:visualizacao' %}" class="btn-voltar"><button type="submit" id="submit">Voltar</button></a>
+          <a href="{% url 'equipamentos:visualizacaoid' equipamento.ID_Equipamento %}" class="btn-voltar">
+              <button type="button">Voltar</button>
+          </a>     
         </div>
 
         <!-- SUBTÍTULO COM DETALHE VISUAL -->
         <div class="subtitle">
           <div class="detail"></div>
-          <p><i>Visualizar Informações</i></p>
+          <p><i>Editar Informações</i></p>
         </div>
       </div>
 
     </div>
 
     <!-- ===== CONTEÚDO PRINCIPAL ===== -->
-    <div class="content">
+    <form method="POST">
+      {% csrf_token %}
       
-      <!-- ===== FORMULÁRIO DE VISUALIZAÇÃO ===== -->
-      <div class="forms">
+      <div class="content">
 
-        <!-- NOME DO EQUIPAMENTO -->
-        <div class="item1">
-          <label for="name">Nome do Equipamento:</label><br>
-          <input type="text" value="{{ equipamento.Nome }}" readonly>
+
+        <div class="forms">
+
+          <!-- NOME DO EQUIPAMENTO -->
+          <div class="item1">
+            <label for="{{ form.Nome.id_for_label }}">Nome do Equipamento:</label>
+            {{ form.Nome }}
+            {{ form.Nome.errors }}
+          </div>
+
+          <!-- FABRICANTE -->
+          <div class="item2">
+            <label for="{{ form.Fabricante.id_for_label }}">Fabricante:</label>
+            {{ form.Fabricante }}
+            {{ form.Fabricante.errors }}
+          </div>
+
+          <!-- CÓDIGO DO EQUIPAMENTO -->
+          <div class="item3">
+            <label for="{{ form.Codigo.id_for_label }}">Código de Equipamento:</label>
+            {{ form.Codigo }}
+            {{ form.Codigo.errors }}
+          </div>
+
+          <!-- NÚMERO DE PATRIMÔNIO -->
+          <div class="item4">
+            <label for="{{ form.Numero_Patrimonio.id_for_label }}">Número de Patrimônio:</label>
+            {{ form.Numero_Patrimonio }}
+            {{ form.Numero_Patrimonio.errors }}
+          </div>
+
+          <!-- PLATAFORMA -->
+          <div class="item5">
+            <label for="{{ form.Plataforma.id_for_label }}">Plataforma:</label>
+            {{ form.Plataforma }}
+            {{ form.Plataforma.errors }}
+          </div>
+
+          <!-- STATUS DO EQUIPAMENTO -->
+          <div class="item6">
+            <label for="{{ form.Status_Operacional.id_for_label }}">Status Operacional:</label>
+            {{ form.Status_Operacional }}
+            {{ form.Status_Operacional.errors }}
+          </div>
+
+          <!-- OBSERVAÇÕES -->
+          <div class="item7">
+            <label for="{{ form.Observacoes.id_for_label }}">Observações:</label>
+            {{ form.Observacoes }}
+            {{ form.Observacoes.errors }}
+          </div>
+
+          <!-- BOTÕES DE AÇÃO -->
+          <div class="item8">
+            
+            <a href="{% url 'equipamentos:visualizacaoid' equipamento.ID_Equipamento %}" class="btn-voltar">
+              <button type="submit" id="submit" class="btn-salvar">Salvar Alterações</button>
+            </a>
+          </div>
+
         </div>
-
-        <!-- FABRICANTE -->
-        <div class="item2">
-          <label for="manufacturer">Fabricante:</label><br>
-          <input type="text" value="{{ equipamento.Fabricante }}" readonly>
-        </div>
-
-        <!-- CÓDIGO DO EQUIPAMENTO -->
-        <div class="item3">
-          <label for="code">Código de Equipamento:</label><br>
-          <input type="text" value="{{ equipamento.Codigo }}" readonly>
-        </div>
-
-        <!-- NÚMERO DE PATRIMÔNIO -->
-        <div class="item4">
-          <label for="number">Número de Patrimônio:</label><br>
-          <input type="text" value="{{ equipamento.Numero_Patrimonio }}" readonly>
-        </div>
-
-        <!-- PLATAFORMA -->
-        <div class="item5">
-          <label for="platform">Plataforma:</label><br>
-          <input type="text" value="{{ equipamento.Plataforma }}" readonly>
-        </div>
-
-        <!-- STATUS DO EQUIPAMENTO -->
-        <div class="item6"> 
-          <label for="status">Status:</label><br>
-           <select disabled>
-              <option selected>{{ equipamento.Status_Operacional }}</option>
-           </select>
-        </div>
-
-        <!-- OBSERVAÇÕES -->
-        <div class="item7">
-          <label for="observation">Observações:</label><br>
-          <textarea readonly>{{ equipamento.Observacoes }}</textarea>
-        </div>
-
-        <!-- BOTÃO DE AÇÃO -->
-        <div class="item8">
-          <a href="{% url 'equipamentos:editar' equipamento.ID_Equipamento %}" class="btn-voltar">
-            <button type="submit" id="submit">Editar</button>
-          </a>
-        </div>
-
+        
       </div>
+    </form>
       
-    </div>
-
 
 
     </section>
