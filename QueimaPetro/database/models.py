@@ -72,10 +72,8 @@ class Equipamento(models.Model):
 
     ID_Equipamento = models.AutoField(primary_key=True)
     Nome = models.CharField(max_length=100)
-    Tipo = models.CharField(max_length=100)
     Fabricante = models.CharField(max_length=100, null=True, blank=True)
     Codigo = models.CharField(max_length=50, null=True, blank=True)
-    Modelo = models.CharField(max_length=100, blank=True, null=True)
     Numero_Patrimonio = models.CharField(max_length=50, blank=True, null=True)
     Observacoes = models.TextField(blank=True, null=True)
 
@@ -85,11 +83,4 @@ class Equipamento(models.Model):
         null=True,
         db_column='ID_Plataforma'
     )
-    Funcionario = models.ForeignKey(
-        'Funcionario',
-        on_delete=models.CASCADE,
-        db_column='ID_Funcionario'
-    )
 
-    def __str__(self):
-        return f"{self.Nome} - {self.Tipo}"

@@ -1,13 +1,14 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cadastro de Equipamento</title>
-  <link rel="stylesheet" href="{% static 'css/Cadastro/style.css' %}">
-  <link rel="stylesheet" href="{% static 'css/reset.css' %}" >
+  <title>Equipamento Cadastrado</title>
+  <link rel="stylesheet" href="{% static 'css/VisualizacaoID/style.css' %}">
+  <link rel="stylesheet" href="{% static '/reset.css' %}">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
@@ -18,16 +19,19 @@
 <body>
 
   <div class="fundo">
+
+
+
     <!-- BASE DO SUBMENU -->
 
 
     <!-- LOGO TOPO DIREITO -->
     <header class="topo">
-      <img src="{% static 'img/logo.png' %}" alt="Petrobras" class="logo"> <!-- ALTERAR IMAGEM-->
+      <img src="{% static 'img/logo.png' %}" alt="Petrobras" class="logo">
     </header>
 
     <!-- ÍCONE DE LOGOUT -->
-    <a href="/login/index.html">  <!--TROCAR PARA A TELA DE LOGIN -->
+    <a href="/login/index.html">
       <span class="logout-icon">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
           <path
@@ -49,7 +53,7 @@
     <!-- ===== SUBMENU ===== -->
     <div class="submenu" id="submenu">
       <div class="submenu-header">
-        <img src="{% static 'img/logo.png' %}" alt="Petrobras" class="logo"> <!-- ALTERAR IMAGEM-->
+        <img src="{% static 'img/logo.png' %}" alt="Petrobras" class="logo-submenu">
 
         <!-- ÍCONE MENU DENTRO DO SUBMENU (FECHAR) -->
         <div class="menu-close" id="submenuClose">
@@ -233,92 +237,91 @@
 <!-- ===== SEÇÃO BASE DA PÁGINA ===== -->
 <section class="base">
   <div class="container base">
-
+    
     <!-- ===== ÁREA DO TÍTULO ===== -->
     <div class="base-title">
+      
       <div class="title">
+        <!-- TÍTULO PRINCIPAL -->
+        <h1>Equipamento Cadastrado</h1>
 
-        <!-- TÍTULO PRINCIPAL DA PÁGINA -->
-        <h1>Cadastro de Equipamento</h1>
-
-        <!-- SUBTÍTULO COM ELEMENTO DECORATIVO -->
-        <div class="subtitle">
-          <div class="detail"></div>
-          <p><i>Inserir Informações</i></p>
+        <!-- BOTÃO DE VOLTAR -->
+        <div class="cta-back">
+            <a href="{% url 'equipamentos:visualizacao' %}" class="btn-voltar"><button type="submit" id="submit">Voltar</button></a>
         </div>
 
+        <!-- SUBTÍTULO COM DETALHE VISUAL -->
+        <div class="subtitle">
+          <div class="detail"></div>
+          <p><i>Visualizar Informações</i></p>
+        </div>
       </div>
+
     </div>
 
     <!-- ===== CONTEÚDO PRINCIPAL ===== -->
     <div class="content">
+      
+      <!-- ===== FORMULÁRIO DE VISUALIZAÇÃO ===== -->
+      <div class="forms">
 
-      <!-- ===== FORMULÁRIO DE CADASTRO ===== -->
-      <form method="POST">
-        {% csrf_token %}
-          <div class="forms">
         <!-- NOME DO EQUIPAMENTO -->
         <div class="item1">
-           <label for="{{ form.Nome.id_for_label }}">Nome do Equipamento:</label>
-                {{ form.Nome }}
+          <label for="name">Nome do Equipamento:</label><br>
+          <input type="text" value="{{ equipamento.Nome }}" readonly>
         </div>
 
         <!-- FABRICANTE -->
         <div class="item2">
-           <label for="{{ form.Fabricante.id_for_label }}">Fabricante:</label>
-              {{ form.Fabricante }}
+          <label for="manufacturer">Fabricante:</label><br>
+          <input type="text" value="{{ equipamento.Fabricante }}" readonly>
         </div>
 
         <!-- CÓDIGO DO EQUIPAMENTO -->
         <div class="item3">
-          <label for="{{ form.Codigo.id_for_label }}">Código de Equipamento:</label><br>
-            {{ form.Codigo }}
+          <label for="code">Código de Equipamento:</label><br>
+          <input type="text" value="{{ equipamento.Codigo }}" readonly>
         </div>
 
         <!-- NÚMERO DE PATRIMÔNIO -->
         <div class="item4">
-          <label for="{{ form.Numero_Patrimonio.id_for_label }}">Número de Patrimônio:</label>
-            {{ form.Numero_Patrimonio }}
+          <label for="number">Número de Patrimônio:</label><br>
+          <input type="text" value="{{ equipamento.Numero_Patrimonio }}" readonly>
         </div>
 
         <!-- PLATAFORMA -->
         <div class="item5">
-          <label for="{{ form.Plataforma.id_for_label }}">Plataforma:</label>
-            {{ form.Plataforma }}
+          <label for="platform">Plataforma:</label><br>
+          <input type="text" value="{{ equipamento.Plataforma }}" readonly>
         </div>
 
         <!-- STATUS DO EQUIPAMENTO -->
         <div class="item6"> 
-          <label for="{{ form.Status_Operacional.id_for_label }}">Status Operacional:</label>
-            {{ form.Status_Operacional }}
+          <label for="status">Status:</label><br>
+           <select disabled>
+              <option selected>{{ equipamento.Status_Operacional }}</option>
+           </select>
         </div>
 
         <!-- OBSERVAÇÕES -->
         <div class="item7">
-          <label for="{{ form.Observacoes.id_for_label }}">Observações:</label>
-              {{ form.Observacoes }}
+          <label for="observation">Observações:</label><br>
+          <textarea readonly>{{ equipamento.Observacoes }}</textarea>
         </div>
 
         <!-- BOTÃO DE AÇÃO -->
         <div class="item8">
-          <button type="submit" id="submit">Cadastrar</button>
+          <button type="submit" id="submit">Editar</button>
         </div>
-      </div>
-    </form>
 
+      </div>
+      
     </div>
 
 
 
-      
-
-      <!-- Informações do cadastro -->
-
-
-
-
     </section>
-    <!-- <script src="/js/SubMenu.js"></script> -->
+    <script src="/js/SubMenu.js"></script>
 </body>
 
 </html>
