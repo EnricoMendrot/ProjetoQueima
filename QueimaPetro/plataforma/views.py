@@ -1,5 +1,5 @@
 # views.py
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from datetime import datetime, timedelta
 from database.models import Plataforma
 from DadosQueima.models import MaterialQueimado
@@ -123,3 +123,13 @@ def cadastrar(request):
         "form": PlataformaForm
     }
     return render(request, "Cadastro/cadastro.html", contexto)
+
+#=============================================== Visualizar ===============================================#
+
+def visualizar_plataforma(request, ID_Plataforma):
+    plataforma = get_object_or_404(Plataforma, ID_Plataforma=ID_Plataforma)
+    contexto = {
+        "plataforma": plataforma
+
+    }
+    return render(request, 'Visualizacao_PlataformaID/index.html', contexto)
