@@ -1,14 +1,17 @@
 # views.py
 from django.shortcuts import render, redirect, get_object_or_404
-from datetime import datetime, timedelta
-from database.models import Plataforma
+from django.http import HttpRequest
+from django.utils import timezone
+from .forms import PlataformaForm
+from django.contrib import messages
 from DadosQueima.models import MaterialQueimado
+
+from datetime import datetime, timedelta
+import matplotlib.pyplot as plt
+from database.models import Plataforma
 import io
 import base64
 from datetime import timedelta
-from django.utils import timezone
-import matplotlib.pyplot as plt
-from .forms import PlataformaForm
 import matplotlib.dates as mdates
 
 
@@ -124,12 +127,47 @@ def cadastrar(request):
     }
     return render(request, "Cadastro/cadastro.html", contexto)
 
-#=============================================== Visualizar ===============================================#
+#=========================================== Visualizacao =============================================#
 
-def visualizar_plataforma(request, ID_Plataforma):
+def visualizar_plataforma(request):
+    return render(request, "Cadastro/cadastro.html")
+
+#========================================= Visualizar por ID ==========================================#
+
+def visualizar_plataformaid(request, ID_Plataforma):
     plataforma = get_object_or_404(Plataforma, ID_Plataforma=ID_Plataforma)
     contexto = {
         "plataforma": plataforma
 
     }
     return render(request, 'Visualizacao_PlataformaID/index.html', contexto)
+
+#=================Editar Visualização================#
+
+def editar_plataforma(request, ID_Plataforma):
+    plataforma = get_object_or_404(Plataforma, ID_Plataforma=ID_Plataforma)
+    
+    if request.method == "POST":
+        form = PlataformaForm(request.POST, instance=plataforma)
+        
+        if form.is_valid():  # Com parênteses!
+            form.save()
+            messages.success(request, 'Plataforma atualizada com sucesso!')
+            return redirect("plataforma:visualizacaoid", ID_Plataforma=plataforma.ID_Plataforma)
+        else:
+            # Temporário para debug: mostra erros no terminal
+            print("=== FORMULÁRIO INVÁLIDO ===")
+            print(form.errors)
+            print("Dados POST recebidos:", request.POST)
+            
+            messages.error(request, 'Corrija os erros no formulário.')
+    
+    else:
+        form = PlataformaForm(instance=plataforma)
+    
+    contexto = {
+        'form': form,
+        'plataforma': plataforma
+    }
+    
+    return render(request, 'Visualizacao_PlataformaID/index_editar.html', contexto)

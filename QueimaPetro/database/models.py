@@ -3,13 +3,36 @@ from django.db import models
 # Create your models here.
 
 class Plataforma(models.Model):
+    STATUS_CHOICES = [
+        ('ativa', 'Ativa'),
+        ('inativa', 'Inativa'),
+    ]
+    Status = models.CharField(
+        max_length=100,
+        choices=STATUS_CHOICES
+    )
+    TIPO_PLATAFORMA_CHOICES = [
+        ('fixa', 'Fixas'),
+        ('autoelevável', 'Autoelevável'),
+        ('semissubmersível', 'Semissubmersível'),
+        ('navio-sonda', 'Navio-Sonda'),
+        ('FPSO', 'FPSO'),
+        ('TLWP/TLP', 'TLWP/TLP'),
+    ] 
+
+    Tipo = models.CharField(
+        max_length=100, 
+        choices=TIPO_PLATAFORMA_CHOICES
+    )
+
     ID_Plataforma = models.AutoField(primary_key=True)
     Nome = models.CharField(max_length=100)
     Localizacao = models.CharField(max_length=200)
-    Tipo = models.CharField(max_length=100)
-    DataComissionamento = models.DateTimeField()
+    DataComissionamento = models.DateTimeField(
+        blank=False,
+        null=False,
+    )
     DataInspecao = models.DateTimeField()
-    Status = models.CharField(max_length=100)
     Supervisor = models.CharField(max_length=100)
     ResponsavelTecnico = models.CharField(max_length=100)
     OperadorPrincipal = models.CharField(max_length=100)
@@ -52,7 +75,7 @@ class OcorrenciaQueima(models.Model):
     Vazao = models.DecimalField(max_digits=10, decimal_places=2)
     Gas = models.CharField(max_length=100)
     ClassificacaoQueima = models.CharField(max_length=50)
-    StatusComunicacao = models.CharField(max_length=20)
+    statuscomunicacao = models.CharField(max_length=20)
 
     def __str__(self):
         return f"Ocorrência {self.ID_OcorrenciaQueima} - {self.ClassificacaoQueima}"

@@ -148,7 +148,7 @@
     </header>
 
     <!-- ÍCONE DE LOGOUT -->
-    <a href="/login/index.html">
+    <a href="/login/index.html"> <!-- Arrumar-->
       <span class="logout-icon">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
           <path
@@ -379,85 +379,109 @@
     <!-- ===== CONTEÚDO PRINCIPAL ===== -->
 
       <!-- ===== FORMULÁRIO DE CADASTRO ===== -->
+      <form method="post">
+        {% csrf_token %}
       <div class="forms">
-
         <!-- NOME DA PLATAFORMA -->
         <div class="item1">
-          <label for="name">Nome da Plataforma:</label><br>
-          <input type="text" value="{{ plataforma.Nome }}" readonly>
+            <label for="{{ form.Nome.id_for_label }}"> Nome da Plataforma:</label>
+            {{ form.Nome }}
+            {{ form.Nome.errors }}
         </div>
 
         <!-- LOCALIZAÇÃO -->
         <div class="item2">
-          <label for="local">Localização:</label><br>
-          <input type="text" value="{{ plataforma.Localizacao }}" readonly>
+             <label for="{{ form.Localizacao.id_for_label }}"> Localização:</label>
+            {{ form.Localizacao }}
+            {{ form.Localizacao.errors }}
         </div>
 
         <!-- TIPO -->
         <div class="item3">
-          <label for="type">Tipo:</label><br>
-          <select disabled>
-              <option selected>{{ plataforma.Tipo }}</option>
-          </select>
+            <label for="{{ form.Tipo.id_for_label }}">Tipo:</label>
+            {{ form.Tipo }}
+            {{ form.Tipo.errors }}
         </div>
 
         <!-- STATUS -->
         <div class="item4">
-          <label for="status">Status:</label><br>
-          <select disabled>
-              <option selected>{{ plataforma.Status }}</option>
-          </select>
+            <label for="{{ form.Status.id_for_label }}">Status:</label>
+            {{ form.Status }}
+            {{ form.Status.errors }}
         </div>
 
         <!-- DATA DE COMISSIONAMENTO -->
-        <div class="item5">
-          <label for="date-com">Data de Comissionamento:</label><br>
-          <input type="text" value="{{ plataforma.DataComissionamento }}" readonly>
-        </div>
-
+       <div class="item5">
+        <label for="{{ form.DataComissionamento.id_for_label }}">Data de Comissionamento:</label><br>
+        
+        <!-- Renderiza o input date do form (com valor preenchido) -->
+        {{ form.DataComissionamento }}
+        
+        <!-- Desabilita o campo visualmente -->
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const campo = document.getElementById('{{ form.DataComissionamento.id_for_label }}');
+                if (campo) {
+                    campo.disabled = true;
+                    campo.style.backgroundColor = '#f0f0f0';  // opcional: visual de readonly
+                    campo.style.cursor = 'not-allowed';
+                }
+            });
+        </script>
+        
+        <!-- Garante que o valor é enviado mesmo disabled -->
+        <input type="hidden" name="DataComissionamento" value="{{ plataforma.DataComissionamento|date:'Y-m-d' }}">
+        
+        <!-- Mostra erros se houver -->
+        {{ form.DataComissionamento.errors }}
+    </div>
         <!-- DATA DA ÚLTIMA INSPEÇÃO -->
         <div class="item6"> 
-          <label for="date-ins">Data da Última Inspeção:</label><br>
-          <input type="text" value="{{ plataforma.DataInspecao }}" readonly>
+            <label for="{{ form.DataInspecao.id_for_label }}">Data da Última Inspeção:</label>
+            {{ form.DataInspecao }}
+            {{ form.DataInspecao.errors }}
         </div>
 
         <!-- SUPERVISOR -->
         <div class="item7">
-          <label for="supervisor">Supervisor:</label><br>
-          <input type="text" value="{{ plataforma.Supervisor }}" readonly>
+          <label for="{{ form.Supervisor.id_for_label }}">Supervisor:</label><br>
+          {{ form.Supervisor }}
+          {{ form.Supervisor.errors }}
         </div>
 
         <!-- OPERADOR PRINCIPAL -->
         <div class="item8">
-          <label for="op-principal">Operador Principal:</label><br>
-          <input type="text" value="{{ plataforma.OperadorPrincipal }}" readonly>
+          <label for="{{ form.OperadorPrincipal.id_for_label }}">Operador Principal:</label><br>
+          {{ form.OperadorPrincipal }}
+          {{ form.OperadorPrincipal.errors }}
         </div>
 
           <!-- EQUIPE DE MANUTENÇÃO -->  
           <div class="item9">
-            <label for="team">Equipe de Manunteção:</label><br>
-            <input type="text" value="{{ plataforma.EquipeManutencao }}" readonly>
+          <label for="{{ form.EquipeManutencao.id_for_label }}">Equipe de Manutenção:</label><br>
+          {{ form.EquipeManutencao }}
+          {{ form.EquipeManutencao.errors }}
           </div>
 
           <!-- RESPONSÁVEL TÉCNICO -->
           <div class="item10">
-            <label for="resp">Responsável Técnico:</label><br>
-            <input type="text" value="{{ plataforma.ResponsavelTecnico }}" readonly>
+          <label for="{{ form.ResponsavelTecnico.id_for_label }}">Responsavel Técnico:</label><br>
+          {{ form.ResponsavelTecnico }}
+          {{ form.ResponsavelTecnico.errors }}
           </div>
 
         <!-- OBSERVAÇÕES -->
         <div class="item11">
-          <label for="observation">Observações:</label><br>
-          <textarea readonly>{{ plataforma.Observacoes }}</textarea>
+          <label for="{{ form.Observacoes.id_for_label }}">Observações:</label><br>
+          {{ form.Observacoes }}
+          {{ form.Observacoes.errors }}
         </div>
 
-        
       </div>
       
-    <!-- BOTÃO DE AÇÃO -->
+      <!-- BOTÃO DE AÇÃO -->
       
-        <a href="{% url 'plataforma:editar' plataforma.ID_Plataforma %}">
-          <div class="item12" style="
+      <div class="item12" style="
           display: flex;
           justify-content: center;
           align-items: center;
@@ -475,9 +499,10 @@
                 font-weight: 400;
                 margin: 0.5%;
                 transition: background-color 0.3s ease;
-                ">Editar</button> 
-          </div>
-        </a> 
+                ">Salvar Alterações</button> 
+        </div>
+        </form>
+        
 
     </section>
     <script src="/js/SubMenu.js"></script>

@@ -1,4 +1,5 @@
 from django import forms
+from django.forms.widgets import DateInput
 from database.models import Plataforma
 
 class PlataformaForm(forms.ModelForm):
@@ -19,31 +20,44 @@ class PlataformaForm(forms.ModelForm):
         ]
 
         widgets = {
+            'DataInspecao': DateInput(
+                attrs={
+                    'type': 'date',       
+                    'class': 'form-control', 
+                    'placeholder': 'dd/mm/aaaa',
+                },
+                format='%Y-%m-%d'),
+
+            # Se quiser fazer o mesmo para DataComissionamento:
+            'DataComissionamento': DateInput(
+                attrs={
+                    'type': 'date',
+                    'class': 'form-control',
+                },
+            ),
+
             'Nome': forms.TextInput(attrs={
                 'class': 'form-control',
             }),
             'Localizacao': forms.TextInput(attrs={
                 'class': 'form-control',
             }),
-            'Tipo': forms.TextInput(attrs={
-                'class': 'form-control',
-            }),
-            'DataComissionamento': forms.TextInput(attrs={
+            'Tipo': forms.Select(attrs={
                 'class': 'form-control',
             }),
              'Status': forms.Select(attrs={
                 'class': 'form-control'
             }),
-            'Supervisor': forms.Select(attrs={
+            'Supervisor': forms.TextInput(attrs={
                 'class': 'form-control'
             }),
-            'ResponsavelTecnico': forms.Select(attrs={
+            'ResponsavelTecnico': forms.TextInput(attrs={
                 'class': 'form-control'
             }),
-            'OperadorPrincipal': forms.Select(attrs={
+            'OperadorPrincipal': forms.TextInput(attrs={
                 'class': 'form-control'
             }),
-            'EquipamentoManutencao': forms.Select(attrs={
+            'EquipamentoManutencao': forms.TextInput(attrs={
                 'class': 'form-control'
             }),
             'Observacoes': forms.Textarea(attrs={
