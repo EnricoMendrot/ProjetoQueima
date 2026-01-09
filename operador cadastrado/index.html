@@ -241,11 +241,10 @@
 
         <!-- TÍTULO PRINCIPAL -->
         <h1>Operador Cadastrado</h1>
-        
+<!-- BOTÃO DE VOLTAR -->
         <div class="cta-back">
           <button type="submit" id="submit">Voltar</button>
         </div>
-        
         <!-- SUBTÍTULO COM DETALHE VISUAL -->
         <div class="subtitle">
           <div class="detail"></div>
@@ -296,26 +295,61 @@
           <input type="text" id="sector" name="sector">
         </div>
 
+        <!-- TELEFONE -->
+<div class="item6">
+  <label for="telefone">Telefone</label>
+  <input 
+    type="tel" 
+    id="telefone" 
+    name="telefone" 
+   
+  >
+</div>
+
+<!-- CARGO -->
+<div class="item7">
+  <label for="cargo">Cargo</label>
+  <input 
+    type="text" 
+    id="cargo" 
+    name="cargo"
+  >
+</div>
+
+<!-- CATEGORIA DO CARGO -->
+<div class="item8">
+  <label for="categoriaCargo">Categoria do Cargo</label>
+  <select id="categoriaCargo" name="categoriaCargo">
+    <option value="">Selecione</option>
+    <option value="operador">Operador</option>
+    <option value="administrador">Administrador</option>
+    <option value="gerente">Gerente</option>
+  </select>
+</div>
+
+
+
+
         <!-- E-MAIL -->
-        <div class="item6"> 
+        <div class="item9"> 
           <label for="email">E-mail:</label><br>
           <input type="email" id="email" name="email">
         </div>
 
         <!-- SUPERVISOR -->
-        <div class="item7">
+        <div class="item10">
           <label for="supervisor">Supervisor:</label><br>
           <input type="text" id="supervisor" name="supervisor"> 
         </div>
 
         <!-- OBSERVAÇÕES -->
-        <div class="item8">
+        <div class="item11">
           <label for="observation">Observações:</label><br>
           <textarea name="observation" id="observation"></textarea>
         </div>
 
         <!-- BOTÃO DE AÇÃO -->
-        <div class="item9">
+        <div class="item12">
           <button type="submit" id="submit">Cadastrar</button>
         </div>
 
