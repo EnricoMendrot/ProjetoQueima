@@ -1,0 +1,96 @@
+{% extends "base.html" %}  <!-- Herda submenu, fundo, JS, CSS geral, etc. -->
+
+{% load static %}
+
+{% block title %}Cadastro de Equipamento{% endblock %}
+
+{% block extra_css %}
+  <!-- CSS específico dessa página -->
+  <link rel="stylesheet" href="{% static 'css/Cadastro/style.css' %}">
+{% endblock %}
+
+<!-- ===== SEÇÃO BASE DA PÁGINA ===== -->
+<section class="base">
+  <div class="container base">
+      {% block content %}
+
+      <!-- ===== ÁREA DO TÍTULO ===== -->
+      <div class="base-title">
+        <div class="title">
+          <h1>Cadastro de Equipamento</h1>
+          <div class="subtitle">
+            <div class="detail"></div>
+            <p><i>Inserir Informações</i></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== CONTEÚDO PRINCIPAL ===== -->
+      <div class="content">
+
+        <!-- ===== FORMULÁRIO DE CADASTRO ===== -->
+        <form method="POST">
+          {% csrf_token %}
+          <div class="forms">
+
+            <!-- NOME DO EQUIPAMENTO -->
+            <div class="item1">
+              <label for="{{ form.Nome.id_for_label }}">Nome do Equipamento:</label>
+              {{ form.Nome }}
+              {{ form.Nome.errors }}
+            </div>
+
+            <!-- FABRICANTE -->
+            <div class="item2">
+              <label for="{{ form.Fabricante.id_for_label }}">Fabricante:</label>
+              {{ form.Fabricante }}
+              {{ form.Fabricante.errors }}
+            </div>
+
+            <!-- CÓDIGO DO EQUIPAMENTO -->
+            <div class="item3">
+              <label for="{{ form.Codigo.id_for_label }}">Código de Equipamento:</label>
+              {{ form.Codigo }}
+              {{ form.Codigo.errors }}
+            </div>
+
+            <!-- NÚMERO DE PATRIMÔNIO -->
+            <div class="item4">
+              <label for="{{ form.Numero_Patrimonio.id_for_label }}">Número de Patrimônio:</label>
+              {{ form.Numero_Patrimonio }}
+              {{ form.Numero_Patrimonio.errors }}
+            </div>
+
+            <!-- PLATAFORMA -->
+            <div class="item5">
+              <label for="{{ form.Plataforma.id_for_label }}">Plataforma:</label>
+              {{ form.Plataforma }}
+              {{ form.Plataforma.errors }}
+            </div>
+
+            <!-- STATUS DO EQUIPAMENTO -->
+            <div class="item6">
+              <label for="{{ form.Status_Operacional.id_for_label }}">Status Operacional:</label>
+              {{ form.Status_Operacional }}
+              {{ form.Status_Operacional.errors }}
+            </div>
+
+            <!-- OBSERVAÇÕES -->
+            <div class="item7">
+              <label for="{{ form.Observacoes.id_for_label }}">Observações:</label>
+              {{ form.Observacoes }}
+              {{ form.Observacoes.errors }}
+            </div>
+
+            <!-- BOTÃO DE AÇÃO -->
+            <div class="item8">
+              <button type="submit">Cadastrar</button>
+            </div>
+
+          </div>
+        </form>
+        {% endblock %}
+
+      </div>
+    </div>
+  </section>
