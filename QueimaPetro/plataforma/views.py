@@ -115,17 +115,23 @@ def visualizacao_grafico(request):
 #=============================================== Cadastrar ===============================================#
 
 def cadastrar(request):
-
     if request.method == "POST":
-        formulario = PlataformaForm(request.POST)
-        if formulario.is_valid():
-            formulario.save()
-            return redirect("plataforma:home")
-        
-    contexto = {
-        "form": PlataformaForm
-    }
-    return render(request, "Cadastro/cadastro.html", contexto)
+        form = PlataformaForm(request.POST)
+
+        print("POST RECEBIDO:", request.POST)
+
+        if form.is_valid():
+            print("FORM OK")
+            form.save()
+            return redirect("plataforma:visualizar")
+        else:
+            print("FORM INVÁLIDO")
+            print(form.errors)
+
+    else:
+        form = PlataformaForm()
+
+    return render(request, "Cadastro/index2.html", {"form": form})
 
 #=========================================== Visualizacao =============================================#
 

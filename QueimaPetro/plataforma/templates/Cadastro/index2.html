@@ -404,7 +404,7 @@
         <!-- SUBTÍTULO COM DETALHE VISUAL -->
         <div class="subtitle">
           <div class="detail"></div>
-          <p><i>Visualizar Informações</i></p>
+          <p><i>Inserir Informações</i></p>
         </div>
 
       </div>
@@ -416,7 +416,7 @@
       <form method="post">
         {% csrf_token %}
       <div class="forms">
-        <!-- NOME DA PLATAFORMA -->
+          <!-- NOME DA PLATAFORMA -->
         <div class="item1">
             <label for="{{ form.Nome.id_for_label }}"> Nome da Plataforma:</label>
             {{ form.Nome }}
@@ -429,53 +429,36 @@
             {{ form.Localizacao }}
             {{ form.Localizacao.errors }}
         </div>
-
+        
         <!-- TIPO -->
         <div class="item3">
             <label for="{{ form.Tipo.id_for_label }}">Tipo:</label>
             {{ form.Tipo }}
             {{ form.Tipo.errors }}
         </div>
-
+        
         <!-- STATUS -->
         <div class="item4">
             <label for="{{ form.Status.id_for_label }}">Status:</label>
             {{ form.Status }}
             {{ form.Status.errors }}
         </div>
-
+        
         <!-- DATA DE COMISSIONAMENTO -->
        <div class="item5">
         <label for="{{ form.DataComissionamento.id_for_label }}">Data de Comissionamento:</label><br>
         
         <!-- Renderiza o input date do form (com valor preenchido) -->
         {{ form.DataComissionamento }}
+        </div>
         
-        <!-- Desabilita o campo visualmente -->
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                const campo = document.getElementById('{{ form.DataComissionamento.id_for_label }}');
-                if (campo) {
-                    campo.disabled = true;
-                    campo.style.backgroundColor = '#f0f0f0';  // opcional: visual de readonly
-                    campo.style.cursor = 'not-allowed';
-                }
-            });
-        </script>
-        
-        <!-- Garante que o valor é enviado mesmo disabled -->
-        <input type="hidden" name="DataComissionamento" value="{{ plataforma.DataComissionamento|date:'Y-m-d' }}">
-        
-        <!-- Mostra erros se houver -->
-        {{ form.DataComissionamento.errors }}
-    </div>
         <!-- DATA DA ÚLTIMA INSPEÇÃO -->
         <div class="item6"> 
             <label for="{{ form.DataInspecao.id_for_label }}">Data da Última Inspeção:</label>
             {{ form.DataInspecao }}
             {{ form.DataInspecao.errors }}
         </div>
-
+        
         <!-- SUPERVISOR -->
         <div class="item7">
           <label for="{{ form.Supervisor.id_for_label }}">Supervisor:</label><br>
@@ -510,12 +493,12 @@
           {{ form.Observacoes }}
           {{ form.Observacoes.errors }}
         </div>
-
+        
+        
       </div>
       
       <!-- BOTÃO DE AÇÃO -->
-      
-      <div class="item12" style="
+        <div class="item12" style="
           display: flex;
           justify-content: center;
           align-items: center;
@@ -533,10 +516,9 @@
                 font-weight: 400;
                 margin: 0.5%;
                 transition: background-color 0.3s ease;
-                ">Salvar Alterações</button> 
-        </div>
-        </form>
-        
+                ">Salvar</button> 
+          </div>
+      </form>
 
     </section>
     <script src="{% static '/js/SubMenu.js' %}"></script>
