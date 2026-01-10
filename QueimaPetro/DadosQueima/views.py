@@ -11,7 +11,7 @@ modo_teste = False
 def dados_diarios():
     dia = timezone.now().date()
 
-    if modo_teste:
+    if modo_teste == True:
         dia_teste = dia - timedelta(minutes=2) # Define um dia com 2 min de duração
         return MaterialQueimado.objects.filter(data_queima__date=dia_teste)
     else:
@@ -20,7 +20,7 @@ def dados_diarios():
 # =========== Gera dados Semanais =========== #
 def dados_semanais():
     semana = timezone.now() - timedelta(days=7) 
-    if modo_teste:
+    if modo_teste == True:
         semana_teste = semana - timedelta(minutes=3) # Define uma semana com 3 min de duração
         return MaterialQueimado.objects.filter(data_queima__gte=semana_teste)
     else:
@@ -29,7 +29,7 @@ def dados_semanais():
 # =========== Gera dados Mensais =========== #
 def dados_mensais():
     mes = timezone.now().replace(day=1)
-    if modo_teste:
+    if modo_teste == True:
         mes_teste = mes - timedelta(minutes=5) # Define um mês com 5 minutos
         return MaterialQueimado.objects.filter(data_queima__gte=mes_teste)
     else:
@@ -39,7 +39,7 @@ def dados_mensais():
 def dados_anuais():
     ano = timezone.now()
 
-    if modo_teste:
+    if modo_teste == True:
         ano_teste = ano - timedelta(minutes=6) # Define um ano com duração de 6 minutos
         return MaterialQueimado.objects.filter(data_queima__gte=ano_teste)
     else:
@@ -50,7 +50,7 @@ def plataforma_dashboard(request):
     agora = timezone.now()
 
     # --- Define o período (diário ou de teste) ---
-    if modo_teste:
+    if modo_teste == True:
         inicio_periodo = agora - timedelta(minutes=5)
     else:
         inicio_periodo = agora.replace(hour=0, minute=0, second=0)

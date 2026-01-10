@@ -25,9 +25,9 @@ def gerar_dados_queima():
         volume_gas = volume_gas
     )
 
-    print(f"[AUTO GERADOR] Queima criada: ID={registro.id} | {tipo_queima} | {temperatura}°C | {massa}kg | {duracao}s | {eficiencia}% | {nome_gas}")
+    # print(f"[AUTO GERADOR] Queima criada: ID={registro.id} | {tipo_queima} | {temperatura}°C | {massa}kg | {duracao}s | {eficiencia}% | {nome_gas}")
 
-def iniciar_gerador(intervalo_segundos=900):
+def iniciar_gerador(intervalo_segundos=90000):
     """Executa o gerador automaticamente a cada X segundos."""
     def agendar():
         gerar_dados_queima()

@@ -4,5 +4,5 @@ from . import views
 app_name = 'operadores'
 urlpatterns = [
     path("", views.visualizar_operadores, name= 'visualizacao'),
-    path("adicionar/",views.criar_operadores, name= 'cadastro'),
+    path("cadastrar/",views.cadastro_operadores, name= 'cadastro'),
 ]

@@ -45,16 +45,30 @@ class Plataforma(models.Model):
 
 
 class Funcionario(models.Model):
+    TURNO_CHOICES = [
+        ('matutino', 'Matutino'),
+        ('vespertino','Vespertino'),
+        ('noturno','Noturno'),
+        ('diurno','Diurno'),
+    ]
+
+    PERMISSAO_CHOICES = [
+        ('operador', 'Operador'),
+        ('gerente', 'Gerente'),
+        ('administrador', 'Administrador'),
+    ]
     ID_Funcionario = models.AutoField(primary_key=True)
     Nome = models.CharField(max_length=100)
     Cargo = models.CharField(max_length=100)
+    Permissao = models.CharField(max_length=100, choices=PERMISSAO_CHOICES)
     Email = models.EmailField(max_length=100, unique=True)
     Telefone = models.CharField(max_length=15, unique=True)
     CPF = models.CharField(max_length=15, unique=True)
-    Turno = models.CharField(max_length=50)
-    Empresa = models.CharField(max_length=100)
+    Turno = models.CharField(max_length=50, choices=TURNO_CHOICES)
+    Supervisor = models.CharField(max_length=100)
+    Cidade = models.CharField(max_length=100)
     Setor = models.CharField(max_length=100)
-    Matricula = models.CharField(max_length=20, unique=True)
+    Observacoes = models.TextField(blank=True, null=True)
     ID_Plataforma = models.ForeignKey(
         Plataforma,
         on_delete=models.SET_NULL,
