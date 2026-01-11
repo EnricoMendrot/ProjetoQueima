@@ -5,4 +5,7 @@ from database.models import Equipamento
 # ========= VISUALIZAÇÃO ================= #
 
 def telainicial(request):
-    return render(request, 'index.html')
+    return render(request, 'home/index.html')
+
+def tela_login(request):
+    return render(request, 'login/login.html')

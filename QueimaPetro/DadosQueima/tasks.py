@@ -12,6 +12,7 @@ def gerar_dados_queima():
     eficiencia = round(random.uniform(70, 100), 2)    # %
     tipo_queima = random.choice(["Rotineira", "Emergencial", "Programada"])
     nome_gas = random.choice(["Gas A", "Gas B", "Gas C", "Gas D", "Gas E"])
+    nome_empresa = random.choice(["Empresa 1", "Empresa 2", "Empresa 3", "Empresa 4", "Empresa 5", "Empresa 6"])
     data_queima = timezone.now()
 
     registro = MaterialQueimado.objects.create(
@@ -25,7 +26,7 @@ def gerar_dados_queima():
         volume_gas = volume_gas
     )
 
-    # print(f"[AUTO GERADOR] Queima criada: ID={registro.id} | {tipo_queima} | {temperatura}°C | {massa}kg | {duracao}s | {eficiencia}% | {nome_gas}")
+    # print(f"[AUTO GERADOR] Queima criada: ID={registro.id} | {tipo_queima} | {temperatura}°C | {massa}kg | {duracao}s | {eficiencia}% | {nome_gas}| {nome_empresa}")
 
 def iniciar_gerador(intervalo_segundos=90000):
     """Executa o gerador automaticamente a cada X segundos."""
