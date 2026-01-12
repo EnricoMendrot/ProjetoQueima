@@ -1,6 +1,6 @@
 from django import forms
 from database.models import Equipamento
-from operadores.forms import CadastroOperador
+from operadores.forms import OperadorForm
 
 class EquipamentoForm(forms.ModelForm):
     class Meta:

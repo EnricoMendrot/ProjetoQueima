@@ -1,8 +1,10 @@
-from django.shortcuts import render, redirect
-from django.http import HttpResponse, HttpRequest
+from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib import messages
 from database.models import Funcionario
-from .forms import CadastroOperador
+from django.http import HttpRequest
+from .forms import OperadorForm
 
+# ========================== Visualização ========================== #
 
 def visualizar_operadores(request):
     contexto = {
@@ -11,25 +13,51 @@ def visualizar_operadores(request):
 
     return render(request, "Operadores/ListaOperador.html", contexto)
 
-# ========================== CADASTRO ========================== #
-def cadastro_operadores(request):
-    if request.method == "POST":
-        form = CadastroOperador(request.POST)
+# =================== Visualização por ID ======================= #
+
+def visualizarid_operador (request, ID_Funcionario):
+    try:
+        funcionario = Funcionario.objects.get(ID_Funcionario = ID_Funcionario)
+    except Funcionario.DoesNotExist:
+        messages.error(request, f"Funcionario com o ID {ID_Funcionario} não existe")
+
+    contexto = {
+        "funcionario": funcionario
+    }
+    return render(request, "VisualizacaoID_Operador/index.html", contexto)
+
+# =================== Editar por ID ======================= #
+
+def editar_operador(request:HttpRequest, ID_Funcionario):
+    funcionario = get_object_or_404(Funcionario, ID_Funcionario=ID_Funcionario)
+    if request.method == 'POST':
+        form = OperadorForm(request.POST, instance=funcionario)
         
         if form.is_valid():
             form.save()
-            print("→ Formulário válido e salvo com sucesso!")
-            # messages.success(request, "Operador cadastrado com sucesso!")  # opcional
+            return redirect("operadores:visualizacaoid", ID_Funcionario=funcionario.ID_Funcionario)
+        
+    form = OperadorForm(instance=funcionario)
+    context = {
+        'form': form,
+        'funcionario': funcionario
+    }
+    return render(request, 'VisualizacaoID_Operador/index_editar.html',context)
+# ========================== CADASTRO ========================== #
+def cadastro_operadores(request):
+    if request.method == "POST":
+        form = OperadorForm(request.POST)
+        
+        if form.is_valid():
+            form.save()
+            print("Formulário válido e salvo com sucesso!")
             return redirect("operadores:visualizacao")
         
         else:
-            print("→ Formulário INVÁLIDO!")
-            print(form.errors)               # <--- importante para debug
-            # NÃO crie um form novo aqui!!!
+            print("Formulário INVÁLIDO!")
+            print(form.errors)
     
     else:
-        # GET → formulário limpo
-        form = CadastroOperador()
+        form = OperadorForm()
 
-    # MUITO IMPORTANTE: sempre passar o mesmo form (com erros se houver)
     return render(request, "Cadastro/CadastroOperador.html", {"form": form})

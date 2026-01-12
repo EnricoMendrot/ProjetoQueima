@@ -1,17 +1,21 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Equipamento Cadastrado</title>
-  <link rel="stylesheet" href="{% static 'css/VisualizacaoID/style.css' %}">
-  <link rel="stylesheet" href="{% static '/reset.css' %}">
+  <title>Operador Cadastrado</title>
+  <link rel="stylesheet" href="{% static 'css/VisualizacaoID_Operador/style.css' %} ">
+  <link rel="stylesheet" href="{% static 'css/reset.css' %}">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+    .forms {
+      margin-left: 5.5%;
+      margin-top: 2%;
+      margin-bottom: 1%;
+    }
     a {
       text-decoration: none;
     }
@@ -145,7 +149,7 @@
           d="M10.1309 15.7435C10.0314 15.7435 9.93602 15.7058 9.86569 15.6386C9.79537 15.5714 9.75586 15.4802 9.75586 15.3852C9.75586 15.2902 9.79537 15.199 9.86569 15.1318C9.93602 15.0646 10.0314 15.0269 10.1309 15.0269M10.1309 15.7435C10.2303 15.7435 10.3257 15.7058 10.396 15.6386C10.4664 15.5714 10.5059 15.4802 10.5059 15.3852C10.5059 15.2902 10.4664 15.199 10.396 15.1318C10.3257 15.0646 10.2303 15.0269 10.1309 15.0269"
           stroke="#008445" stroke-width="1.5" />
         </svg>EQUIPAMENTOS CADASTRADOS
-      </button>
+        </button>
       </a>
       <a href = "{% url 'operadores:visualizacao' %}">
 
@@ -154,8 +158,8 @@
           <path
           d="M10 16.25C4.475 16.25 0 18.4875 0 21.25V23.75H20V21.25C20 18.4875 15.525 16.25 10 16.25ZM5 8.75C5 10.0761 5.52678 11.3479 6.46447 12.2855C7.40215 13.2232 8.67392 13.75 10 13.75C11.3261 13.75 12.5979 13.2232 13.5355 12.2855C14.4732 11.3479 15 10.0761 15 8.75M9.375 0C9 0 8.75 0.2625 8.75 0.625V4.375H7.5V1.25C7.5 1.25 4.6875 2.325 4.6875 5.9375C4.6875 5.9375 3.75 6.1125 3.75 7.5H16.25C16.1875 6.1125 15.3125 5.9375 15.3125 5.9375C15.3125 2.325 12.5 1.25 12.5 1.25V4.375H11.25V0.625C11.25 0.2625 11.0125 0 10.625 0H9.375Z"
           fill="#008445" />
-        </svg>OPERADORES CADASTRADOS
-      </button>
+          </svg>OPERADORES CADASTRADOS
+        </button>
       </a>
       
       <a href="{% url 'plataforma:visualizar' %}">
@@ -261,108 +265,116 @@
             
           </div>
         </div>
-        
-      </button>
 
 
     </div>
 
-
 <!-- ===== SEÇÃO BASE DA PÁGINA ===== -->
 <section class="base">
   <div class="container base">
-    
+
     <!-- ===== ÁREA DO TÍTULO ===== -->
     <div class="base-title">
-      
       <div class="title">
-        <!-- TÍTULO PRINCIPAL -->
-        <h1>Equipamento Cadastrado</h1>
 
+        <!-- TÍTULO PRINCIPAL -->
+        <h1>Operador Cadastrado</h1>
         <!-- BOTÃO DE VOLTAR -->
         <div class="cta-back">
-            <a href="{% url 'equipamentos:visualizacao' %}" class="btn-voltar"><button type="submit" id="submit">Voltar</button></a>
+            <a href="{% url 'operadores:visualizacao' %}" class="btn-voltar"><button type="submit" id="submit">Voltar</button></a>
         </div>
-
         <!-- SUBTÍTULO COM DETALHE VISUAL -->
         <div class="subtitle">
           <div class="detail"></div>
           <p><i>Visualizar Informações</i></p>
         </div>
-      </div>
 
+      </div>
     </div>
 
     <!-- ===== CONTEÚDO PRINCIPAL ===== -->
-    <form method="POST">
-      {% csrf_token %}
-      
-      <div class="content">
 
+      <!-- ===== FORMULÁRIO DE CADASTRO ===== -->
+      <div class="forms">
 
-        <div class="forms">
-
-          <!-- NOME DO EQUIPAMENTO -->
-          <div class="item1">
-            <label for="{{ form.Nome.id_for_label }}">Nome do Equipamento:</label>
-            {{ form.Nome }}
-            {{ form.Nome.errors }}
-          </div>
-
-          <!-- FABRICANTE -->
-          <div class="item2">
-            <label for="{{ form.Fabricante.id_for_label }}">Fabricante:</label>
-            {{ form.Fabricante }}
-            {{ form.Fabricante.errors }}
-          </div>
-
-          <!-- CÓDIGO DO EQUIPAMENTO -->
-          <div class="item3">
-            <label for="{{ form.Codigo.id_for_label }}">Código de Equipamento:</label>
-            {{ form.Codigo }}
-            {{ form.Codigo.errors }}
-          </div>
-
-          <!-- NÚMERO DE PATRIMÔNIO -->
-          <div class="item4">
-            <label for="{{ form.Numero_Patrimonio.id_for_label }}">Número de Patrimônio:</label>
-            {{ form.Numero_Patrimonio }}
-            {{ form.Numero_Patrimonio.errors }}
-          </div>
-
-          <!-- PLATAFORMA -->
-          <div class="item5">
-            <label for="{{ form.Plataforma.id_for_label }}">Plataforma:</label>
-            {{ form.Plataforma }}
-            {{ form.Plataforma.errors }}
-          </div>
-
-          <!-- STATUS DO EQUIPAMENTO -->
-          <div class="item6">
-            <label for="{{ form.Status_Operacional.id_for_label }}">Status Operacional:</label>
-            {{ form.Status_Operacional }}
-            {{ form.Status_Operacional.errors }}
-          </div>
-
-          <!-- OBSERVAÇÕES -->
-          <div class="item7">
-            <label for="{{ form.Observacoes.id_for_label }}">Observações:</label>
-            {{ form.Observacoes }}
-            {{ form.Observacoes.errors }}
-          </div>
-
-          <!-- BOTÕES DE AÇÃO -->
-          <div class="item8">
-              <button type="submit" id="submit" class="btn-salvar">Salvar Alterações</button>
-          </div>
-
+        <!-- NOME DO OPERADOR -->
+        <div class="item1">
+          <label for="name">Nome do Operador:</label><br>
+          <input type="text" value="{{ funcionario.Nome }}" readonly>
         </div>
-        
+
+        <!-- CIDADE / UF -->
+        <div class="item2">
+          <label for="city">Cidade/UF:</label><br>
+          <input type="text" value="{{ funcionario.Cidade }}" readonly>
+        </div>
+
+        <!-- CPF -->
+        <div class="item3">
+          <label for="CPF">CPF:</label><br>
+          <input type="text" value="{{ funcionario.CPF }}" readonly>
+        </div>
+
+        <!-- TURNO -->
+        <div class="item4">
+          <label for="turn">Turno:</label><br>
+          <input type="text" value="{{ funcionario.Turno }}" readonly>
+        </div>
+
+        <!-- DEPARTAMENTO / SETOR -->
+        <div class="item5">
+          <label for="sector">Departamento/Setor:</label><br>
+          <input type="text" value="{{ funcionario.Setor }}" readonly>
+        </div>
+
+        <!-- TELEFONE -->
+        <div class="item6">
+          <label for="telefone">Telefone</label>
+          <input type="text" value="{{ funcionario.Telefone }}" readonly>
+        </div>
+
+        <!-- CARGO -->
+        <div class="item7">
+          <label for="cargo">Cargo</label>
+          <input type="text" value="{{ funcionario.Cargo }}" readonly>
+        </div>
+
+        <!-- PERMISSÃO -->
+        <div class="item8">
+          <label for="categoriaCargo">Permissão do Sistema</label>
+          <input type="text" value="{{ funcionario.Permissao }}" readonly>
+        </div>
+
+        <!-- E-MAIL -->
+        <div class="item9"> 
+          <label for="email">E-mail:</label><br>
+          <input type="text" value="{{ funcionario.Email }}" readonly>
+        </div>
+
+        <!-- SUPERVISOR -->
+        <div class="item10">
+          <label for="supervisor">Supervisor:</label><br>
+          <input type="text" value="{{ funcionario.Supervisor }}" readonly>   
+        </div>
+
+        <!-- OBSERVAÇÕES -->
+        <div class="item11">
+            <label for="observation">Observações:</label><br>
+            <textarea rows="2" readonly>
+                {{ funcionario.Observacoes|default_if_none:'' }}
+            </textarea>
+        </div>
+
+
+        <!-- BOTÃO DE AÇÃO -->
+        <div class="item12">
+          <a href= "{% url 'operadores:editar' funcionario.ID_Funcionario %}">
+            <button type="submit" id="submit">Editar</button>
+          </a>
+        </div>
+
       </div>
-    </form>
-
-
-
+      
     </section>
     <script src="{% static '/js/SubMenu.js' %}"></script>
 </body>
