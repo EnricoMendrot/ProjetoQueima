@@ -4,8 +4,11 @@ from database.models import Equipamento
 
 # ========= VISUALIZAÇÃO ================= #
 
-def telainicial(request):
+def tela_inicial(request):
     return render(request, 'home/index.html')
 
 def tela_login(request):
     return render(request, 'login/login.html')
+
+def tela_senha(request):
+    return render(request, "password/rec_senha.html")

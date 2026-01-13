@@ -4,6 +4,7 @@ from . import views
 app_name = 'inicio'
 
 urlpatterns = [
-    path("", views.telainicial, name = 'telainicial'),
-    path("login", views.tela_login, name = 'telalogin'),
+    path("", views.tela_inicial, name = 'telainicial'),
+    path("login/", views.tela_login, name = 'telalogin'),
+    path("senha/", views.tela_senha, name = 'telasenha'),
 ]
