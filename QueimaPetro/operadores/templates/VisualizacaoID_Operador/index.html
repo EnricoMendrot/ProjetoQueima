@@ -360,9 +360,7 @@
         <!-- OBSERVAÇÕES -->
         <div class="item11">
             <label for="observation">Observações:</label><br>
-            <textarea rows="2" readonly>
-                {{ funcionario.Observacoes|default_if_none:'' }}
-            </textarea>
+            <textarea readonly>{{ funcionario.Observacoes }}</textarea>
         </div>
 
 
