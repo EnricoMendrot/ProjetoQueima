@@ -415,127 +415,129 @@
       <!-- ===== FORMULÁRIO DE CADASTRO ===== -->
       <form method="post">
         {% csrf_token %}
-      <div class="forms">
-        <!-- NOME DA PLATAFORMA -->
-        <div class="item1">
-            <label for="{{ form.Nome.id_for_label }}"> Nome da Plataforma:</label>
-            {{ form.Nome }}
-            {{ form.Nome.errors }}
-        </div>
+          <div class="forms">
+            <!-- NOME DA PLATAFORMA -->
+            <div class="item1">
+              <label for="{{ form.nome.id_for_label }}">Nome da Plataforma:</label>
+              {{ form.nome }}
+              {{ form.nome.errors }}
+            </div>
 
-        <!-- LOCALIZAÇÃO -->
-        <div class="item2">
-             <label for="{{ form.Localizacao.id_for_label }}"> Localização:</label>
-            {{ form.Localizacao }}
-            {{ form.Localizacao.errors }}
-        </div>
+            <!-- LOCALIZAÇÃO -->
+            <div class="item2">
+              <label for="{{ form.localizacao.id_for_label }}">Localização:</label>
+              {{ form.localizacao }}
+              {{ form.localizacao.errors }}
+            </div>
 
-        <!-- TIPO -->
-        <div class="item3">
-            <label for="{{ form.Tipo.id_for_label }}">Tipo:</label>
-            {{ form.Tipo }}
-            {{ form.Tipo.errors }}
-        </div>
+            <!-- TIPO -->
+            <div class="item3">
+              <label for="{{ form.tipo.id_for_label }}">Tipo:</label>
+              {{ form.tipo }}
+              {{ form.tipo.errors }}
+            </div>
 
-        <!-- STATUS -->
-        <div class="item4">
-            <label for="{{ form.Status.id_for_label }}">Status:</label>
-            {{ form.Status }}
-            {{ form.Status.errors }}
-        </div>
+            <!-- STATUS -->
+            <div class="item4">
+              <label for="{{ form.status.id_for_label }}">Status:</label>
+              {{ form.status }}
+              {{ form.status.errors }}
+            </div>
 
-        <!-- DATA DE COMISSIONAMENTO -->
-       <div class="item5">
-        <label for="{{ form.DataComissionamento.id_for_label }}">Data de Comissionamento:</label><br>
-        
-        <!-- Renderiza o input date do form (com valor preenchido) -->
-        {{ form.DataComissionamento }}
-        
-        <!-- Desabilita o campo visualmente -->
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                const campo = document.getElementById('{{ form.DataComissionamento.id_for_label }}');
-                if (campo) {
+            <!-- DATA DE COMISSIONAMENTO -->
+            <div class="item5">
+              <label for="{{ form.data_comissionamento.id_for_label }}">Data de Comissionamento:</label><br>
+
+              {{ form.data_comissionamento }}
+
+              <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                  const campo = document.getElementById('{{ form.data_comissionamento.id_for_label }}');
+                  if (campo) {
                     campo.disabled = true;
-                    campo.style.backgroundColor = '#f0f0f0';  // opcional: visual de readonly
+                    campo.style.backgroundColor = '#f0f0f0';
                     campo.style.cursor = 'not-allowed';
-                }
-            });
-        </script>
-        
-        <!-- Garante que o valor é enviado mesmo disabled -->
-        <input type="hidden" name="DataComissionamento" value="{{ plataforma.DataComissionamento|date:'Y-m-d' }}">
-        
-        <!-- Mostra erros se houver -->
-        {{ form.DataComissionamento.errors }}
-    </div>
-        <!-- DATA DA ÚLTIMA INSPEÇÃO -->
-        <div class="item6"> 
-            <label for="{{ form.DataInspecao.id_for_label }}">Data da Última Inspeção:</label>
-            {{ form.DataInspecao }}
-            {{ form.DataInspecao.errors }}
-        </div>
+                  }
+                });
+              </script>
 
-        <!-- SUPERVISOR -->
-        <div class="item7">
-          <label for="{{ form.Supervisor.id_for_label }}">Supervisor:</label><br>
-          {{ form.Supervisor }}
-          {{ form.Supervisor.errors }}
-        </div>
+              <!-- Garante que o valor é enviado mesmo disabled -->
+              <input
+                type="hidden"
+                name="data_comissionamento"
+                value="{{ plataforma.data_comissionamento|date:'Y-m-d' }}"
+              >
 
-        <!-- OPERADOR PRINCIPAL -->
-        <div class="item8">
-          <label for="{{ form.OperadorPrincipal.id_for_label }}">Operador Principal:</label><br>
-          {{ form.OperadorPrincipal }}
-          {{ form.OperadorPrincipal.errors }}
-        </div>
+              {{ form.data_comissionamento.errors }}
+            </div>
 
-          <!-- EQUIPE DE MANUTENÇÃO -->  
-          <div class="item9">
-          <label for="{{ form.EquipeManutencao.id_for_label }}">Equipe de Manutenção:</label><br>
-          {{ form.EquipeManutencao }}
-          {{ form.EquipeManutencao.errors }}
+            <!-- DATA DA ÚLTIMA INSPEÇÃO -->
+            <div class="item6">
+              <label for="{{ form.data_inspecao.id_for_label }}">Data da Última Inspeção:</label>
+              {{ form.data_inspecao }}
+              {{ form.data_inspecao.errors }}
+            </div>
+
+            <!-- SUPERVISOR -->
+            <div class="item7">
+              <label for="{{ form.supervisor.id_for_label }}">Supervisor:</label><br>
+              {{ form.supervisor }}
+              {{ form.supervisor.errors }}
+            </div>
+
+            <!-- OPERADOR PRINCIPAL -->
+            <div class="item8">
+              <label for="{{ form.operador_principal.id_for_label }}">Operador Principal:</label><br>
+              {{ form.operador_principal }}
+              {{ form.operador_principal.errors }}
+            </div>
+
+            <!-- EQUIPE DE MANUTENÇÃO -->
+            <div class="item9">
+              <label for="{{ form.equipe_manutencao.id_for_label }}">Equipe de Manutenção:</label><br>
+              {{ form.equipe_manutencao }}
+              {{ form.equipe_manutencao.errors }}
+            </div>
+
+            <!-- RESPONSÁVEL TÉCNICO -->
+            <div class="item10">
+              <label for="{{ form.responsavel_tecnico.id_for_label }}">Responsável Técnico:</label><br>
+              {{ form.responsavel_tecnico }}
+              {{ form.responsavel_tecnico.errors }}
+            </div>
+
+            <!-- OBSERVAÇÕES -->
+            <div class="item11">
+              <label for="{{ form.observacoes.id_for_label }}">Observações:</label><br>
+              {{ form.observacoes }}
+              {{ form.observacoes.errors }}
+            </div>
           </div>
 
-          <!-- RESPONSÁVEL TÉCNICO -->
-          <div class="item10">
-          <label for="{{ form.ResponsavelTecnico.id_for_label }}">Responsavel Técnico:</label><br>
-          {{ form.ResponsavelTecnico }}
-          {{ form.ResponsavelTecnico.errors }}
+      
+        <!-- BOTÃO DE AÇÃO -->
+        
+        <div class="item12" style="
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            ">
+                  <button type="submit" id="submit" style="
+                  width: 150px;
+                  height: 40px;
+                  background-color: #00793f;
+                  color: white;
+                  border: none;
+                  border-radius: 5px;
+                  font-size: 16px;
+                  cursor: pointer;
+                  font-family: 'Rubik', sans-serif;
+                  font-weight: 400;
+                  margin: 0.5%;
+                  transition: background-color 0.3s ease;
+                  ">Salvar Alterações</button> 
           </div>
-
-        <!-- OBSERVAÇÕES -->
-        <div class="item11">
-          <label for="{{ form.Observacoes.id_for_label }}">Observações:</label><br>
-          {{ form.Observacoes }}
-          {{ form.Observacoes.errors }}
-        </div>
-
-      </div>
-      
-      <!-- BOTÃO DE AÇÃO -->
-      
-      <div class="item12" style="
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          ">
-                <button type="submit" id="submit" style="
-                width: 150px;
-                height: 40px;
-                background-color: #00793f;
-                color: white;
-                border: none;
-                border-radius: 5px;
-                font-size: 16px;
-                cursor: pointer;
-                font-family: 'Rubik', sans-serif;
-                font-weight: 400;
-                margin: 0.5%;
-                transition: background-color 0.3s ease;
-                ">Salvar Alterações</button> 
-        </div>
-        </form>
+      </form>
         
 
     </section>

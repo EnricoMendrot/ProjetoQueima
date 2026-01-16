@@ -14,13 +14,13 @@ def exibicaoequipamento(request):
     return render(request, 'Visualizacao/VisualizacaoEquipamento.html', contexto)
 
 # ======== Exibição do Equipamento por ID ======== #
-def exibicaoequipamentoID(request, ID_Equipamento):
-    # equipamento = get_object_or_404(Equipamento, ID_Equipamento=ID_Equipamento)
+def exibicaoequipamentoID(request, id):
+    # equipamento = get_object_or_404(Equipamento, id=id)
     
     try:
-        equipamento = Equipamento.objects.get(ID_Equipamento = ID_Equipamento)
+        equipamento = Equipamento.objects.get(id = id)
     except Equipamento.DoesNotExist:
-        messages.error(request, f"Equipamento com o ID {ID_Equipamento} não existe")
+        messages.error(request, f"Equipamento com o ID {id} não existe")
 
     contexto = {
         "equipamento": equipamento
@@ -28,14 +28,14 @@ def exibicaoequipamentoID(request, ID_Equipamento):
     return render(request, "VisualizacaoID/index.html", contexto)
 
 # ===== Editar Equipamento ====== #
-def editar_equipamento(request:HttpRequest, ID_Equipamento):
-    equipamento = get_object_or_404(Equipamento, ID_Equipamento=ID_Equipamento)
+def editar_equipamento(request:HttpRequest, id):
+    equipamento = get_object_or_404(Equipamento, id=id)
     if request.method == 'POST':
         form = EquipamentoForm(request.POST, instance=equipamento)
         
         if form.is_valid:
             form.save()
-            return redirect("equipamento:visualizacaoid", ID_Equipamento=equipamento.ID_Equipamento)
+            return redirect("equipamento:visualizacaoid", id=equipamento.id)
         
     form = EquipamentoForm(instance=equipamento)
     context = {
@@ -50,7 +50,7 @@ def cadastroequipamento(request):
         form = EquipamentoForm(request.POST)
         if form.is_valid():
             equipamento = form.save()
-            messages.success(request, f'Equipamento "{Equipamento.Nome}" cadastrado com sucesso!')
+            messages.success(request, f'Equipamento "{Equipamento.nome}" cadastrado com sucesso!')
             return redirect("equipamento:visualizacao")
         else:
             print("FORMULÁRIO INVÁLIDO - NÃO SALVOU")

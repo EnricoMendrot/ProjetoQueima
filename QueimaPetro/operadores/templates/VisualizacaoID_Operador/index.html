@@ -299,79 +299,79 @@
 
         <!-- NOME DO OPERADOR -->
         <div class="item1">
-          <label for="name">Nome do Operador:</label><br>
-          <input type="text" value="{{ funcionario.Nome }}" readonly>
+          <label>Nome do Operador:</label><br>
+          <input type="text" value="{{ funcionario.nome }}" readonly>
         </div>
 
         <!-- CIDADE / UF -->
         <div class="item2">
-          <label for="city">Cidade/UF:</label><br>
-          <input type="text" value="{{ funcionario.Cidade }}" readonly>
+          <label>Cidade/UF:</label><br>
+          <input type="text" value="{{ funcionario.cidade }}" readonly>
         </div>
 
         <!-- CPF -->
         <div class="item3">
-          <label for="CPF">CPF:</label><br>
-          <input type="text" value="{{ funcionario.CPF }}" readonly>
+          <label>CPF:</label><br>
+          <input type="text" value="{{ funcionario.cpf }}" readonly>
         </div>
 
-        <!-- TURNO -->
+        <!-- TURNO (label bonito) -->
         <div class="item4">
-          <label for="turn">Turno:</label><br>
-          <input type="text" value="{{ funcionario.Turno }}" readonly>
+          <label>Turno:</label><br>
+          <input type="text" value="{{ funcionario.get_turno_display }}" readonly>
         </div>
 
         <!-- DEPARTAMENTO / SETOR -->
         <div class="item5">
-          <label for="sector">Departamento/Setor:</label><br>
-          <input type="text" value="{{ funcionario.Setor }}" readonly>
+          <label>Departamento/Setor:</label><br>
+          <input type="text" value="{{ funcionario.setor }}" readonly>
         </div>
 
         <!-- TELEFONE -->
         <div class="item6">
-          <label for="telefone">Telefone</label>
-          <input type="text" value="{{ funcionario.Telefone }}" readonly>
+          <label>Telefone</label>
+          <input type="text" value="{{ funcionario.telefone }}" readonly>
         </div>
 
         <!-- CARGO -->
         <div class="item7">
-          <label for="cargo">Cargo</label>
-          <input type="text" value="{{ funcionario.Cargo }}" readonly>
+          <label>Cargo</label>
+          <input type="text" value="{{ funcionario.cargo }}" readonly>
         </div>
 
-        <!-- PERMISSÃO -->
+        <!-- PERMISSÃO (label bonito) -->
         <div class="item8">
-          <label for="categoriaCargo">Permissão do Sistema</label>
-          <input type="text" value="{{ funcionario.Permissao }}" readonly>
+          <label>Permissão do Sistema</label>
+          <input type="text" value="{{ funcionario.get_permissao_display }}" readonly>
         </div>
 
         <!-- E-MAIL -->
-        <div class="item9"> 
-          <label for="email">E-mail:</label><br>
-          <input type="text" value="{{ funcionario.Email }}" readonly>
+        <div class="item9">
+          <label>E-mail:</label><br>
+          <input type="text" value="{{ funcionario.email }}" readonly>
         </div>
 
         <!-- SUPERVISOR -->
         <div class="item10">
-          <label for="supervisor">Supervisor:</label><br>
-          <input type="text" value="{{ funcionario.Supervisor }}" readonly>   
+          <label>Supervisor:</label><br>
+          <input type="text" value="{{ funcionario.supervisor }}" readonly>
         </div>
 
         <!-- OBSERVAÇÕES -->
         <div class="item11">
-            <label for="observation">Observações:</label><br>
-            <textarea readonly>{{ funcionario.Observacoes }}</textarea>
+          <label>Observações:</label><br>
+          <textarea readonly>{{ funcionario.observacoes }}</textarea>
         </div>
-
 
         <!-- BOTÃO DE AÇÃO -->
         <div class="item12">
-          <a href= "{% url 'operadores:editar' funcionario.ID_Funcionario %}">
-            <button type="submit" id="submit">Editar</button>
+          <a href="{% url 'operadores:editar' funcionario.id %}">
+            <button type="button" id="submit">Editar</button>
           </a>
         </div>
 
       </div>
+
       
     </section>
     <script src="{% static '/js/SubMenu.js' %}"></script>

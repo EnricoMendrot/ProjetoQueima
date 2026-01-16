@@ -2,66 +2,61 @@ from django import forms
 from django.forms.widgets import DateInput
 from database.models import Plataforma
 
+
 class PlataformaForm(forms.ModelForm):
     class Meta:
         model = Plataforma
         fields = [
-            'Nome',
-            'Localizacao',
-            'Tipo',
-            'DataComissionamento',
-            'DataInspecao',
-            'Status',
-            'Supervisor',
-            'ResponsavelTecnico',
-            'OperadorPrincipal',
-            'Observacoes',
-            'EquipeManutencao',
+            "nome",
+            "localizacao",
+            "tipo",
+            "status",
+            "data_comissionamento",
+            "data_inspecao",
+            "supervisor",
+            "responsavel_tecnico",
+            "operador_principal",
+            "equipe_manutencao",
+            "observacoes",
         ]
 
         widgets = {
-            'DataInspecao': DateInput(
-                attrs={
-                    'type': 'date',       
-                    'class': 'form-control', 
-                    'placeholder': 'dd/mm/aaaa',
-                },
-                format='%Y-%m-%d'),
+            "nome": forms.TextInput(attrs={"class": "form-control"}),
 
-            # Se quiser fazer o mesmo para DataComissionamento:
-            'DataComissionamento': DateInput(
+            "localizacao": forms.TextInput(attrs={"class": "form-control"}),
+
+            "tipo": forms.Select(attrs={"class": "form-control"}),
+
+            "status": forms.Select(attrs={"class": "form-control"}),
+
+            "data_comissionamento": DateInput(
                 attrs={
-                    'type': 'date',
-                    'class': 'form-control',
+                    "type": "date",
+                    "class": "form-control",
                 },
+                format="%Y-%m-%d",
             ),
 
-            'Nome': forms.TextInput(attrs={
-                'class': 'form-control',
-            }),
-            'Localizacao': forms.TextInput(attrs={
-                'class': 'form-control',
-            }),
-            'Tipo': forms.Select(attrs={
-                'class': 'form-control',
-            }),
-             'Status': forms.Select(attrs={
-                'class': 'form-control'
-            }),
-            'Supervisor': forms.TextInput(attrs={
-                'class': 'form-control'
-            }),
-            'ResponsavelTecnico': forms.TextInput(attrs={
-                'class': 'form-control'
-            }),
-            'OperadorPrincipal': forms.TextInput(attrs={
-                'class': 'form-control'
-            }),
-            'EquipamentoManutencao': forms.TextInput(attrs={
-                'class': 'form-control'
-            }),
-            'Observacoes': forms.Textarea(attrs={
-                'class': 'form-control',
-                'rows': 2,
-            }),
+            "data_inspecao": DateInput(
+                attrs={
+                    "type": "date",
+                    "class": "form-control",
+                },
+                format="%Y-%m-%d",
+            ),
+
+            "supervisor": forms.TextInput(attrs={"class": "form-control"}),
+
+            "responsavel_tecnico": forms.TextInput(attrs={"class": "form-control"}),
+
+            "operador_principal": forms.TextInput(attrs={"class": "form-control"}),
+
+            "equipe_manutencao": forms.TextInput(attrs={"class": "form-control"}),
+
+            "observacoes": forms.Textarea(
+                attrs={
+                    "class": "form-control",
+                    "rows": 2,
+                }
+            ),
         }

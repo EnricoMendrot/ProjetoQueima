@@ -1,51 +1,36 @@
 from django import forms
 from database.models import Equipamento
-from operadores.forms import OperadorForm
+
 
 class EquipamentoForm(forms.ModelForm):
     class Meta:
         model = Equipamento
         fields = [
-            'Codigo',
-            'Nome',
-            'Fabricante',
-            'Numero_Patrimonio',
-            'Status_Operacional',
-            'Plataforma',
-            'Observacoes',
+            "codigo",
+            "nome",
+            "fabricante",
+            "numero_patrimonio",
+            "status_operacional",
+            "plataforma",
+            "observacoes",
         ]
 
         labels = {
-            'Codigo': 'Código do Equipamento',
-            'Nome': 'Nome do Equipamento',
-            'Fabricante': 'Fabricante',
-            'Numero_Patrimonio': 'Nº de Patrimônio',
-            'Status_Operacional': 'Status Operacional',
-            'Plataforma': 'Plataforma',
-            'Observacoes': 'Observações',
+            "codigo": "Código do Equipamento",
+            "nome": "Nome do Equipamento",
+            "fabricante": "Fabricante",
+            "numero_patrimonio": "Nº de Patrimônio",
+            "status_operacional": "Status Operacional",
+            "plataforma": "Plataforma",
+            "observacoes": "Observações",
         }
 
         widgets = {
-            'Codigo': forms.TextInput(attrs={
-                'class': 'form-control',
-            }),
-            'Nome': forms.TextInput(attrs={
-                'class': 'form-control',
-            }),
-            'Fabricante': forms.TextInput(attrs={
-                'class': 'form-control',
-            }),
-            'Numero_Patrimonio': forms.TextInput(attrs={
-                'class': 'form-control',
-            }),
-             'Status_Operacional': forms.Select(attrs={
-                'class': 'form-control'
-            }),
-            'Plataforma': forms.Select(attrs={
-                'class': 'form-control'
-            }),
-            'Observacoes': forms.Textarea(attrs={
-                'class': 'form-control',
-                'rows': 4,
-            }),
+            "codigo": forms.TextInput(attrs={"class": "form-control"}),
+            "nome": forms.TextInput(attrs={"class": "form-control"}),
+            "fabricante": forms.TextInput(attrs={"class": "form-control"}),
+            "numero_patrimonio": forms.TextInput(attrs={"class": "form-control"}),
+            "status_operacional": forms.Select(attrs={"class": "form-control"}),
+            "plataforma": forms.Select(attrs={"class": "form-control"}),
+            "observacoes": forms.Textarea(attrs={"class": "form-control", "rows": 4}),
         }

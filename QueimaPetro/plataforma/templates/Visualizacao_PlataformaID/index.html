@@ -417,80 +417,80 @@
 
         <!-- NOME DA PLATAFORMA -->
         <div class="item1">
-          <label for="name">Nome da Plataforma:</label><br>
-          <input type="text" value="{{ plataforma.Nome }}" readonly>
+          <label>Nome da Plataforma:</label><br>
+          <input type="text" value="{{ plataforma.nome }}" readonly>
         </div>
 
         <!-- LOCALIZAÇÃO -->
         <div class="item2">
-          <label for="local">Localização:</label><br>
-          <input type="text" value="{{ plataforma.Localizacao }}" readonly>
+          <label>Localização:</label><br>
+          <input type="text" value="{{ plataforma.localizacao }}" readonly>
         </div>
 
         <!-- TIPO -->
         <div class="item3">
-          <label for="type">Tipo:</label><br>
+          <label>Tipo:</label><br>
           <select disabled>
-              <option selected>{{ plataforma.Tipo }}</option>
+            <option selected>{{ plataforma.get_tipo_display }}</option>
           </select>
         </div>
 
         <!-- STATUS -->
         <div class="item4">
-          <label for="status">Status:</label><br>
+          <label>Status:</label><br>
           <select disabled>
-              <option selected>{{ plataforma.Status }}</option>
+            <option selected>{{ plataforma.get_status_display }}</option>
           </select>
         </div>
 
         <!-- DATA DE COMISSIONAMENTO -->
         <div class="item5">
-          <label for="date-com">Data de Comissionamento:</label><br>
-          <input type="text" value="{{ plataforma.DataComissionamento }}" readonly>
+          <label>Data de Comissionamento:</label><br>
+          <input type="text" value="{{ plataforma.data_comissionamento }}" readonly>
         </div>
 
         <!-- DATA DA ÚLTIMA INSPEÇÃO -->
-        <div class="item6"> 
-          <label for="date-ins">Data da Última Inspeção:</label><br>
-          <input type="text" value="{{ plataforma.DataInspecao }}" readonly>
+        <div class="item6">
+          <label>Data da Última Inspeção:</label><br>
+          <input type="text" value="{{ plataforma.data_inspecao }}" readonly>
         </div>
 
         <!-- SUPERVISOR -->
         <div class="item7">
-          <label for="supervisor">Supervisor:</label><br>
-          <input type="text" value="{{ plataforma.Supervisor }}" readonly>
+          <label>Supervisor:</label><br>
+          <input type="text" value="{{ plataforma.supervisor }}" readonly>
         </div>
 
         <!-- OPERADOR PRINCIPAL -->
         <div class="item8">
-          <label for="op-principal">Operador Principal:</label><br>
-          <input type="text" value="{{ plataforma.OperadorPrincipal }}" readonly>
+          <label>Operador Principal:</label><br>
+          <input type="text" value="{{ plataforma.operador_principal }}" readonly>
         </div>
 
-          <!-- EQUIPE DE MANUTENÇÃO -->  
-          <div class="item9">
-            <label for="team">Equipe de Manunteção:</label><br>
-            <input type="text" value="{{ plataforma.EquipeManutencao }}" readonly>
-          </div>
+        <!-- EQUIPE DE MANUTENÇÃO -->
+        <div class="item9">
+          <label>Equipe de Manutenção:</label><br>
+          <input type="text" value="{{ plataforma.equipe_manutencao }}" readonly>
+        </div>
 
-          <!-- RESPONSÁVEL TÉCNICO -->
-          <div class="item10">
-            <label for="resp">Responsável Técnico:</label><br>
-            <input type="text" value="{{ plataforma.ResponsavelTecnico }}" readonly>
-          </div>
+        <!-- RESPONSÁVEL TÉCNICO -->
+        <div class="item10">
+          <label>Responsável Técnico:</label><br>
+          <input type="text" value="{{ plataforma.responsavel_tecnico }}" readonly>
+        </div>
 
         <!-- OBSERVAÇÕES -->
         <div class="item11">
-          <label for="observation">Observações:</label><br>
-          <textarea readonly>{{ plataforma.Observacoes }}</textarea>
+          <label>Observações:</label><br>
+          <textarea readonly>{{ plataforma.observacoes }}</textarea>
         </div>
 
-        
       </div>
+
       
     <!-- BOTÃO DE AÇÃO -->
       
-        <a href="{% url 'plataforma:editar' plataforma.ID_Plataforma %}">
+        <a href="{% url 'plataforma:editar' plataforma.id %}">
           <div class="item12" style="
           display: flex;
           justify-content: center;

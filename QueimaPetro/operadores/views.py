@@ -15,11 +15,11 @@ def visualizar_operadores(request):
 
 # =================== Visualização por ID ======================= #
 
-def visualizarid_operador (request, ID_Funcionario):
+def visualizarid_operador (request, id):
     try:
-        funcionario = Funcionario.objects.get(ID_Funcionario = ID_Funcionario)
+        funcionario = Funcionario.objects.get(id = id)
     except Funcionario.DoesNotExist:
-        messages.error(request, f"Funcionario com o ID {ID_Funcionario} não existe")
+        messages.error(request, f"Funcionario com o ID {id} não existe")
 
     contexto = {
         "funcionario": funcionario
@@ -28,14 +28,14 @@ def visualizarid_operador (request, ID_Funcionario):
 
 # =================== Editar por ID ======================= #
 
-def editar_operador(request:HttpRequest, ID_Funcionario):
-    funcionario = get_object_or_404(Funcionario, ID_Funcionario=ID_Funcionario)
+def editar_operador(request:HttpRequest, id):
+    funcionario = get_object_or_404(Funcionario, id=id)
     if request.method == 'POST':
         form = OperadorForm(request.POST, instance=funcionario)
         
         if form.is_valid():
             form.save()
-            return redirect("operadores:visualizacaoid", ID_Funcionario=funcionario.ID_Funcionario)
+            return redirect("operadores:visualizacaoid", id=funcionario.id)
         
     form = OperadorForm(instance=funcionario)
     context = {

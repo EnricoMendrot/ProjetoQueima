@@ -28,49 +28,52 @@
 
         <!-- Main Content -->
         <main class="main-content">
-            <div class="panel">
-                <!-- Título e Navegação -->
-                <div class="title-bar">
-                    <div>
-                        <h1>Plataforma</h1>
-                        <h2>Resumo Detalhado <span class="breadcrumb">Plataforma 1</span></h2>
-                    </div>
-                    <a href="#" class="btn-voltar">Voltar</a>
+        <div class="panel">
+            <!-- Título e Navegação -->
+            <div class="title-bar">
+            <div>
+                <h1>Plataforma</h1>
+                <h2>Resumo Detalhado <span class="breadcrumb">{{ titulo }}</span></h2>
+            </div>
+            <a href="#" class="btn-voltar">Voltar</a>
+            </div>
+
+            <!-- Última atualização -->
+            <p class="last-update">Atualizado em {{ data_atualizacao }}</p>
+
+            <div class="dashboard-grid">
+
+            <!-- Gráfico 1: VQ do Gás Total Queimado -->
+            <div class="chart-card">
+                <h3>VQ do Gás Total Queimado na Plataforma</h3>
+                <img src="data:image/png;base64,{{ grafico_linha }}" alt="Gráfico de linha" class="grafico">
+            </div>
+
+            <!-- Gráfico 2: Tipo de Queima (Diário) -->
+            <div class="chart-card pie">
+                <h3>Tipo de Queima (Diário)</h3>
+                <img src="data:image/png;base64,{{ grafico_pizza }}" alt="Gráfico de pizza" class="grafico">
+                <div class="chart-total">
+                <strong>Eficiência Média: {{ eficiencia_media }}%</strong>
                 </div>
+            </div>
 
-                <!-- Última atualização -->
-                <p class="last-update">Atualizado em {{ ultima_atualizacao|date:"d/m/Y \à\s H:i" }}</p>
+            <!-- Gráfico 3: VQ Por Gás -->
+            <div class="chart-card bar">
+                <h3>VQ Por Gás</h3>
+                <img src="data:image/png;base64,{{ grafico_barras }}" alt="Gráfico de barras" class="grafico">
+            </div>
 
-                <div class="dashboard-grid">
-                   
-                    <!-- Gráfico 1: VQ do Gás Total Queimado -->
-                    <div class="chart-card">
-                        <h3>VQ do Gás Total Queimado na Plataforma</h3>
-                        <img src="data:image/png;base64,{{ grafico_linha }}" alt="Gráfico de linha" class="grafico">
-                    </div>
+            <!-- Eficiência -->
+            <div class="chart-card efficiency">
+                <h3>Eficiência de Queima</h3>
+                <div class="efficiency-value">{{ eficiencia_media }}%</div>
+            </div>
 
-                    <!-- Gráfico 2: Tipo de Queima (Diário) -->
-                    <div class="chart-card pie">
-                        <h3>Tipo de Queima (Diário)</h3>
-                        <img src="data:image/png;base64,{{ grafico_pizza }}" alt="Gráfico de pizza" class="grafico">
-                        <div class="chart-total">
-                            <strong>Eficiência Média: {{ eficiencia_media }}%</strong>
-                        </div>
-                    </div>
-
-                    <!-- Gráfico 3: VQ Por Gás -->
-                    <div class="chart-card bar">
-                        <h3>VQ Por Gás</h3>
-                        <img src="data:image/png;base64,{{ grafico_barras }}" alt="Gráfico de barras" class="grafico">
-                    </div>
-
-                    <!-- Eficiência -->
-                    <div class="chart-card efficiency">
-                        <h3>Eficiência de Queima</h3>
-                        <div class="efficiency-value">{{ eficiencia_media }}%</div>
-                    </div>
-                </div>
+            </div>
+        </div>
         </main>
+
     </div>
 
 </body>

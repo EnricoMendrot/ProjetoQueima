@@ -431,108 +431,109 @@
     <form method = "POST"> 
       {% csrf_token %}
       <!-- ===== FORMULÁRIO DE CADASTRO ===== -->
-          <div class="forms">
+      <div class="forms">
 
-            <!-- NOME DO OPERADOR -->
-            <div class="item1">
-              <label for="{{form.Nome.id_for_label}}">Nome do Operador:</label><br>
-              {{form.Nome}}
-              {{form.Nome.errors}}
-            </div>
-            
-            <!-- CIDADE / UF -->
-            <div class="item2">
-              <label for="{{form.Cidade.id_for_label}}"> Cidade/UF:</label><br>
-              {{form.Cidade}}
-              {{form.Cidade.errors}}
-            </div>
-            
-            <!-- CPF -->
-            <div class="item3">
-              <label for="{{form.CPF.id_for_label}}">CPF:</label><br>
-              {{form.CPF}}
-              {{form.CPF.errors}}
-            </div>
-        
-            <!-- TURNO -->
-            <div class="item4">
-              <label for="{{form.Turno.id_for_label}}">Turno:</label><br>
-              {{form.Turno}}
-              {{form.Turno.errors}}
-            </div>
-      
-            <!-- DEPARTAMENTO / SETOR -->
-            <div class="item5">
-              <label for="{{form.Setor.id_for_label}}">Departamento/Setor:</label><br>
-              {{form.Setor}}
-              {{form.Setor.errors}}
-            </div>
-      
-            <!-- TELEFONE -->
-            <div class="item6">
-              <label for="{{form.Telefone.id_for_label}}">Telefone</label>
-              {{form.Telefone}}
-              {{form.Telefone.errors}}
-            </div>
-      
-            <!-- CARGO -->
-            <div class="item7">
-              <label for="{{form.Cargo.id_for_label}}">Cargo</label>
-              {{form.Cargo}}
-              {{form.Cargo.errors}}
-            </div>
-        
-            <!-- CATEGORIA DO CARGO -->
-            <div class="item8">
-              <label for="{{form.Permissao.id_for_label}}">Permissão no Sistema</label>
-              {{form.Permissao}}
-              {{form.Permissao.errors}}
-            </div>
-        
-            <!-- E-MAIL -->
-            <div class="item9"> 
-              <label for="{{form.Email.id_for_label}}">E-mail:</label><br>
-              {{form.Email}}
-              {{form.Email.errors}}
-            </div>
-            
-            <!-- SUPERVISOR -->
-            <div class="item10">
-              <label for="{{form.Supervisor.id_for_label}}">Supervisor:</label><br>
-              {{form.Supervisor}}
-              {{form.Supervisor.errors}}
-            </div>
-            
-            <!-- OBSERVAÇÕES -->
-            <div class="item11">
-              <label for="{{form.Observacoes.id_for_label}}">Observações:</label><br>
-              {{form.Observacoes}}
-              {{form.Observacoes.errors}}
-            </div>
-            
-            <!-- BOTÃO DE AÇÃO -->
-            <div class="item12" style="
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            ">
-                <button type="submit" id="submit" style="
-                width: 150px;
-                height: 40px;
-                background-color: #00793f;
-                color: white;
-                border: none;
-                border-radius: 5px;
-                font-size: 16px;
-                cursor: pointer;
-                font-family: 'Rubik', sans-serif;
-                font-weight: 400;
-                margin: 0.5%;
-                transition: background-color 0.3s ease;
-                ">Cadastrar</button> 
-            </div>
-            
-          </div>
+        <!-- NOME DO OPERADOR -->
+        <div class="item1">
+          <label for="{{ form.nome.id_for_label }}">Nome do Operador:</label><br>
+          {{ form.nome }}
+          {{ form.nome.errors }}
+        </div>
+
+        <!-- CIDADE / UF -->
+        <div class="item2">
+          <label for="{{ form.cidade.id_for_label }}">Cidade/UF:</label><br>
+          {{ form.cidade }}
+          {{ form.cidade.errors }}
+        </div>
+
+        <!-- CPF -->
+        <div class="item3">
+          <label for="{{ form.cpf.id_for_label }}">CPF:</label><br>
+          {{ form.cpf }}
+          {{ form.cpf.errors }}
+        </div>
+
+        <!-- TURNO -->
+        <div class="item4">
+          <label for="{{ form.turno.id_for_label }}">Turno:</label><br>
+          {{ form.turno }}
+          {{ form.turno.errors }}
+        </div>
+
+        <!-- DEPARTAMENTO / SETOR -->
+        <div class="item5">
+          <label for="{{ form.setor.id_for_label }}">Departamento/Setor:</label><br>
+          {{ form.setor }}
+          {{ form.setor.errors }}
+        </div>
+
+        <!-- TELEFONE -->
+        <div class="item6">
+          <label for="{{ form.telefone.id_for_label }}">Telefone</label>
+          {{ form.telefone }}
+          {{ form.telefone.errors }}
+        </div>
+
+        <!-- CARGO -->
+        <div class="item7">
+          <label for="{{ form.cargo.id_for_label }}">Cargo</label>
+          {{ form.cargo }}
+          {{ form.cargo.errors }}
+        </div>
+
+        <!-- PERMISSÃO -->
+        <div class="item8">
+          <label for="{{ form.permissao.id_for_label }}">Permissão no Sistema</label>
+          {{ form.permissao }}
+          {{ form.permissao.errors }}
+        </div>
+
+        <!-- E-MAIL -->
+        <div class="item9">
+          <label for="{{ form.email.id_for_label }}">E-mail:</label><br>
+          {{ form.email }}
+          {{ form.email.errors }}
+        </div>
+
+        <!-- SUPERVISOR -->
+        <div class="item10">
+          <label for="{{ form.supervisor.id_for_label }}">Supervisor:</label><br>
+          {{ form.supervisor }}
+          {{ form.supervisor.errors }}
+        </div>
+
+        <!-- OBSERVAÇÕES -->
+        <div class="item11">
+          <label for="{{ form.observacoes.id_for_label }}">Observações:</label><br>
+          {{ form.observacoes }}
+          {{ form.observacoes.errors }}
+        </div>
+
+        <!-- BOTÃO DE AÇÃO -->
+        <div class="item12" style="
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        ">
+          <button type="submit" id="submit" style="
+            width: 150px;
+            height: 40px;
+            background-color: #00793f;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            font-family: 'Rubik', sans-serif;
+            font-weight: 400;
+            margin: 0.5%;
+            transition: background-color 0.3s ease;
+          ">Cadastrar</button>
+        </div>
+
+      </div>
+
           
     </form>
     

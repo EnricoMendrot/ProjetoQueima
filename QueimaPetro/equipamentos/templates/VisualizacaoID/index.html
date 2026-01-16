@@ -302,50 +302,50 @@
         <!-- NOME DO EQUIPAMENTO -->
         <div class="item1">
           <label for="name">Nome do Equipamento:</label><br>
-          <input type="text" value="{{ equipamento.Nome }}" readonly>
+          <input type="text" value="{{ equipamento.nome }}" readonly>
         </div>
 
         <!-- FABRICANTE -->
         <div class="item2">
           <label for="manufacturer">Fabricante:</label><br>
-          <input type="text" value="{{ equipamento.Fabricante }}" readonly>
+          <input type="text" value="{{ equipamento.fabricante }}" readonly>
         </div>
 
         <!-- CÓDIGO DO EQUIPAMENTO -->
         <div class="item3">
           <label for="code">Código de Equipamento:</label><br>
-          <input type="text" value="{{ equipamento.Codigo }}" readonly>
+          <input type="text" value="{{ equipamento.codigo }}" readonly>
         </div>
 
         <!-- NÚMERO DE PATRIMÔNIO -->
         <div class="item4">
           <label for="number">Número de Patrimônio:</label><br>
-          <input type="text" value="{{ equipamento.Numero_Patrimonio }}" readonly>
+          <input type="text" value="{{ equipamento.numero_patrimonio }}" readonly>
         </div>
 
         <!-- PLATAFORMA -->
         <div class="item5">
           <label for="platform">Plataforma:</label><br>
-          <input type="text" value="{{ equipamento.Plataforma }}" readonly>
+          <input type="text" value="{{ equipamento.plataforma }}" readonly>
         </div>
 
         <!-- STATUS DO EQUIPAMENTO -->
         <div class="item6"> 
-          <label for="status">Status:</label><br>
+          <label for="status">Status Operacional:</label><br>
            <select disabled>
-              <option selected>{{ equipamento.Status_Operacional }}</option>
+              <option selected>{{ equipamento.get_status_operacional_display }}</option>
            </select>
         </div>
 
         <!-- OBSERVAÇÕES -->
         <div class="item7">
           <label for="observation">Observações:</label><br>
-          <textarea readonly>{{ equipamento.Observacoes }}</textarea>
+          <textarea readonly>{{ equipamento.observacoes }}</textarea>
         </div>
 
         <!-- BOTÃO DE AÇÃO -->
         <div class="item8">
-          <a href="{% url 'equipamentos:editar' equipamento.ID_Equipamento %}" class="btn-voltar">
+          <a href="{% url 'equipamentos:editar' equipamento.id %}" class="btn-voltar">
             <button type="submit" id="submit">Editar</button>
           </a>
         </div>

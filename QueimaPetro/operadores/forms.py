@@ -1,67 +1,44 @@
 from django import forms
 from database.models import Funcionario
 
+
 class OperadorForm(forms.ModelForm):
-    class Meta: #Classe de configuração
-        model = Funcionario #modelo que vai referenciar
+    class Meta:
+        model = Funcionario
         fields = [
-            'Nome',
-            'Turno',
-            'Cargo',
-            'Permissao',
-            'Supervisor',
-            'Cidade',
-            'Email',
-            'Telefone',
-            'CPF',
-            'Setor',
-            'ID_Plataforma',
-            'Observacoes'
+            "nome",
+            "turno",
+            "cargo",
+            "permissao",
+            "supervisor",
+            "cidade",
+            "email",
+            "telefone",
+            "cpf",
+            "setor",
+            "plataforma",
+            "observacoes",
         ]
 
         widgets = {
-            'Nome': forms.TextInput(attrs={
-                'class': 'form-control',
-            }),
-            'Turno': forms.Select(attrs={
-                'class': 'form-control'
-            }),
-            'Cargo': forms.TextInput(attrs={
-                'class': 'form-control',
-            }),
-            'Supervisor': forms.TextInput(attrs={
-                'class': 'form-control',
-            }),
-            'Cidade': forms.TextInput(attrs={
-                'class': 'form-control',
-            }),
-            'Email': forms.EmailInput(attrs={
-                'class': 'form-control',
-            }),
-            'Telefone': forms.TextInput(attrs={
-                'class': 'forrm-control',
-            }),
-            'CPF': forms.TextInput(attrs={
-                'class': 'form-control',
-            }),''
-            'Setor': forms.TextInput(attrs={
-                'class': 'form-control',
-            }),
-            'ID_Plataforma': forms.Select(attrs={
-                'class': 'form-control'
-            }),
-            'Permissao': forms.Select(attrs={
-                'class': 'form-control'
-            }),
-            'Observacoes': forms.Textarea(attrs={
-                'class': 'form-control',
-                'rows': 2,
-            }),
+            "nome": forms.TextInput(attrs={"class": "form-control"}),
+            "turno": forms.Select(attrs={"class": "form-control"}),
+            "cargo": forms.TextInput(attrs={"class": "form-control"}),
+            "permissao": forms.Select(attrs={"class": "form-control"}),
+            "supervisor": forms.TextInput(attrs={"class": "form-control"}),
+            "cidade": forms.TextInput(attrs={"class": "form-control"}),
+            "email": forms.EmailInput(attrs={"class": "form-control"}),
+            "telefone": forms.TextInput(attrs={"class": "form-control"}),
+            "cpf": forms.TextInput(attrs={"class": "form-control"}),
+            "setor": forms.TextInput(attrs={"class": "form-control"}),
+            "plataforma": forms.Select(attrs={"class": "form-control"}),
+            "observacoes": forms.Textarea(attrs={"class": "form-control", "rows": 2}),
         }
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-        permissao = self.fields.get('Permissao')
+        # Coloca uma opção vazia no começo do select de permissão
+        permissao = self.fields.get("permissao")
         if permissao:
-            permissao.choices = [('', '')] + list(permissao.choices)
+            permissao.choices = [("", "---------")] + list(permissao.choices)

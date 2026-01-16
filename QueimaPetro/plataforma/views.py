@@ -1,179 +1,253 @@
 # views.py
-from django.shortcuts import render, redirect, get_object_or_404
-from django.http import HttpRequest
-from django.utils import timezone
-from .forms import PlataformaForm
-from django.contrib import messages
-from DadosQueima.models import MaterialQueimado
+from __future__ import annotations
 
-from datetime import datetime, timedelta
-import matplotlib.pyplot as plt
-from database.models import Plataforma
-import io
 import base64
+import io
+import unicodedata
 from datetime import timedelta
+
 import matplotlib.dates as mdates
+import matplotlib.pyplot as plt
+from django.contrib import messages
+from django.shortcuts import get_object_or_404, redirect, render
+from django.utils import timezone
+
+from DadosQueima.models import MaterialQueimado
+from database.models import Plataforma
+from .forms import PlataformaForm
 
 
-# # Usado para ativar/desativar o teste
-modo_teste = False
-# ==================================== Função de Mostrar os gráficos ==================================== #     
+# Ativa/desativa modo de teste (período curto)
+MODO_TESTE = False
 
-# =============== LINHAS =============== #
-def gerar_grafico_linha(dados):
-    plt.figure(figsize=(5,5))
+# ==========================
+# Função para pegar dados
+# ==========================
+def pegar_pontos(qs, n_pontos=5):
+    """
+    Retorna n_pontos igualmente distribuídos do início ao fim do queryset
+    """
+    total = qs.count()
 
-    # PEGUE A DATA REAL
-    horas = [d.data_queima for d in dados]
-    volumes = [d.volume_gas for d in dados]
+    if total == 0:
+        return []
 
-    plt.plot(horas, volumes, marker="o", color="red")
-    plt.fill_between(horas, volumes, color="red", alpha=0.1)
+    if total <= n_pontos:
+        return list(qs)
 
-    # =======Controlar o tempo do gráfico de linhas======== #
+    indices = [
+        round(i * (total - 1) / (n_pontos - 1))
+        for i in range(n_pontos)
+    ]
+
+    return [qs[i] for i in indices]
+
+
+# ==========================
+# Helpers de gráficos
+# ==========================
+
+def _salvar_grafico_em_base64() -> str:
+    """
+    Salva o gráfico atual do matplotlib em PNG (base64) para uso no template.
+    """
+    buffer = io.BytesIO()
+    plt.tight_layout()
+    plt.savefig(buffer, format="png")
+    buffer.seek(0)
+
+    imagem_base64 = base64.b64encode(buffer.getvalue()).decode("utf-8")
+    plt.close()
+    return imagem_base64
+
+
+def gerar_grafico_linha(dados) -> str:
+    # garante ordem por id
+    dados = dados.order_by("id")
+
+    pontos = pegar_pontos(dados)
+
+    plt.figure(figsize=(5, 5))
+
+    horas = []
+    volumes = []
+
+    for d in pontos:
+        if d.data_queima is None:
+            continue
+
+        try:
+            vol = float(d.volume_gas or 0)
+        except (TypeError, ValueError):
+            vol = 0.0
+
+        horas.append(d.data_queima)
+        volumes.append(vol)
+
+    if not horas:
+        plt.text(0.5, 0.5, "Sem dados para plotar", ha="center", va="center")
+        plt.axis("off")
+        return _salvar_grafico_em_base64()
+
+    plt.plot(horas, volumes, marker="o")
+    plt.fill_between(horas, volumes, alpha=0.1)
+
     ax = plt.gca()
-    ax.xaxis.set_major_locator(mdates.MinuteLocator(interval=10))   # a cada 10 min
-    ax.xaxis.set_major_formatter(mdates.DateFormatter("%H:%M"))     # formato do tick
-
+    ax.xaxis.set_major_formatter(mdates.DateFormatter("%d/%m %H:%M"))
     plt.gcf().autofmt_xdate()
 
-    plt.title("VQ do Gás Total Queimado na Plataforma")
-    plt.xlabel("Horário")
+    plt.xlabel("Data/Hora")
     plt.ylabel("Volume Total (m³)")
     plt.grid(True)
 
-    return salvar_grafico_em_base64()
+    return _salvar_grafico_em_base64()
 
-# =============== PIZZA =============== #
-def gerar_grafico_pizza(dados):
-    tipos = {"Rotineira": 0, "Emergencial": 0, "Programada": 0}
+
+
+def gerar_grafico_pizza(dados) -> str:
+    tipos = {}
+
     for d in dados:
-        tipos[d.tipo_queima] = tipos.get(d.tipo_queima, 0) + d.volume_gas
+        tipo = getattr(d, "tipo_queima", None) or "Não informado"
+        vol = getattr(d, "volume_gas", None)
 
-    plt.figure(figsize=(4,4))
-    labels = list(tipos.keys())
+        try:
+            vol = float(vol) if vol is not None else 0.0
+        except (TypeError, ValueError):
+            vol = 0.0
+
+        tipos[tipo] = tipos.get(tipo, 0.0) + vol
+
     valores = list(tipos.values())
-    plt.pie(valores, labels=labels, autopct='%1.1f%%')
-    plt.title("Tipo de Queima (Diário)")
-    return salvar_grafico_em_base64()
+    total = sum(valores)
 
-# =============== BARRAS =============== #
-def gerar_grafico_barras(dados):
+    plt.figure(figsize=(4, 4))
+
+    if total <= 0:
+        plt.text(0.5, 0.5, "Sem dados para pizza", ha="center", va="center", fontsize=12)
+        plt.axis("off")
+        plt.title("Tipo de Queima")
+        return _salvar_grafico_em_base64()
+
+    plt.pie(valores, labels=list(tipos.keys()), autopct="%1.1f%%")
+
+    return _salvar_grafico_em_base64()
+
+
+
+def normalizar_nome_gas(s: str) -> str:
+    if not s:
+        return ""
+    s = s.strip()  # tira espaços nas pontas
+    # remove acentos
+    s = unicodedata.normalize("NFKD", s)
+    s = "".join(ch for ch in s if not unicodedata.combining(ch))
+    # padroniza espaços
+    s = " ".join(s.split())
+    return s
+
+
+def gerar_grafico_barras(dados) -> str:
     gases = {}
     for d in dados:
-        gases[d.nome_gas] = gases.get(d.nome_gas, 0) + d.volume_gas
+        nome = normalizar_nome_gas(d.nome_gas)
+        vol = d.volume_gas or 0
+        gases[nome] = gases.get(nome, 0) + vol
 
-    plt.figure(figsize=(5,3))
-    chaves = list(gases.keys())
-    valores = list(gases.values())
-    plt.barh(chaves, valores, color="green")
-    plt.title("VQ por Gás")
+    plt.figure(figsize=(5, 3))
+    plt.barh(list(gases.keys()), list(gases.values()))
     plt.xlabel("Volume (m³)")
-    return salvar_grafico_em_base64()
 
-# ====================== SALVA OS GRAFICOS =================  #
-def salvar_grafico_em_base64():
-    buffer = io.BytesIO()
-    plt.tight_layout()
-    plt.savefig(buffer, format='png')
-    buffer.seek(0)
-    imagem_base64 = base64.b64encode(buffer.getvalue()).decode('utf-8')
-    plt.close()
+    return _salvar_grafico_em_base64()
 
-    print("[DEBUG] Gráfico gerado com sucesso!")
-    return imagem_base64
 
-# =============== DASHBOARD =============== #
+
+
+# ==========================
+# Dashboard
+# ==========================
+
 def visualizacao_grafico(request):
     agora = timezone.now()
-    if modo_teste:
-        inicio_periodo = agora - timedelta(minutes=5)
-    else:
-        inicio_periodo = agora.replace(hour=0, minute=0, second=0)
 
-    dados = MaterialQueimado.objects.filter(data_queima__gte=inicio_periodo)
+    dados = MaterialQueimado.objects.all()
 
-    # Gera os gráficos
     grafico_linha = gerar_grafico_linha(dados)
     grafico_pizza = gerar_grafico_pizza(dados)
     grafico_barras = gerar_grafico_barras(dados)
 
-    # Calcula eficiência média
-    eficiencia_media = round(sum(d.eficiencia for d in dados)/len(dados), 2) if dados else 0
+    eficiencias = []
+    for d in dados:
+        e = getattr(d, "eficiencia", None)
+        try:
+            e = float(e) if e is not None else None
+        except (TypeError, ValueError):
+            e = None
+        if e is not None:
+            eficiencias.append(e)
+
+    eficiencia_media = round(sum(eficiencias) / len(eficiencias), 2) if eficiencias else 0
 
     contexto = {
         "grafico_linha": grafico_linha,
         "grafico_pizza": grafico_pizza,
         "grafico_barras": grafico_barras,
         "eficiencia_media": eficiencia_media,
-        "data_atualizacao": agora.strftime("%d/%m/%Y %H:%M"),
-        "titulo": "Plataforma 1"
+        "ultima_atualizacao": agora,
+        "titulo": "Plataforma (todos os dados)",
     }
+    return render(request, "grafico/plataforma.html", contexto)
 
-    return render(request, 'grafico/plataforma.html', contexto)
 
-#=============================================== Cadastrar ===============================================#
+
+# ==========================
+# CRUD - Plataforma
+# ==========================
 
 def cadastrar(request):
     if request.method == "POST":
         form = PlataformaForm(request.POST)
 
-        print("POST RECEBIDO:", request.POST)
-
         if form.is_valid():
-            print("FORM OK")
             form.save()
+            messages.success(request, "Plataforma cadastrada com sucesso!")
             return redirect("plataforma:visualizar")
-        else:
-            print("FORM INVÁLIDO")
-            print(form.errors)
 
+        messages.error(request, "Corrija os erros no formulário.")
     else:
         form = PlataformaForm()
 
     return render(request, "Cadastro/index2.html", {"form": form})
 
-#=========================================== Visualizacao =============================================#
 
 def visualizar_plataforma(request):
-    return render(request, "Cadastro/cadastro.html")
 
-#========================================= Visualizar por ID ==========================================#
+    plataformas = Plataforma.objects.all().order_by("nome")
+    return render(request, "Cadastro/cadastro.html", {"plataformas": plataformas})
 
-def visualizar_plataformaid(request, ID_Plataforma):
-    plataforma = get_object_or_404(Plataforma, ID_Plataforma=ID_Plataforma)
-    contexto = {
-        "plataforma": plataforma
 
-    }
-    return render(request, 'Visualizacao_PlataformaID/index.html', contexto)
+def visualizar_plataformaid(request, id: int):
+    plataforma = get_object_or_404(Plataforma, id=id)
+    return render(request, "Visualizacao_PlataformaID/index.html", {"plataforma": plataforma})
 
-#=================Editar Visualização================#
 
-def editar_plataforma(request, ID_Plataforma):
-    plataforma = get_object_or_404(Plataforma, ID_Plataforma=ID_Plataforma)
-    
+def editar_plataforma(request, id: int):
+    plataforma = get_object_or_404(Plataforma, id=id)
+
     if request.method == "POST":
         form = PlataformaForm(request.POST, instance=plataforma)
-        
-        if form.is_valid():  # Com parênteses!
+
+        if form.is_valid():
             form.save()
-            messages.success(request, 'Plataforma atualizada com sucesso!')
-            return redirect("plataforma:visualizacaoid", ID_Plataforma=plataforma.ID_Plataforma)
-        else:
-            # Temporário para debug: mostra erros no terminal
-            print("=== FORMULÁRIO INVÁLIDO ===")
-            print(form.errors)
-            print("Dados POST recebidos:", request.POST)
-            
-            messages.error(request, 'Corrija os erros no formulário.')
-    
+            messages.success(request, "Plataforma atualizada com sucesso!")
+            return redirect("plataforma:visualizacaoid", id=plataforma.id)
+
+        messages.error(request, "Corrija os erros no formulário.")
     else:
         form = PlataformaForm(instance=plataforma)
-    
-    contexto = {
-        'form': form,
-        'plataforma': plataforma
-    }
-    
-    return render(request, 'Visualizacao_PlataformaID/index_editar.html', contexto)
+
+    return render(
+        request,
+        "Visualizacao_PlataformaID/index_editar.html",
+        {"form": form, "plataforma": plataforma},
+    )

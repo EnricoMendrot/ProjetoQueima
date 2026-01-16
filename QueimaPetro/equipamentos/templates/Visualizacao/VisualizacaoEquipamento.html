@@ -64,10 +64,10 @@
                             {% for equipamento in equipamento %}
                             <tr>
                                 <td><input type="checkbox" {% if forloop.first %}checked{% endif %}></td>
-                                <td>{{ equipamento.ID_Equipamento }}</td>
-                                <td>{{ equipamento.Nome }}</td>
+                                <td>{{ equipamento.id }}</td>
+                                <td>{{ equipamento.nome }}</td>
                                 <td><span class="status ativo">Ativo</span></td>
-                                <td>{{ equipamento.Tipo }}</td>
+                                <td>{{ equipamento.tipo }}</td>
                             </tr>
                             {% empty %}
                             <tr>
