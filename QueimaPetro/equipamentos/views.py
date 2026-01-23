@@ -8,10 +8,38 @@ from database.models import Equipamento
 # ========= VISUALIZAÇÃO ================= #
 
 def exibicaoequipamento(request):
+    queryset = Equipamento.objects.all()
+
+    # Pegar os valores dos filtros (GET)
+    nome = request.GET.get('nome', '').strip()
+    status = request.GET.get('status', '').strip()
+    id_eq = request.GET.get('id', '').strip()
+    codigo = request.GET.get('codigo', '').strip()
+
+    # Aplicar filtros apenas se o campo tiver valor
+    if nome:
+        queryset = queryset.filter(nome__icontains=nome)
+
+    if status:
+        queryset = queryset.filter(status_operacional=status)
+
+    if id_eq:
+        try:
+            id_int = int(id_eq)
+            queryset = queryset.filter(id=id_int)
+        except ValueError:
+            pass  # ignora se não for número válido
+
+    if codigo:
+        queryset = queryset.filter(codigo__icontains=codigo)
+
+    # Ordenar (opcional, mas recomendado)
+    queryset = queryset.order_by('id')
+
     contexto = {
-        "equipamento": Equipamento.objects.all()
+        'equipamento': queryset,
     }
-    return render(request, 'Visualizacao/VisualizacaoEquipamento.html', contexto)
+    return render(request, 'Visualizacao/equipamento_cadastrados.html', contexto)
 
 # ======== Exibição do Equipamento por ID ======== #
 def exibicaoequipamentoID(request, id):
