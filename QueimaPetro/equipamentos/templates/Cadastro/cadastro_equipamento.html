@@ -1,13 +1,13 @@
-{% load static %} <!-- Carrega o CSS quanto O JS-->
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Equipamentos Cadastrados</title>
-  <link rel="stylesheet" href="{% static 'css/Visualizacao/equipamento_cadastrados.css' %}">
-  <link rel="stylesheet" href="{% static 'css/reset.css'%}">
+  <title>Cadastro de Equipamento</title>
+  <link rel="stylesheet" href="{% static 'css/Cadastro/cadastro_equipamento.css' %}">
+  <link rel="stylesheet" href="{% static 'css/reset.css' %}" >
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
@@ -27,26 +27,24 @@
       text-decoration: none;
       color: #008445;
     }
+
   </style>
 
 </head>
 
 <body>
 
-    <div class="fundo">
-
-
-
+  <div class="fundo">
     <!-- BASE DO SUBMENU -->
 
 
     <!-- LOGO TOPO DIREITO -->
     <header class="topo">
-      <img src="{% static 'img/logo.png' %}" alt="Petrobras" class="logo">
+      <img src="{% static 'img/logo.png' %}" alt="Petrobras" class="logo"> <!-- ALTERAR IMAGEM-->
     </header>
 
     <!-- ÍCONE DE LOGOUT -->
-    <a href="{% url 'inicio:telalogin' %}">
+    <a href="{% url 'inicio:telalogin'%}">  <!--TROCAR PARA A TELA DE LOGIN -->
       <span class="logout-icon">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
           <path
@@ -267,97 +265,95 @@
     </div>
 
 
-    <section class="base">
-      <div class="container base">
-        <div class="base-title">
+<!-- ===== SEÇÃO BASE DA PÁGINA ===== -->
+<section class="base">
+  <div class="container base">
+
+    <!-- ===== ÁREA DO TÍTULO ===== -->
+    <div class="base-title">
       <div class="title">
-        <h1>Equipamentos Cadastrados</h1>
+
+        <!-- TÍTULO PRINCIPAL DA PÁGINA -->
+        <h1>Cadastro de Equipamento</h1>
+
+        <!-- SUBTÍTULO COM ELEMENTO DECORATIVO -->
         <div class="subtitle">
-        <div class="detail"></div>
-        <p><i>Visualizar Equipamentos</i>
-        </p></div>
-      </div>
-</div>
+          <div class="detail"></div>
+          <p><i>Inserir Informações</i></p>
+        </div>
 
-
-  <div class="content">
-
-  <!-- FILTROS -->
-  <div class="bloco-filtros">
-
-    <!-- PESQUISAR -->
-    <div class="campo campo-pesquisa">
-      <label for="pesquisa">Pesquisar Equipamento:</label>
-      <div class="input-icon-wrapper">
-        <input type="text" id="pesquisa">
-        <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21" fill="none">
-          <path d="M20.2825 16.8116L16.735 13.2591L14.0064 12.1302C14.915 10.8363 15.4018 9.29274 15.4 7.71101C15.4 3.45913 11.9458 0 7.69998 0C3.45419 0 0 3.45913 0 7.71101C0 11.9629 3.45419 15.422 7.69998 15.422C9.29319 15.4239 10.8473 14.928 12.1458 14.0035L13.2702 16.7286L16.8175 20.2813C17.045 20.5092 17.315 20.6899 17.6123 20.8132C17.9095 20.9365 18.2281 21 18.5499 21C18.8716 21 19.1902 20.9366 19.4875 20.8133C19.7847 20.69 20.0548 20.5093 20.2823 20.2814C20.5099 20.0536 20.6903 19.7831 20.8135 19.4855C20.9366 19.1878 21 18.8687 21 18.5465C21 18.2243 20.9366 17.9053 20.8135 17.6076C20.6904 17.3099 20.51 17.0394 20.2825 16.8116ZM1.4 7.71101C1.4 4.23229 4.22624 1.402 7.69998 1.402C11.1737 1.402 14 4.23229 14 7.71101C14 11.1897 11.1737 14.02 7.69998 14.02C4.22624 14.02 1.4 11.1897 1.4 7.71101ZM19.2924 19.29C19.0954 19.4869 18.8283 19.5974 18.55 19.5974C18.2716 19.5974 18.0046 19.4869 17.8075 19.29L14.4575 15.9352L13.4121 13.4013L15.9425 14.4481L19.2925 17.8029C19.4891 18.0003 19.5995 18.2677 19.5995 18.5465C19.5995 18.8252 19.489 19.0926 19.2924 19.29Z" fill="#B3B3B3"/>
-        </svg>
       </div>
     </div>
 
-    <!-- STATUS -->
-    <div class="campo campo-status">
-      <label for="status">Status:</label>
-      <div class="input-icon-wrapper">
-        <input type="text" id="status" readonly tabindex="-1">
-        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="10" viewBox="0 0 14 10" fill="none">
-          <path d="M0.700422 9.53674e-07H13.3008C13.4284 0.000382423 13.5534 0.0339508 13.6625 0.0970926C13.7715 0.160234 13.8605 0.250557 13.9197 0.358341C13.979 0.466125 14.0063 0.587289 13.9988 0.708787C13.9912 0.830286 13.9491 0.947519 13.8769 1.04787L7.57672 9.73002C7.31561 10.09 6.68699 10.09 6.42518 9.73002L0.125005 1.04787C0.0520805 0.947729 0.00931579 0.830436 0.00135729 0.708735C-0.00660121 0.587034 0.0205509 0.465579 0.0798636 0.357567C0.139176 0.249555 0.228381 0.159116 0.337786 0.096076C0.447191 0.0330372 0.572612 -0.000191689 0.700422 9.53674e-07Z" fill="#BEBEBE"/>
-        </svg>
+    <!-- ===== CONTEÚDO PRINCIPAL ===== -->
+    <div class="content">
+
+      <!-- ===== FORMULÁRIO DE CADASTRO ===== -->
+      <form method="POST">
+        {% csrf_token %}
+          <div class="forms">
+        <!-- NOME DO EQUIPAMENTO -->
+        <div class="item1">
+           <label for="{{ form.nome.id_for_label }}">Nome do Equipamento:</label>
+                {{ form.nome }} 
+        </div>
+
+        <!-- FABRICANTE -->
+        <div class="item2">
+           <label for="{{ form.fabricante.id_for_label }}">Fabricante:</label>
+              {{ form.fabricante }}
+        </div>
+
+        <!-- CÓDIGO DO EQUIPAMENTO -->
+        <div class="item3">
+          <label for="{{ form.codigo.id_for_label }}">Código de Equipamento:</label><br>
+            {{ form.codigo }}
+        </div>
+
+        <!-- NÚMERO DE PATRIMÔNIO -->
+        <div class="item4">
+          <label for="{{ form.numero_patrimonio.id_for_label }}">Número de Patrimônio:</label>
+            {{ form.numero_patrimonio }}
+        </div>
+
+        <!-- PLATAFORMA -->
+        <div class="item5">
+          <label for="{{ form.plataforma.id_for_label }}">Plataforma:</label>
+            {{ form.plataforma }}
+        </div>
+
+        <!-- STATUS DO EQUIPAMENTO -->
+        <div class="item6"> 
+          <label for="{{ form.status_operacional.id_for_label }}">Status Operacional:</label>
+            {{ form.status_operacional }}
+        </div>
+
+        <!-- OBSERVAÇÕES -->
+        <div class="item7">
+          <label for="{{ form.observacoes.id_for_label }}">Observações:</label>
+              {{ form.observacoes }}
+        </div>
+
+        <!-- BOTÃO DE AÇÃO -->
+        <div class="item8">
+          <button type="submit" id="submit">Cadastrar</button>
+        </div>
       </div>
+    </form>
+
     </div>
 
-    <!-- ID -->
-    <div class="campo campo-id">
-      <label for="id-equipamento">ID:</label>
-      <input type="text" id="id-equipamento">
-    </div>
 
-    <!-- ÁREA -->
-    <div class="campo campo-area">
-      <label for="area">Plataforma:</label>
-      <div class="input-icon-wrapper">
-        <input type="text" id="area" readonly tabindex="-1">
-        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="10" viewBox="0 0 14 10" fill="none">
-          <path d="M0.700422 9.53674e-07H13.3008C13.4284 0.000382423 13.5534 0.0339508 13.6625 0.0970926C13.7715 0.160234 13.8605 0.250557 13.9197 0.358341C13.979 0.466125 14.0063 0.587289 13.9988 0.708787C13.9912 0.830286 13.9491 0.947519 13.8769 1.04787L7.57672 9.73002C7.31561 10.09 6.68699 10.09 6.42518 9.73002L0.125005 1.04787C0.0520805 0.947729 0.00931579 0.830436 0.00135729 0.708735C-0.00660121 0.587034 0.0205509 0.465579 0.0798636 0.357567C0.139176 0.249555 0.228381 0.159116 0.337786 0.096076C0.447191 0.0330372 0.572612 -0.000191689 0.700422 9.53674e-07Z" fill="#BEBEBE"/>
-        </svg>
-      </div>
-    </div>
 
-  </div>
+      
 
-  <!-- TÍTULOS ABAIXO DOS INPUTS -->
-  <div class="cabecalho-lista">
-    <span class="col-id">ID</span>
-    <span class="col-nome">Nome do Equipamento</span>
-    <span class="col-status">Status</span>
-    <span class="col-area">Código de Equipamento</span>
-  </div>
-  
-  <!-- INPUT ÚNICO ABAIXO DO CABEÇALHO -->
-    {% for eq in equipamento %}
-      <div class="linha-dados">
-        <span class="col-id">{{ eq.id }}</span>
+      <!-- Informações do cadastro -->
 
-        <span class="col-nome">{{ eq.nome }}</span>
-        
-        <span class="col-status status {{ eq.status_operacional }}">
-          {{ eq.get_status_operacional_display }}
-        </span>
-
-        <span class="col-area">{{ eq.codigo }}</span>
-      </div>
-    {% empty %}
-      <div class="linha-dados">
-        <span class="no-data">Nenhum equipamento cadastrado.</span>
-      </div>
-    {% endfor %}
 
 
 
     </section>
-
-    <script src="{% static './js/SubMenu.js' %}"></script>
+    <script src="{% static '/js/SubMenu.js' %}"></script>
 </body>
 
 </html>

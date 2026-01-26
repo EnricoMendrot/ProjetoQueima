@@ -88,4 +88,4 @@ def cadastroequipamento(request):
         form = EquipamentoForm()
         print("Acessando via GET - formulário vazio")
 
-    return render(request, "Cadastro/index.html", {'form': form})
+    return render(request, "Cadastro/cadastro_equipamento.html", {'form': form})

@@ -449,7 +449,7 @@ body.blurred::before {
 
 /* Item que ocupa 4 colunas no grid */
 .filter>.item1 {
-    grid-column: span 4;
+    grid-column: span 6;
 
 }
 
@@ -522,10 +522,24 @@ select {
     
 }
 
-/* Colunas menores (ID, status e código) */
+.none {
+    grid-column: span 10;
+    text-align: center;
+    height: 35px;
+    align-items: center;
+    justify-content: center;
+    }
+
+.none > p {
+    justify-items: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+/* Colunas menores (ID, setor e código) */
 .itens-list>.id,
-.itens-list>.status,
-.itens-list>.code {
+.itens-list>.setor,
+.itens-list>.turno {
     grid-column: span 2;
     text-align: center;
     padding: 10px 0;

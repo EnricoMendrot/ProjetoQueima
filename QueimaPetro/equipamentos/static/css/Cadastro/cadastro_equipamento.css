@@ -1,0 +1,527 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body,
+html {
+  width: 100%;
+  height: 100%;
+  font-family: "Rubik", sans-serif;
+}
+
+/* ===== FUNDO ===== */
+.fundo {
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(-45deg, #f2b544, #86a244, #238b3b, #006233);
+  position: relative;
+  overflow: hidden;
+}
+
+/* ===== BOTÃO MENU PRINCIPAL ===== */
+.menu-icon {
+  position: absolute;
+  top: 22px;
+  left: 28px;
+  width: 26px;
+  height: 26px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 3px;
+  cursor: pointer;
+  z-index: 1002;
+  transition: opacity 0.3s ease;
+}
+
+.menu-icon div {
+  background-color: white;
+  width: 7px;
+  height: 7px;
+  border-radius: 1px;
+}
+
+/* ===== ESCONDER MENU PRINCIPAL ===== */
+.menu-icon.hidden {
+  display: none !important;
+}
+
+/* ===== LOGO DIREITA ===== */
+.topo {
+  position: absolute;
+  top: 17px;
+  right: 20px;
+}
+
+.logo {
+  width: 140px;
+  height: auto;
+}
+
+/* ===== LOGOUT ===== */
+.logout-icon {
+  position: absolute;
+  top: 75px;
+  right: 4vh;
+  color: white;
+  cursor: pointer;
+  opacity: 0.9;
+  font-size: 22px;
+}
+
+/* ===== SUBMENU ===== */
+.submenu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 341px;
+  height: 100vh;
+  flex-shrink: 0;
+  background: linear-gradient(-45deg, #f2b544, #86a244, #238b3b, #006233);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transform: translateX(-110%);
+  transition: transform 0.4s ease;
+  z-index: 1000;
+}
+
+/* ===== CABEÇALHO SUBMENU ===== */
+.submenu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.logo-submenu {
+  width: 214px;
+  height: 59px;
+  flex-shrink: 0;
+  aspect-ratio: 214/59;
+}
+
+/* ===== ÍCONE DENTRO DO SUBMENU ===== */
+.submenu .menu-close {
+  width: 29px;
+  height: 27px;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.submenu .submenu-close div {
+  background-color: white;
+  width: 6px;
+  height: 6px;
+  border-radius: 2px;
+}
+
+/* ===== QUANDO VISÍVEL ===== */
+.submenu.visible {
+  transform: translateX(0);
+}
+
+/* ===== INFO BOX ===== */
+.info-box {
+  width: 285px;
+  height: 130px;
+  color: #008445;
+  border-radius: 3px;
+  border: 0.3px solid #008445;
+  background: #fff;
+  cursor: pointer;
+}
+
+.info-box:hover {
+  background-color: #e5f3e7;
+}
+
+/* ===== ESTILIZAR OS PARÁGRAFOS ===== */
+.info-box p {
+  margin: 10px 0;
+  /* Espaçamento entre linhas */
+  font-size: 13px;
+  /* Tamanho da fonte */
+  font-weight: normal;
+  /* Peso da fonte */
+  line-height: 1.4;
+  /* Espaçamento entre linhas */
+  margin-left: 6%;
+  margin-top: 6%;
+}
+
+/* ===== ESTILIZAR APENAS OS TÍTULOS===== */
+.info-box p strong {
+  font-weight: bold;
+  font-size: 14px;
+  margin-bottom: 3px;
+  /* Pequeno espaço abaixo do título */
+  color: #008445;
+}
+
+/* ===== ÍCONE DE PERFIL ===== */
+
+.icon {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  margin-left: 82%;
+  margin-top: -37%;
+  fill: #008445;
+}
+
+/* ===== BOTÕES ===== */
+.menu-item {
+  width: 285px;
+  height: 51.818px;
+  border-radius: 3px;
+  border: 0.3px solid #008445;
+  color: #008445;
+  font-family: Rubik;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-transform: uppercase;
+  display: flex;
+  /* alinha SVG e texto em linha */
+  align-items: center;
+  /* centraliza verticalmente */
+  gap: 8px;
+  /* espaço entre ícone e texto */
+  padding: 0 16px;
+  cursor: pointer;
+  background: #fff;
+}
+
+.menu-item:hover {
+  background-color: #e5f3e7;
+}
+
+.arrow {
+  margin-left: auto;
+  margin-top: 16px;
+}
+
+/* =====  ÍCONE LÁPIS DE GERAÇÃO DE RELATÓRIOS ===== */
+.icone-lapis {
+  width: 10px;
+  height: 10px;
+  margin-top: 17px;
+  margin-left: -80%;
+  fill: #008445;
+}
+
+/* =====  ÍCONE SETA DO CADASTRO ===== */
+.icone-seta {
+  width: 14px;
+  height: 13px;
+  margin-left: 40%;
+  fill: #008445;
+}
+
+/* ===== DESFOQUE DO FUNDO ===== */
+body.blurred::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(2.5px);
+  background: rgba(0, 0, 0, 0.12);
+  z-index: 999;
+  pointer-events: none;
+}
+
+@media (width <=768px) {
+}
+
+/* ===== CONTAINER PRINCIPAL ===== */
+.menu-cadastros {
+  width: 285px;
+  font-family: sans-serif;
+}
+
+/* Ajuste da seta */
+.icone-seta {
+  margin-left: 40%;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+/* Quando aberto: seta gira */
+.menu-cadastros.open .icone-seta {
+  transform: rotate(180deg);
+}
+
+/* ===== SUBMENU2 PARA ALTERAR OS SUBBOTÕES ===== */
+.sub-menu {
+  display: none;
+  /* invisível até clicar */
+  flex-direction: column;
+  width: 100%;
+  border-left: 1px solid #008445;
+  border-right: 1px solid #008445;
+  border-bottom: 1px solid #008445;
+  border-radius: 0 0 4px 4px;
+  overflow: hidden;
+}
+
+/* Quando estiver aberto */
+.menu-cadastros.open .sub-menu {
+  display: flex;
+}
+
+/* ===== SUB-BOTÕES ===== */
+.sub-btn {
+  background: #fff;
+  border: none;
+  border-radius: 0;
+  padding: 10px;
+  color: #006c39;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  font-family: Rubik;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+}
+
+/* ===== HOVER ===== */
+.menu-item2:hover,
+.sub-btn:hover {
+  background: #e9f5e8;
+}
+
+/* =====  ÍCONE LÁPIS DE CADASTRO DE EQUIPAMENTO ===== */
+.icone-lapis1 {
+  width: 10px;
+  height: 10px;
+  margin-top: 17px;
+  margin-left: -90%;
+  fill: #008445;
+}
+
+/* =====  ÍCONE LÁPIS DE CADASTRO DE OPERADOR ===== */
+.icone-lapis2 {
+  width: 10px;
+  height: 10px;
+  margin-top: 17px;
+  margin-left: -79%;
+  fill: #008445;
+}
+
+/* =====  ÍCONE LÁPIS DE CADASTRO DE PLATAFORMA ===== */
+.icone-lapis3 {
+  width: 10px;
+  height: 10px;
+  margin-top: 17px;
+  margin-left: -84%;
+  fill: #008445;
+}
+
+/* =====  BOTÃO DE CADASTRO ===== */
+#btnCadastros {
+  width: 285px;
+  height: 51.818px;
+  border-radius: 3px;
+  border-top: 0.3px solid #008445;
+  border-right: 0.3px solid #008445;
+  border-left: 0.3px solid #008445;
+  border-bottom: 0.3px solid #008445;
+  color: #008445;
+  font-family: Rubik;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-transform: uppercase;
+  display: flex;
+  /* alinha SVG e texto em linha */
+  align-items: center;
+  /* centraliza verticalmente */
+  gap: 8px;
+  /* espaço entre ícone e texto */
+  padding: 0 16px;
+  background: #fff;
+}
+
+/* ===== HOVER ===== */
+#btnCadastros:hover {
+  background: #e5f3e7;
+}
+
+/* ======== REMOVE A BORDA DE BAIXO DO CADASTRO QUANDO OS SUBBOTÕES ESTIVEREM APARECENDO ======== */
+#btnCadastros.active {
+  border-bottom: none;
+  /* remove a borda */
+}
+/* ===== BASE ===== */
+.base {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+}
+
+/* ===== CONTAINER PRINCIPAL ===== */
+.container.base {
+  width: 85%;
+  height: 80vh;
+  background-color: #f5f7fb;
+  margin: auto;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+/* ===== TÍTULO ===== */.title {
+  width: min(80%, 100%);
+  margin: 20px auto 0 auto;
+  padding-inline: 16px;
+  position: relative;
+}
+
+.title > h1 {
+  font-size: clamp(15px, 5vw, 36px);
+  font-weight: 600;
+}
+
+/* SUBTÍTULO */
+.base-title > .title > .subtitle {
+  display: flex;
+  align-items: center;
+  gap: clamp(16px, 6vw, 130px);
+  margin-top: 6px;
+}
+
+/* DETAIL (barra amarela) */
+.base-title > .title > .subtitle > .detail {
+  width: clamp(24px, 4vw, 39px);
+  height: clamp(2px, 0.8vw, 6px);
+  background-color: #f2b544;
+}
+
+/* TEXTO DO SUBTÍTULO */
+.base-title > .title > .subtitle > p {
+  font-size: clamp(10px, 3vw, 20px);
+  color: #606060;
+  font-family: Montserrat, sans-serif;
+  font-weight: 400;
+}
+/* ===== CONTENT ===== */
+.content {
+  background-color: #fff;
+  width: 80%;
+  min-height: 55vh;
+  border-radius: 5px;
+  margin: clamp(12px, 3vh, 40px) auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
+  overflow-x: hidden; /* 🔥 */
+}
+
+/* ===== FORM GRID ===== */
+.forms {
+  width: 90%;
+  display: grid;
+  gap: 25px;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, minmax(55px, auto));
+  max-width: 100%;
+  overflow-x: hidden; /* 🔥 */
+}
+
+/* 🔥 REGRA MAIS IMPORTANTE */
+.forms > div {
+  min-width: 0;
+  max-width: 100%;
+}
+
+/* ===== GRID POSIÇÕES ===== */
+.item1,
+.item2 {
+  grid-column: span 2;
+}
+
+.item7,
+.item8 {
+  grid-column: 1 / -1;
+}
+
+/* ===== INPUTS ===== */
+.forms input,
+.forms select,
+.forms textarea {
+  width: 100%;
+  max-width: 100%;
+  height: clamp(36px, 5vw, 44px);
+  font-size: clamp(12px, 2.5vw, 16px);
+  padding: clamp(6px, 1.5vw, 10px);
+  border: 1px solid #5c5c5c;
+  border-radius: 2px;
+}
+
+/* ===== LABELS ===== */
+.forms label {
+  font-size: clamp(10px, 2.5vw, 16px);
+  color: #5c5c5c;
+}
+
+/* ===== TEXTAREA ===== */
+.item7 textarea {
+  height: 80px;
+  resize: none;
+}
+
+/* ===== BOTÃO ===== */
+.item8 button {
+  width: 150px;
+  height: 40px;
+  background-color: #00793f;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: clamp(10px, 2.5vw, 16px);
+  cursor: pointer;
+  margin: 0 auto;
+  display: block;
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 768px) {
+
+  .content {
+    width: 92%;
+  }
+
+  .forms {
+    width: 100%;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .item1,
+  .item2,
+  .item3,
+  .item4,
+  .item5,
+  .item6,
+  .item7,
+  .item8 {
+    grid-column: 1 / -1;
+  }
+
+  .item8 button {
+    width: 100%;
+    max-width: 180px;
+  }
+}

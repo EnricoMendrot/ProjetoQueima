@@ -7,11 +7,39 @@ from .forms import OperadorForm
 # ========================== Visualização ========================== #
 
 def visualizar_operadores(request):
+    queryset=Funcionario.objects.all()
+    # Pegar os valores dos filtros (GET)
+    nome = request.GET.get('nome', '').strip()
+    setor = request.GET.get('setor', '').strip()
+    id_op = request.GET.get('id', '').strip()
+    turno = request.GET.get('turno', '').strip()
+
+    # Aplicar filtros apenas se o campo tiver valor
+    if nome:
+        queryset = queryset.filter(nome__icontains=nome)
+
+    if setor:
+        queryset = queryset.filter(setor=setor)
+
+    if id_op:
+        try:
+            id_int = int(id_op)
+            queryset = queryset.filter(id=id_int)
+        except ValueError:
+            pass  # ignora se não for número válido
+
+    if turno:
+        queryset = queryset.filter(turno__icontains=turno)
+
+    # Ordenar (opcional, mas recomendado)
+    queryset = queryset.order_by('id')
+
     contexto = {
-        "funcionario": Funcionario.objects.all()
+        "funcionario": queryset,
     }
 
-    return render(request, "Operadores/ListaOperador.html", contexto)
+
+    return render(request, "Visualizacao/operadores_cadastrados.html", contexto)
 
 # =================== Visualização por ID ======================= #
 

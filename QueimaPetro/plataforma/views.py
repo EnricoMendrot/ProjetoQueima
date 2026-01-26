@@ -219,11 +219,42 @@ def cadastrar(request):
 
     return render(request, "Cadastro/index2.html", {"form": form})
 
-
+# ========== Visualizar ========== #
 def visualizar_plataforma(request):
 
-    plataformas = Plataforma.objects.all().order_by("nome")
-    return render(request, "Cadastro/cadastro.html", {"plataformas": plataformas})
+    queryset = Plataforma.objects.all()
+
+    # Pegar os valores dos filtros (GET)
+    nome = request.GET.get('nome', '').strip()
+    status = request.GET.get('status', '').strip()
+    id_plt = request.GET.get('id', '').strip()
+    localizacao = request.GET.get('localizacao', '').strip()
+
+    # Aplicar filtros apenas se o campo tiver valor
+    if nome:
+        queryset = queryset.filter(nome__icontains=nome)
+
+    if status:
+        queryset = queryset.filter(status_operacional=status)
+
+    if id_plt:
+        try:
+            id_int = int(id_plt)
+            queryset = queryset.filter(id=id_int)
+        except ValueError:
+            pass  # ignora se não for número válido
+
+    if localizacao:
+        queryset = queryset.filter(localizacao__icontains=localizacao)
+
+    # Ordenar (opcional, mas recomendado)
+    queryset = queryset.order_by('id')
+
+    contexto = {
+        'plataforma': queryset,
+    }
+
+    return render(request, "Visualizar/plataformas_cadastradas.html", contexto)
 
 
 def visualizar_plataformaid(request, id: int):

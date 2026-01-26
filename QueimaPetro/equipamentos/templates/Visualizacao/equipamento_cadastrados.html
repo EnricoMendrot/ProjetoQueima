@@ -29,14 +29,9 @@
       color: #008445;
     }
 
-    {% comment %} .none {
-    grid-column: span 10;
+    .list > a:visited {
+      color: #606060;
     }
-
-    .none > p {
-      align-text: center;
-
-    } {% endcomment %}
   </style>
 
 </head>
@@ -316,10 +311,11 @@
                                 <div class="item2">
                                     <label for="status">Status:</label><br>
                                     <select name="status" id="status">
-                                        <option value="" {% if not request.GET.status %}selected{% endif %}>Todos</option>
+                                        <option value="" {% if not request.GET.status %}selected{% endif %}></option>
                                         <option value="ativo" {% if request.GET.status == 'ativo' %}selected{% endif %}>Ativo</option>
                                         <option value="inativo" {% if request.GET.status == 'inativo' %}selected{% endif %}>Inativo</option>
-                                    </select>
+                                        <option value="manutencao" {% if request.GET.status == 'manutencao' %}selected{% endif %}>Em manutenção</option>
+                                      </select>
                                 </div>
 
                                 <!-- Filtro por ID -->
@@ -358,20 +354,20 @@
 
                             <!-- Item da lista (linha de dados) -->
                             {% for eq in equipamento %}
-                            <div class="itens-list">  <!-- ou "item-linha", "equipamento-row", etc. -->
-                                <div class="id">
-                                    <p>{{ eq.id }}</p>
-                                </div>
-                                <div class="name">
-                                    <p>{{ eq.nome }}</p>
-                                </div>
-                                <div class="status status-{{ eq.status_operacional|slugify }}">
-                                    <p>{{ eq.get_status_operacional_display|default:eq.status_operacional }}</p>
-                                </div>
-                                <div class="code">
-                                    <p>{{ eq.codigo }}</p>
-                                </div>
-                            </div>
+                                <a href="{% url 'equipamento:visualizacaoid' eq.id %}" class="itens-list link-row">
+                                    <div class="id">
+                                        <p>{{ eq.id }}</p>
+                                    </div>
+                                    <div class="name">
+                                        <p>{{ eq.nome }}</p>
+                                    </div>
+                                    <div class="status status-{{ eq.status_operacional|slugify }}">
+                                        <p>{{ eq.get_status_operacional_display|default:eq.status_operacional }}</p>
+                                    </div>
+                                    <div class="code">
+                                        <p>{{ eq.codigo }}</p>
+                                    </div>
+                                </a>
                               {% empty %}
                                   <div class="itens-list empty">
                                     <div class = "none"><p>Nenhum equipamento encontrado.</p> </div>
@@ -393,7 +389,7 @@
 
 
         </section>
-        <script src={% static " /js/SubMenu.js" %}></script>
+        <script src="{% static '/js/SubMenu.js' %}"></script>
 </body>
 
 </html>

@@ -1,13 +1,14 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cadastro de Equipamento</title>
-  <link rel="stylesheet" href="{% static 'css/Cadastro/style.css' %}">
-  <link rel="stylesheet" href="{% static 'css/reset.css' %}" >
+  <title>Plataforma Cadastrada</title>
+  <link rel="stylesheet" href="{% static 'css/Visualizacao/plataforma_cadastrada.css' %}">
+  <link rel="stylesheet" href="{% static 'css/reset.css' %}">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
@@ -27,6 +28,23 @@
       text-decoration: none;
       color: #008445;
     }
+
+    .list > a:visited {
+      color: #606060;
+    }
+
+    .filter>.item1 {
+      grid-column: span 6;
+    }
+    
+    .itens-list>.id,
+    .itens-list>.status,
+    .itens-list>.localizacao {
+        grid-column: span 2;
+        text-align: center;
+        padding: 10px 0;
+
+    }
   </style>
 
 </head>
@@ -34,16 +52,19 @@
 <body>
 
   <div class="fundo">
+
+
+
     <!-- BASE DO SUBMENU -->
 
 
     <!-- LOGO TOPO DIREITO -->
     <header class="topo">
-      <img src="{% static 'img/logo.png' %}" alt="Petrobras" class="logo"> <!-- ALTERAR IMAGEM-->
+      <img src="{% static 'img/logo.png' %}" alt="Petrobras" class="logo">
     </header>
 
     <!-- ÍCONE DE LOGOUT -->
-    <a href="{% url 'inicio:telalogin'%}">  <!--TROCAR PARA A TELA DE LOGIN -->
+    <a href="{% url 'inicio:telalogin'%}">
       <span class="logout-icon">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
           <path
@@ -263,96 +284,118 @@
 
     </div>
 
+        <!-- Seção base da página -->
+        <section class="base">
 
-<!-- ===== SEÇÃO BASE DA PÁGINA ===== -->
-<section class="base">
-  <div class="container base">
+            <!-- Container principal da base -->
+            <div class="container base">
 
-    <!-- ===== ÁREA DO TÍTULO ===== -->
-    <div class="base-title">
-      <div class="title">
+                <!-- Área do título da página -->
+                <div class="base-title">
+                    <div class="title">
 
-        <!-- TÍTULO PRINCIPAL DA PÁGINA -->
-        <h1>Cadastro de Equipamento</h1>
+                        <!-- Título principal -->
+                        <h1>Plataforma Cadastradas</h1>
 
-        <!-- SUBTÍTULO COM ELEMENTO DECORATIVO -->
-        <div class="subtitle">
-          <div class="detail"></div>
-          <p><i>Inserir Informações</i></p>
-        </div>
+                        <!-- Subtítulo com detalhe visual -->
+                        <div class="subtitle">
+                            <div class="detail"></div>
+                            <p><i>Visualizar Plataforma</i></p>
+                        </div>
 
-      </div>
-    </div>
+                    </div>
+                </div>
 
-    <!-- ===== CONTEÚDO PRINCIPAL ===== -->
-    <div class="content">
+                <!-- Conteúdo principal da página -->
+                <div class="content">
 
-      <!-- ===== FORMULÁRIO DE CADASTRO ===== -->
-      <form method="POST">
-        {% csrf_token %}
-          <div class="forms">
-        <!-- NOME DO EQUIPAMENTO -->
-        <div class="item1">
-           <label for="{{ form.nome.id_for_label }}">Nome do Equipamento:</label>
-                {{ form.nome }} 
-        </div>
+                    <!-- Área da tabela/listagem -->
+                    <div class="table">
+                        <!-- Área de filtros -->
+                        <form method="GET" class="filter-form">
+                            <div class="filter">
+                                <!-- Filtro por nome do plataforma -->
+                                <div class="item1">
+                                    <label for="name">Pesquisar Plataforma:</label><br>
+                                    <input type="text" id="name" name="nome" value="{{ rpltuest.GET.nome|default:'' }}">
+                                </div>
 
-        <!-- FABRICANTE -->
-        <div class="item2">
-           <label for="{{ form.fabricante.id_for_label }}">Fabricante:</label>
-              {{ form.fabricante }}
-        </div>
+                                <!-- Filtro por status -->
+                                <div class="item2">
+                                    <label for="status">Status:</label><br>
+                                    <select name="status" id="status">
+                                        <option value="" {% if not rpltuest.GET.status %}selected{% endif %}></option>
+                                        <option value="ativo" {% if rpltuest.GET.status == 'ativo' %}selected{% endif %}>Ativo</option>
+                                        <option value="inativo" {% if rpltuest.GET.status == 'inativo' %}selected{% endif %}>Inativo</option>
+                                    </select>
+                                </div>
 
-        <!-- CÓDIGO DO EQUIPAMENTO -->
-        <div class="item3">
-          <label for="{{ form.codigo.id_for_label }}">Código de Equipamento:</label><br>
-            {{ form.codigo }}
-        </div>
+                                <!-- Filtro por código -->
+                                <div class="item4">
+                                    <label for="localizacao">Localização:</label><br>
+                                    <input type="text" id="localizacao" name="localizacao" value="{{ rpltuest.GET.localizacao|default:'' }}">
+                                </div>
+                            </div>
+                            <button type="submit" hidden>Filtrar </button>
+                        </form>
 
-        <!-- NÚMERO DE PATRIMÔNIO -->
-        <div class="item4">
-          <label for="{{ form.numero_patrimonio.id_for_label }}">Número de Patrimônio:</label>
-            {{ form.numero_patrimonio }}
-        </div>
+                        <!-- Lista de plataformas -->
+                        <div class="list">
+                          
+                            <!-- Cabeçalho da lista -->
+                            <div class="title-list">
+                                <div class="item1">
+                                    <p>ID</p>
+                                </div>
+                                <div class="item2">
+                                    <p>Nome da Plataforma</p>
+                                </div>
+                                <div class="item3">
+                                    <p>Status</p>
+                                </div>
+                                <div class="item4">
+                                    <p>Localização</p>
+                                </div>
+                            </div>
 
-        <!-- PLATAFORMA -->
-        <div class="item5">
-          <label for="{{ form.plataforma.id_for_label }}">Plataforma:</label>
-            {{ form.plataforma }}
-        </div>
+                            <!-- Item da lista (linha de dados) -->
+                            {% for plt in plataforma %}
+                                <a href="{% url 'plataforma:visualizacaoid' plt.id %}" class="itens-list link-row">
+                                    <div class="id">
+                                        <p>{{ plt.id }}</p>
+                                    </div>
+                                    <div class="name">
+                                        <p>{{ plt.nome }}</p>
+                                    </div>
+                                    <div class="status status-{{ plt.status|slugify }}">
+                                        <p>{{ plt.get_status_display|default:plt.status }}</p>
+                                    </div>
+                                    <div class="localizacao">
+                                        <p>{{ plt.localizacao }}</p>
+                                    </div>
+                                </a>
+                              {% empty %}
+                                  <div class="itens-list empty">
+                                    <div class = "none"><p>Nenhuma plataforma encontrada.</p> </div>
+                          
+                                  </div>
+                              {% endfor %}
 
-        <!-- STATUS DO EQUIPAMENTO -->
-        <div class="item6"> 
-          <label for="{{ form.status_operacional.id_for_label }}">Status Operacional:</label>
-            {{ form.status_operacional }}
-        </div>
+                        </div>
 
-        <!-- OBSERVAÇÕES -->
-        <div class="item7">
-          <label for="{{ form.observacoes.id_for_label }}">Observações:</label>
-              {{ form.observacoes }}
-        </div>
+                    </div>
 
-        <!-- BOTÃO DE AÇÃO -->
-        <div class="item8">
-          <button type="submit" id="submit">Cadastrar</button>
-        </div>
-      </div>
-    </form>
+                </div>
 
-    </div>
+            </div>
 
-
-
-      
-
-      <!-- Informações do cadastro -->
-
-
+        </section>
 
 
-    </section>
-    <script src="{% static '/js/SubMenu.js' %}"></script>
+
+
+        </section>
+        <script src="{% static '/js/SubMenu.js' %}"></script>
 </body>
 
 </html>
