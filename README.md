@@ -41,10 +41,6 @@ Abaixo estão indicadas as seções onde serão detalhados os endpoints e métod
 
 *(Descrição dos endpoints PUT será inserida aqui)*
 
-### **Métodos DELETE**
-
-*(Descrição dos endpoints DELETE será inserida aqui)*
-
 ## Finalidade do Projeto
 
 Este sistema foi desenvolvido como parte do **Trabalho de Conclusão de Curso (TCC)** do curso de **Análise e Desenvolvimento de Sistemas** do **SENAI de São José dos Campos**, em parceria com a empresa **Petróleo Brasileiro S.A. (Petrobras)**.  
