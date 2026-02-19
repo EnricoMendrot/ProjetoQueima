@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Resumo Diário</title>
-  <link rel="stylesheet" href="Resumo_Diario.css">
+  <title>Resumo Detalhado</title>
+  <link rel="stylesheet" href="Resumo_Detalhado.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
   <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap">
@@ -15,7 +15,7 @@
     
     <!-- LOGO TOPO DIREITO -->
     <header class="topo">
-      <img src="./img/Principal_h_negativa.png" alt="Petrobras" class="logo">
+      <img src="../img/Principal_h_negativa.png" alt="Petrobras" class="logo">
     </header>
     
     <!-- ÍCONE DE LOGOUT -->
@@ -46,9 +46,17 @@
       <div class="itens">
         <div class="grid">
           <div class="item">
-            <h4>Plataforma 1</h4>
             <a>
               <div class="box">
+                <h4>Plataforma 1</h4>
+              </div>
+            </a>
+          </div>
+
+          <div class="item">
+            <a>
+              <div class="box">
+                <h4>Plataforma 2</h4>
                 <div class="volume">
                   <p>Volume Total de Queima: </p>
                   <label for=""></label>
@@ -58,63 +66,32 @@
           </div>
 
           <div class="item">
-            <h4>Plataforma 2</h4>
             <a>
               <div class="box">
-                <div class="volume"><p>Volume Total de Queima: </p>
-                <label for=""></label></div>
+                <h4>Plataforma 3</h4>
               </div>
             </a>
           </div>
 
           <div class="item">
-            <h4>Plataforma 3</h4>
             <a>
               <div class="box">
-                <div class="volume"><p>Volume Total de Queima: </p>
-                <label for=""></label></div>
+                <h4>Plataforma 4</h4>
               </div>
             </a>
           </div>
 
-          <div class="item">
-            <h4>Plataforma 4</h4>
-            <a>
-              <div class="box">
-                <div class="volume"><p>Volume Total de Queima: </p>
-                <label for=""></label></div>
-              </div>
-            </a>
-          </div>
-
-          <div class="item">
-            <h4>Plataforma 5</h4>
-            <a>
-              <div class="box">
-                <div class="volume"><p>Volume Total de Queima: </p>
-                <label for=""></label></div>
-              </div>
-            </a>
-          </div>
-
-          <div class="item">
-            <h4>Plataforma 6</h4>
-            <a>
-              <div class="box">
-                <div class="volume"><p>Volume Total de Queima: </p>
-                <label for=""></label></div>
-              </div>
-            </a>
-          </div>
         </div>
-
       </div>
+
+      <button class="relatorio">Gerar Relatório</button>
+
     </div>
     
     <!-- ===== SUBMENU ===== -->
     <div class="submenu" id="submenu">
       <div class="submenu-header">
-        <img src="./img/Principal_h_negativa.png" alt="Petrobras" class="logo-submenu"> 
+        <img src="../img/Principal_h_negativa.png" alt="Petrobras" class="logo-submenu"> 
         
         <!-- ÍCONE MENU DENTRO DO SUBMENU (FECHAR) -->
         <div class="menu-close" id="submenuClose">
@@ -249,6 +226,6 @@
 
     </div>
 
-  <script src="./js/SubMenu.js"></script>
+  <script src="../js/SubMenu.js"></script>
 </body>
 </html>
