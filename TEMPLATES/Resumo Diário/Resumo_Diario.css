@@ -427,10 +427,10 @@ body.blurred::before {
 
 .volume {
   margin: 4% auto 4%;
-  align-items: center;
   display: flex;
+  align-items: center;
   width: 80%;
-  height: 20%;
+  min-height: 20%;
   border: 0.5px solid #008445;
   border-radius: 3px;
   box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.3);

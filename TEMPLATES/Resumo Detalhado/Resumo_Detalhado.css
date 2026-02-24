@@ -228,8 +228,7 @@ html {
   margin-top: 75px;   /* move para baixo */
   margin-left: 6%; /* move para a direita */
   margin-bottom: 5%;
-  padding-top: 1%;
-  padding-bottom: 5%;
+  padding: 1% 4% 4% 4%;
 }
 
 /* ===== DESFOQUE DO FUNDO ===== */
@@ -246,16 +245,11 @@ body.blurred::before {
   pointer-events: none;
 }
 
-@media (width <= 768px) {
-  
-}
-
 /* ===== CONTAINER PRINCIPAL ===== */
 .menu-cadastros {
   width: 285px;
   font-family: sans-serif;
 }
-
 
 /* Ajuste da seta */
 .icone-seta {
@@ -371,15 +365,9 @@ body.blurred::before {
   border-bottom: none; /* remove a borda */
 }
 
-.itens {
-  margin-left: 5%;
-  margin-right: 5%;
-}
-
 .cabecalho {
-  margin-left: 5%;
-  margin-right: 5%;
-  padding-top: 10px;
+  margin: right;
+  margin-top: 10px;
   border: 1px solid red;
 }
 
@@ -390,9 +378,10 @@ body.blurred::before {
 }
 
 .conteudo {
+  position: relative;
   display: flex;
+  align-items: center;
   border: 1px solid red;
-  align-items: center; /* alinha vertical */
   margin-bottom: 54px;
 }
 
@@ -400,21 +389,21 @@ body.blurred::before {
 .subtitle {
   display: flex;
   color: grey;
-  gap: 3%;
-  font-size: 19px;
-  padding-bottom: 1%;
+  font-size: 24px;
+
 }
 
 .yellow {
   height: 6px;
   width: 41px;
   background-color: #f2b544;
-  margin-top: 9.5px;
+  margin-top: 12px;
+  margin-right: 30px;
 }
 
 /*==== TÍTULO ====*/
 .titulo {
-  margin: 0 auto;
+  margin: 0;
   font-size: 20px;
 }
 
@@ -430,7 +419,6 @@ body.blurred::before {
   margin-top: 25px;
   font-size: 15px;
   cursor: pointer;
-  margin-right: 4vw;
 }
 
 /*==== GRÁFICOS ====*/
@@ -471,9 +459,8 @@ body.blurred::before {
   height: 10%;
   border-radius: 2px;
   border: 0.3px solid #B3B3B3;
-  background: #FFF;
   box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.25);
-  margin: 60% auto auto;
+  margin: 45vh auto 5vh;
 }
 
 .volume p {
