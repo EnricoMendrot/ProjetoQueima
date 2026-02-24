@@ -389,14 +389,14 @@ body.blurred::before {
   white-space: nowrap;
 }
 
-.teste {
+.conteudo {
   display: flex;
   border: 1px solid red;
   align-items: center; /* alinha vertical */
   margin-bottom: 54px;
 }
 
-/*==== TÍTULO ====*/
+/*==== SUB-TÍTULO ====*/
 .subtitle {
   display: flex;
   color: grey;
@@ -412,6 +412,12 @@ body.blurred::before {
   margin-top: 9.5px;
 }
 
+/*==== TÍTULO ====*/
+.titulo {
+  margin: 0 auto;
+  font-size: 20px;
+}
+
 /*==== BOTÃO "VOLTAR" ====*/
 .return {
   width: 154px;
@@ -424,6 +430,7 @@ body.blurred::before {
   margin-top: 25px;
   font-size: 15px;
   cursor: pointer;
+  margin-right: 4vw;
 }
 
 /*==== GRÁFICOS ====*/
@@ -434,6 +441,7 @@ body.blurred::before {
   grid-template-rows: 67% 33%;
   height: 100vh;
   padding-bottom: 5%;
+  margin-bottom: 3%;
 }
 
 .item h4, p {
@@ -460,17 +468,16 @@ body.blurred::before {
   display: flex;
   align-items: center;
   width: 48%;
-  height: 15%;
+  height: 10%;
   border-radius: 2px;
   border: 0.3px solid #B3B3B3;
   background: #FFF;
   box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.25);
-  margin: 50% auto auto;
+  margin: 60% auto auto;
 }
 
 .volume p {
   margin: 0 auto;
-  
   font-size: 21px;
 }
 
