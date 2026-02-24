@@ -410,7 +410,7 @@ body.blurred::before {
   padding-bottom: 5%;
 }
 
-.item h4 {
+.item h4, p {
   margin-bottom: 2%;
   font-weight: normal;
   font-family: "Montserrat";
@@ -434,9 +434,10 @@ body.blurred::before {
   border: 0.5px solid #008445;
   border-radius: 3px;
   box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.3);
+  padding-top: 2%;
 }
 
 .volume p {
   padding-left: 4%;
-  font-size: 21px;
+  font-size: 16px;
 }
