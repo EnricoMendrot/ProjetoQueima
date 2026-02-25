@@ -220,15 +220,13 @@ html {
 
 /* ===== QUADRADO BRANCO ===== */
 .white-box {
-  width: 88.95%;
-  height: 85%;
+  max-width: 88.95%;
+  max-height: 85%;
   flex-shrink: 0;
   border-radius: 3px;
   background: #F5F7FB;
-  margin-top: 75px;   /* move para baixo */
-  margin-left: 6%; /* move para a direita */
-  margin-bottom: 5%;
-  padding: 1% 4% 4% 4%;
+  margin: 75px auto;
+  padding: 1% 8% 4% 8%;
 }
 
 /* ===== DESFOQUE DO FUNDO ===== */
@@ -367,8 +365,7 @@ body.blurred::before {
 
 .cabecalho {
   margin: right;
-  margin-top: 10px;
-  border: 1px solid red;
+  /*border: 1px solid red;*/
 }
 
 .cabecalho h4 {
@@ -381,8 +378,10 @@ body.blurred::before {
   position: relative;
   display: flex;
   align-items: center;
-  border: 1px solid red;
-  margin-bottom: 54px;
+  justify-content: space-between; 
+  /*border: 1px solid red;*/
+  margin-bottom: 32px;
+  margin-top: 56px;
 }
 
 /*==== SUB-TÍTULO ====*/
@@ -390,7 +389,6 @@ body.blurred::before {
   display: flex;
   color: grey;
   font-size: 24px;
-
 }
 
 .yellow {
@@ -403,15 +401,16 @@ body.blurred::before {
 
 /*==== TÍTULO ====*/
 .titulo {
-  margin: 0;
-  font-size: 20px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 24px;
 }
 
 /*==== BOTÃO "VOLTAR" ====*/
 .return {
   width: 154px;
   height: 34px;
-  padding: 10px;
   border-radius: 3px;
   border: 1px solid #00793F;
   background: #00793F;
@@ -434,7 +433,7 @@ body.blurred::before {
 
 .item h4, p {
   font-weight: normal;
-  font-family: "Montserrat";
+  font-family: "Rubik";
 }
 
 .item h4 {
@@ -446,10 +445,11 @@ body.blurred::before {
   height: 100%;
   background: #ffffff;
   border-radius: 3px;
-  border: 0.5px solid #008445;
+  border: 0.3px solid #B3B3B3;
   box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.3);
   padding-top: 5%;
   text-align: center;
+  font-weight: normal;
 }
 
 .volume {
@@ -482,4 +482,11 @@ body.blurred::before {
   margin: 0 auto;
   font-size: 15px;
   cursor: pointer;
+}
+
+.horario {
+  margin-left: 75%;
+  margin-bottom: 1%;
+  color: #5C5C5C;
+  white-space: nowrap;
 }
