@@ -8,4 +8,4 @@ class DadosqueimaConfig(AppConfig):
     def ready(self):
         # Importa e inicia o gerador automaticamente
         from .tasks import iniciar_gerador
-        iniciar_gerador(intervalo_segundos=1000000)
+        iniciar_gerador(intervalo_segundos=300)

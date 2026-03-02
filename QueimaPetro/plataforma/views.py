@@ -60,7 +60,6 @@ def _salvar_grafico_em_base64() -> str:
     plt.close()
     return imagem_base64
 
-
 def gerar_grafico_linha(dados) -> str:
     # garante ordem por id
     dados = dados.order_by("id")
@@ -89,7 +88,7 @@ def gerar_grafico_linha(dados) -> str:
         plt.axis("off")
         return _salvar_grafico_em_base64()
 
-    plt.plot(horas, volumes, marker="o")
+    plt.plot(horas, volumes, marker="o", color="#009c98")
     plt.fill_between(horas, volumes, alpha=0.1)
 
     ax = plt.gca()
@@ -102,9 +101,7 @@ def gerar_grafico_linha(dados) -> str:
 
     return _salvar_grafico_em_base64()
 
-
-
-def gerar_grafico_pizza(dados) -> str:
+def gerar_grafico_rosca(dados) -> str:
     tipos = {}
 
     for d in dados:
@@ -120,20 +117,40 @@ def gerar_grafico_pizza(dados) -> str:
 
     valores = list(tipos.values())
     total = sum(valores)
-
-    plt.figure(figsize=(4, 4))
+    
+    plt.figure(figsize=(6, 4))
 
     if total <= 0:
-        plt.text(0.5, 0.5, "Sem dados para pizza", ha="center", va="center", fontsize=12)
+        plt.text(0.5, 0.5, "Sem dados para rosca", ha="center", va="center", fontsize=12)
         plt.axis("off")
-        plt.title("Tipo de Queima")
         return _salvar_grafico_em_base64()
 
-    plt.pie(valores, labels=list(tipos.keys()), autopct="%1.1f%%")
+    cores = ["#00d27f", "#00b892", "#009c98", "#007f8f"]
+    plt.rcParams["font.family"] = "Arial"
+
+    total = sum(valores)
+
+    # labels com o nome + %
+    labels_formatadas = [
+        f"{nome} {valor/total*100:.2f}%" for nome, valor in tipos.items()
+    ]
+
+    wedges, texts = plt.pie(
+        valores,
+        labels=labels_formatadas,
+        wedgeprops=dict(width=0.4),
+        startangle=90,
+        labeldistance=1.2,
+        colors=cores
+    )
+
+    # Ajuste a fonte dos textos
+    for text in texts:
+        text.set_fontsize(11)   
+    
+    plt.axis("equal")  # mantém o formato circular
 
     return _salvar_grafico_em_base64()
-
-
 
 def normalizar_nome_gas(s: str) -> str:
     if not s:
@@ -146,7 +163,6 @@ def normalizar_nome_gas(s: str) -> str:
     s = " ".join(s.split())
     return s
 
-
 def gerar_grafico_barras(dados) -> str:
     gases = {}
     for d in dados:
@@ -155,13 +171,10 @@ def gerar_grafico_barras(dados) -> str:
         gases[nome] = gases.get(nome, 0) + vol
 
     plt.figure(figsize=(5, 3))
-    plt.barh(list(gases.keys()), list(gases.values()))
+    plt.barh(list(gases.keys()), list(gases.values()), color="#009c98")
     plt.xlabel("Volume (m³)")
 
     return _salvar_grafico_em_base64()
-
-
-
 
 # ==========================
 # Dashboard
@@ -173,7 +186,7 @@ def visualizacao_grafico(request):
     dados = MaterialQueimado.objects.all()
 
     grafico_linha = gerar_grafico_linha(dados)
-    grafico_pizza = gerar_grafico_pizza(dados)
+    grafico_rosca = gerar_grafico_rosca(dados)
     grafico_barras = gerar_grafico_barras(dados)
 
     eficiencias = []
@@ -190,13 +203,13 @@ def visualizacao_grafico(request):
 
     contexto = {
         "grafico_linha": grafico_linha,
-        "grafico_pizza": grafico_pizza,
+        "grafico_rosca": grafico_rosca,
         "grafico_barras": grafico_barras,
         "eficiencia_media": eficiencia_media,
         "ultima_atualizacao": agora,
         "titulo": "Plataforma (todos os dados)",
     }
-    return render(request, "grafico/plataforma.html", contexto)
+    return render(request, "ExibiçãoDetalhada/Resumo_Detalhado.html", contexto)
 
 
 
