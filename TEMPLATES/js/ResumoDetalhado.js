@@ -65,17 +65,99 @@ setaCadastros.addEventListener('click', (e) => {
   btnCadastros.classList.toggle("active");
 });
 
-// === Ativa o icone de check no quadrado
-const quadrado = document.getElementById("q1");
 
-quadrado.addEventListener("click", () => {
-  quadrado.classList.toggle("ativo");
-});
 
-function atualizarHora() {
-  const agora = new Date().toLocaleTimeString("pt-BR");
-  document.getElementById("hour").textContent = agora;
+// ==== FUNÇÃO PARA ATUALIZAR DATA E HORA ==== //
+
+function atualizarHorario() {
+    const elementoHora = document.getElementById('hour');
+    
+    if (elementoHora) {
+        const agora = new Date();
+
+        // Formata a data (DD/MM/AAAA)
+        const data = agora.toLocaleDateString('pt-BR');
+
+        // Formata a hora (HHhMM)
+        const horas = String(agora.getHours()).padStart(2, '0');
+        const minutos = String(agora.getMinutes()).padStart(2, '0');
+
+        elementoHora.innerText = `Atualizado em ${data} às ${horas}h${minutos}`;
+    }
 }
 
-setInterval(atualizarHora, 1000);
-atualizarHora();
+// Atualiza assim que a página carrega
+atualizarHorario();
+
+// Atualiza a cada 1 minuto (60000 milissegundos)
+setInterval(atualizarHorario, 60000);
+
+
+
+  // ==== FUNÇÃO PARA ABRIR JANELA DE ESCOLHA DE RELATÓRIO ==== //
+  const btnRelatorio = document.getElementById("btnRelatorio");
+  const modalOverlay = document.getElementById("modalOverlay");
+  const btnFechar = document.getElementById("closeModal");
+
+  // Abrir a janela
+  btnRelatorio.addEventListener("click", () => {
+      modalOverlay.classList.add("active");
+      // Trava o scroll da página de fundo
+      document.body.style.overflow = 'hidden';
+  });
+
+  // Função única para fechar e destravar o scroll
+  function fecharRelatorio() {
+      modalOverlay.classList.remove("active");
+      // Devolve o scroll para a página
+      document.body.style.overflow = 'auto';
+  }
+
+  // Fechar a janela no botão "Fechar"
+  btnFechar.addEventListener("click", fecharRelatorio);
+
+  // Fechar se clicar no fundo
+  modalOverlay.addEventListener("click", (event) => {
+      // Se o clique foi no overlay e não na caixa branca
+      if (event.target === modalOverlay) {
+          fecharRelatorio();
+      }
+  });
+
+
+  
+// ==== FUNÇÃO DE GERAR RELATÓRIO ==== //
+const relatorioOverlay = document.getElementById("relatorioOverlay");
+const btnCloseRelatorio = document.getElementById("closeRelatorio");
+const btnRCQ = document.getElementById("btnRCQ");
+const btnRQ = document.getElementById("btnRQ");
+
+function abrirJanela() {
+    relatorioOverlay.style.display = "flex";
+}
+
+// Evento para o botão RCQ
+if(btnRCQ) {
+    btnRCQ.addEventListener("click", () => {
+        abrirJanela();
+    });
+}
+
+// Evento para o botão RQ
+if(btnRQ) {
+    btnRQ.addEventListener("click", () => {
+        abrirJanela();
+    });
+}
+
+// Fechar o relatório e retornar a escolha de relatórios
+btnCloseRelatorio.addEventListener("click", () => {
+    relatorioOverlay.style.display = "none";
+});
+
+// Fechar se clicar no fundo
+relatorioOverlay.addEventListener("click", (event) => {
+    if (event.target === relatorioOverlay) {
+        relatorioOverlay.style.display = "none";
+    }
+});
