@@ -94,41 +94,41 @@ setInterval(atualizarHorario, 60000);
 
 
 
-  // ==== FUNÇÃO PARA ABRIR JANELA DE ESCOLHA DE RELATÓRIO ==== //
-  const btnRelatorio = document.getElementById("btnRelatorio");
-  const modalOverlay = document.getElementById("modalOverlay");
-  const btnFechar = document.getElementById("closeModal");
+// ==== FUNÇÃO PARA ABRIR JANELA DE ESCOLHA DE RELATÓRIO ==== //
+const btnRelatorio = document.getElementById("btnRelatorio");
+const modalOverlay = document.getElementById("modalOverlay");
+const btnFechar = document.getElementById("closeModal");
 
-  // Abrir a janela
-  btnRelatorio.addEventListener("click", () => {
-      modalOverlay.classList.add("active");
-      // Trava o scroll da página de fundo
-      document.body.style.overflow = 'hidden';
-  });
+// Abrir a janela
+btnRelatorio.addEventListener("click", () => {
+    modalOverlay.classList.add("active");
+    // Trava o scroll da página de fundo
+    document.body.style.overflow = 'hidden';
+});
 
-  // Função única para fechar e destravar o scroll
-  function fecharRelatorio() {
-      modalOverlay.classList.remove("active");
-      // Devolve o scroll para a página
-      document.body.style.overflow = 'auto';
-  }
+// Função única para fechar e destravar o scroll
+function fecharRelatorio() {
+    modalOverlay.classList.remove("active");
+    // Devolve o scroll para a página
+    document.body.style.overflow = 'auto';
+}
 
-  // Fechar a janela no botão "Fechar"
-  btnFechar.addEventListener("click", fecharRelatorio);
+// Fechar a janela no botão "Fechar"
+btnFechar.addEventListener("click", fecharRelatorio);
 
-  // Fechar se clicar no fundo
-  modalOverlay.addEventListener("click", (event) => {
-      // Se o clique foi no overlay e não na caixa branca
-      if (event.target === modalOverlay) {
-          fecharRelatorio();
-      }
-  });
+// Fechar se clicar no fundo
+modalOverlay.addEventListener("click", (event) => {
+    // Se o clique foi no overlay e não na caixa branca
+    if (event.target === modalOverlay) {
+        fecharRelatorio();
+    }
+});
 
 
   
 // ==== FUNÇÃO DE GERAR RELATÓRIO ==== //
 const relatorioOverlay = document.getElementById("relatorioOverlay");
-const btnCloseRelatorio = document.getElementById("closeRelatorio");
+const btnExit = document.getElementById("closeRelatorio");
 const btnRCQ = document.getElementById("btnRCQ");
 const btnRQ = document.getElementById("btnRQ");
 
@@ -136,14 +136,14 @@ function abrirJanela() {
     relatorioOverlay.style.display = "flex";
 }
 
-// Evento para o botão RCQ
+// Evento para o botão RCQ (Relatório de Classificação de Queima)
 if(btnRCQ) {
     btnRCQ.addEventListener("click", () => {
         abrirJanela();
     });
 }
 
-// Evento para o botão RQ
+// Evento para o botão RQ (Relatório de Queima)
 if(btnRQ) {
     btnRQ.addEventListener("click", () => {
         abrirJanela();
@@ -151,7 +151,7 @@ if(btnRQ) {
 }
 
 // Fechar o relatório e retornar a escolha de relatórios
-btnCloseRelatorio.addEventListener("click", () => {
+btnExit.addEventListener("click", () => {
     relatorioOverlay.style.display = "none";
 });
 
@@ -161,3 +161,32 @@ relatorioOverlay.addEventListener("click", (event) => {
         relatorioOverlay.style.display = "none";
     }
 });
+
+const btnImprimir = document.getElementById("btnImprimir");
+
+if (btnImprimir) {
+    btnImprimir.onclick = function() {
+        window.print();
+    };
+}
+
+const btnBaixar = document.getElementById("btnBaixar");
+
+if (btnBaixar) {
+    btnBaixar.onclick = function() {
+        // Seleciona o que deve virar PDF (a sua folha branca)
+        const conteudo = document.getElementById("pageReport");
+
+        // Configurações do PDF
+        const opcoes = {
+            margin:       10, // Margem da folha (mm)
+            filename:     'Relatorio_Petrobras.pdf',
+            image:        { type: 'jpeg', quality: 0.98 },
+            html2canvas:  { scale: 2 }, // Melhora a resolução do texto
+            jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
+        };
+
+        // Executa o comando de "Gerar e Salvar"
+        html2pdf().set(opcoes).from(conteudo).save();
+    };
+}

@@ -48,7 +48,7 @@
         <a href="../Resumo Diário/Resumo_Diario.html"><button class="return">Voltar</button></a>
       </div>
 
-      <div class="horario"><p id="hour">Atualizado em 23/10/2025 às 15h45</p></div>
+      <div class="horario"><p id="hour">Atualizado em DD/MM/AAAA às HHhMM</p></div>
 
         <div class="grid">
           <div class="item">
@@ -109,21 +109,20 @@
     <div id="relatorioOverlay" class="downloadOverlay">
       <div class="toolbar">
         <div class="tool-item" id="btnBaixar">
-            <span class="material-symbols-outlined">download</span>
+            <span class="material-symbols-outlined downloadBtn">download</span>
             <span>Baixar</span>
         </div>
         <div class="tool-item" id="btnImprimir">
-            <span class="material-symbols-outlined">print</span>
+            <span class="material-symbols-outlined printBtn">print</span>
             <span>Imprimir</span>
         </div>
         <div class="tool-item" id="btnSair">
-            <span id="closeRelatorio" class="material-symbols-outlined btnClose">close</span>
+            <span id="closeRelatorio" class="material-symbols-outlined exitBtn">close</span>
             <span>Sair</span>
         </div>
       </div>
 
       <div id="pageReport" class="downloadPage">
-        <div class="reportTitle"><p></p></div>
       </div>
     </div>
     
@@ -266,5 +265,6 @@
     </div>
 
   <script src="../js/ResumoDetalhado.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </body>
 </html>

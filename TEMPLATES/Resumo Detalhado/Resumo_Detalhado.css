@@ -430,7 +430,7 @@ body.blurred::before {
 
 /*==== DATA E HORA ====*/
 .horario {
-  margin-left: 75%;
+  margin-left: 80.5%;
   margin-bottom: 1%;
   color: #5C5C5C;
   white-space: nowrap;
@@ -530,6 +530,7 @@ body.blurred::before {
   display: flex;
 }
 
+
 /*==== JANELA DE ESCOLHA DE RELATÓRIO ====*/
 .pageReport {
   display: flex;
@@ -538,7 +539,7 @@ body.blurred::before {
   justify-content: center;
   position: relative;
   width: 878px;
-  height: 35%;
+  height: 25%;
   border-radius: 3px;
   background: #FFF;
   box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.25);
@@ -606,6 +607,7 @@ body.blurred::before {
   transform: scale(0.99);
 }
 
+
 /*==== JANELA PARA BAIXAR RELATÓRIO ====*/
 
 .downloadOverlay {
@@ -615,9 +617,9 @@ body.blurred::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.2); /* Um pouco mais escuro */
-    backdrop-filter: blur(5px);    /* Desfoca o que tá atrás (janela de escolha + fundo) */
-    z-index: 1010;                 /* Ganha do 1003 */
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(5px);
+    z-index: 1010;
     justify-content: center;
     align-items: center;
 }
@@ -630,17 +632,76 @@ body.blurred::before {
   position: relative;
   width: 35%;
   height: 87%;
-  border-radius: 3px;
   background: #FFF;
   box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.25);
-  Overflow: hidden;
+  border: 1px solid #008445;
 }
 
 .toolbar {
   display: flex;
   position: absolute;
-  right: 30px;
-  top: 27px;
+  right: 10%;
+  top: 30px;
   color: grey;
+  gap: 80px;
   user-select: none;
+  font-family: 'Montserrat';
+}
+
+.tool-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  font-size: 18px;
+}
+
+.tool-item:hover {
+  transform: scale(1.1);
+}
+
+.tool-item:active {
+  transform: scale(0.99);
+}
+
+.tool-item .material-symbols-outlined {
+  font-size: 40px !important;
+}
+
+/* ==== LÓGICA PARA IMPRESSÃO ==== */
+@media print {
+    /* Oculta TUDO da página */
+    body * {
+        visibility: hidden !important;
+    }
+
+    /* Mostra apenas a caixa do relatório e o que tem dentro dela */
+    #relatorioOverlay, 
+    #relatorioOverlay .downloadPage, 
+    #relatorioOverlay .downloadPage * {
+        visibility: visible !important;
+    }
+
+    /* Ajusta a posição para o topo da folha A4 */
+    #relatorioOverlay {
+        position: absolute !important;
+        left: 0 !important;
+        top: 0 !important;
+        width: 100% !important;
+        height: auto !important;
+        background: white !important;
+        backdrop-filter: none !important;
+    }
+
+    .downloadPage {
+        box-shadow: none !important; /* Tira a sombra na impressão */
+        width: 100% !important;
+        height: auto !important;
+        position: relative !important;
+    }
+
+    /* Esconde a barra de ferramentas (Baixar/Imprimir/Sair) para não sair na impressão */
+    .toolbar {
+        display: none !important;
+    }
 }
