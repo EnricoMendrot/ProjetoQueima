@@ -4,15 +4,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Resumo Detalhado</title>
-  <link rel="stylesheet" href="{% static 'css/ExibiçãoDetalhada/Resumo_Detalhado2.css' %}">
+  <title>Resumo Diário</title>
+  <link rel="stylesheet" href="{% static 'css/reset.css' %}">
+  <link rel="stylesheet" href="{% static 'css/ExibicaoSimples/Resumo_Simplesw.css' %}">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
   <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap">
   <link rel="icon" href="{% static 'img/favicon.png' %}" type="image/x-icon">
 </head>
-  <style>
-    a {
+<style>
+  a {
       text-decoration: none;
     }
 
@@ -24,25 +25,23 @@
       text-decoration: none;
     }
 
-      a:visited { /* Links já visitados */
-        text-decoration: none;
-        color: #008445;
-      }
-
-
-    </style>
+    a:visited { /* Links já visitados */
+      text-decoration: none;
+      color: #008445;
+    }
+</style>
 <body>
-<div class="fundo">
-    <!-- BASE DO SUBMENU -->
+  <div class="fundo">
+      <!-- BASE DO SUBMENU -->
 
 
-    <!-- LOGO TOPO DIREITO -->
-    <header class="topo">
+      <!-- LOGO TOPO DIREITO -->
+      <header class="topo">
       <img src="{% static 'img/logo.png' %}" alt="Petrobras" class="logo"> <!-- ALTERAR IMAGEM-->
-    </header>
+      </header>
 
-    <!-- ÍCONE DE LOGOUT -->
-    <a href="{% url 'inicio:telalogin'%}">  <!--TROCAR PARA A TELA DE LOGIN -->
+      <!-- ÍCONE DE LOGOUT -->
+      <a href="{% url 'inicio:telalogin'%}">
       <span class="logout-icon">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
           <path
@@ -50,19 +49,19 @@
             fill="white" />
         </svg>
       </span>
-    </a>
-    <!-- ÍCONE MENU PRINCIPAL (3x3) -->
-    <div class="menu-icon" id="menuToggle">
+      </a>
+      <!-- ÍCONE MENU PRINCIPAL (3x3) -->
+      <div class="menu-icon" id="menuToggle">
       <svg xmlns="http://www.w3.org/2000/svg" width="29" height="27" viewBox="0 0 29 27" fill="none">
         <path
           d="M10.5465 4.36172C10.5465 6.01858 11.8896 7.36172 13.5465 7.36172H15.4535C17.1104 7.36172 18.4535 6.01857 18.4535 4.36172V3C18.4535 1.34314 17.1104 0 15.4535 0H13.5465C11.8896 0 10.5465 1.34315 10.5465 3V4.36172ZM24.093 0C22.4361 0 21.093 1.34315 21.093 3V4.36172C21.093 6.01858 22.4361 7.36172 24.093 7.36172H26C27.6569 7.36172 29 6.01857 29 4.36172V3C29 1.34314 27.6569 0 26 0H24.093ZM0 4.36172C0 6.01858 1.34315 7.36172 3 7.36172H4.90703C6.56388 7.36172 7.90703 6.01857 7.90703 4.36172V3C7.90703 1.34314 6.56389 0 4.90703 0H3C1.34315 0 0 1.34315 0 3V4.36172ZM10.5465 14.1809C10.5465 15.8377 11.8896 17.1809 13.5465 17.1809H15.4535C17.1104 17.1809 18.4535 15.8377 18.4535 14.1809V12.8191C18.4535 11.1623 17.1104 9.81914 15.4535 9.81914H13.5465C11.8896 9.81914 10.5465 11.1623 10.5465 12.8191V14.1809ZM21.093 14.1809C21.093 15.8377 22.4361 17.1809 24.093 17.1809H26C27.6569 17.1809 29 15.8377 29 14.1809V12.8191C29 11.1623 27.6569 9.81914 26 9.81914H24.093C22.4361 9.81914 21.093 11.1623 21.093 12.8191V14.1809ZM0 14.1809C0 15.8377 1.34315 17.1809 3 17.1809H4.90703C6.56388 17.1809 7.90703 15.8377 7.90703 14.1809V12.8191C7.90703 11.1623 6.56389 9.81914 4.90703 9.81914H3C1.34315 9.81914 0 11.1623 0 12.8191V14.1809ZM10.5465 24C10.5465 25.6569 11.8896 27 13.5465 27H15.4535C17.1104 27 18.4535 25.6569 18.4535 24V22.6383C18.4535 20.9814 17.1104 19.6383 15.4535 19.6383H13.5465C11.8896 19.6383 10.5465 20.9814 10.5465 22.6383V24ZM21.093 24C21.093 25.6569 22.4361 27 24.093 27H26C27.6569 27 29 25.6569 29 24V22.6383C29 20.9814 27.6569 19.6383 26 19.6383H24.093C22.4361 19.6383 21.093 20.9814 21.093 22.6383V24ZM0 24C0 25.6569 1.34315 27 3 27H4.90703C6.56388 27 7.90703 25.6569 7.90703 24V22.6383C7.90703 20.9814 6.56389 19.6383 4.90703 19.6383H3C1.34315 19.6383 0 20.9814 0 22.6383V24Z"
           fill="white" />
       </svg>
-    </div>
+      </div>
   
 
-    <!-- ===== SUBMENU ===== -->
-    <div class="submenu" id="submenu">
+      <!-- ===== SUBMENU ===== -->
+     <div class="submenu" id="submenu">
       <div class="submenu-header">
         <img src="{% static 'img/logo.png' %}" alt="Petrobras" class="logo"> <!-- ALTERAR IMAGEM-->
 
@@ -98,7 +97,7 @@
                fill="#008445" stroke="white" stroke-width="0.3" />
             </svg>HOME
         </button>
-    </a>
+     </a>
 
       <button class="menu-item"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="25" viewBox="0 0 20 25"
           fill="none">
@@ -261,144 +260,36 @@
 
 
     </div>
-
-    <div class="white-box">
-
-      <div class="conteudo">
-        <div class="cabecalho">
-          <h1>Plataforma</h1>
-          <div class="subtitle">
-            <div class="yellow"></div>
-            <h4><i>Resumo Detalhado</i></h4>
-          </div>
-        </div>
-        <div class="titulo"><h4>{{ titulo|default:"Todos os Dados" }}</h4></div>
-        <a href="{% url 'plataforma:home' %}"><button class="return">Voltar</button></a>
-      </div>
-
-      <form method="get">
-        <input type="hidden" name="plataforma" value="{{ titulo }}">
-        <div class="filter-section">
-          <div class="date-picker-container">
-            <label for="dateFilter">Selecione a Data:</label>
-            <input 
-              type="date" 
-              id="dateFilter" 
-              name="data" 
-              class="date-input" 
-              value="{{ data_selecionada }}">
-          </div>
-        </div>
-        <button type="submit" hidden>Filtrar</button>
-      </form>
-      <div class="horario">
-        <p id="hour"></p>
-      </div>
-        <div class="grid">
-          <div class="item">
-            <a>
-              <div class="box">
-                <h4>VQ do Gás Total Queimado na Plataforma</h4>
-                <img src="data:image/png;base64,{{ grafico_linha }}" alt="Gráfico de linha" class="grafico" onclick="abrirModal(this.src)">
-              </div>
-            </a>
-          </div>
-
-          <div class="item">
-            <a>
-              <div class="box">
-                <h4>Tipo de Queima (Diário)</h4>
-                <img src="data:image/png;base64,{{ grafico_rosca }}" alt="Gráfico de rosca" class="grafico grafico-rosca" onclick="abrirModal(this.src)">
-              </div>
-            </a>
-          </div>
-
-          <div class="item">
-            <a>
-              <div class="box" id="box-barras">
-                <h4>VQ Por Gás</h4>
-                <img src="data:image/png;base64,{{ grafico_barras }}" alt="Gráfico de barras" class="grafico" onclick="abrirModal(this.src)">
-              </div>
-            </a>
-          </div>
-
-          <div class="item">
-            <a>
-              <div class="box">
-                <h4>Eficiência de Queima</h4>
-                <div class="eficiencia_media">{{ eficiencia_media }}%</div>
-              </div>
-            </a>
-          </div>
-
-        </div>
-      <br><br>
-      <button id="btnRelatorio" class="relatorio">Gerar Relatório</button>
-
-    </div>
-    <!-- Modal de Gráfico -->
-    <div id="graficoModal" class="modal-grafico" onclick="fecharModal()">
-      <span class="fechar-modal" onclick="fecharModal()">&times;</span>
-      <img class="modal-conteudo" id="imgModal" onclick="event.stopPropagation()">
-    </div>
-
-    <div id="modalOverlay" class="modal-overlay">
-      <div id="reportModal" class="pageReport">
-          <span id="closeModal" class="material-symbols-outlined btnClose">close</span>
-          <div class="reportTitle"><p>Escolha o tipo de Relatório</p></div>
-          <div class="btns">
-            <button id="btnRCQ" class="reportBtns">Gerar Relatório - RCQ</button>
-            <button id="btnRQ" class="reportBtns">Gerar Relatório - RQ</button>
-          </div>
-      </div>
-    </div>
-
-    <!-- ===== JANELA PARA BAIXAR RELATÓRIO ===== -->
-    <div id="relatorioOverlay" class="downloadOverlay">
-      <div class="toolbar">
-        <div class="tool-item" id="btnBaixar">
-            <span class="material-symbols-outlined downloadBtn">download</span>
-            <span>Baixar</span>
-        </div>
-        <div class="tool-item" id="btnImprimir">
-            <span class="material-symbols-outlined printBtn">print</span>
-            <span>Imprimir</span>
-        </div>
-        <div class="tool-item" id="btnSair">
-            <span class="material-symbols-outlined exitBtn">close</span>
-            <span>Sair</span>
-        </div>
-      </div>
-
-      <div id="pageReportContainer" class="downloadPage">
-      </div>
-    </div>
     
-    <script>
-      function abrirModal(src) {
-        var modal = document.getElementById("graficoModal");
-        var imgModal = document.getElementById("imgModal");
-        modal.style.display = "flex";
-        imgModal.src = src;
-        document.body.style.overflow = "hidden"; // Evita rolagem da página
-      }
+    <!-- QUADRADO BRANCO-->
+<div class="white-box">
+  <div class="cabecalho">
+    <h2>Plataformas</h2>
+    <div class="subtitle">
+      <div class="yellow"></div>
+      <h4><i>Resumo Diário</i></h4>
+    </div>
+  </div>
 
-      function fecharModal() {
-        var modal = document.getElementById("graficoModal");
-        modal.style.display = "none";
-        document.body.style.overflow = "auto";
-      }
-
-      // Fechar modal com a tecla ESC
-      document.addEventListener('keydown', function(event) {
-        if (event.key === "Escape") {
-          fecharModal();
-        }
-      });
-    </script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-  <script src="{% static 'js/ResumoDetalhado.js' %}"></script>
-  <script src="{% static 'js/submenu.js' %}"></script>
-
+  <div class="itens">
+    <div class="grid">
+      {% for p in plataformas_dados %}
+      <a href="{% url 'plataforma:detalhado' %}?plataforma={{ p.nome }}">
+      <div class="item">
+        <h4>{{ p.nome }}</h4>
+          <div class="box">
+            <div class="volume">
+              <p>Volume Total de Queima:</p>
+              <label>{{ p.volume_total }}</label>
+            </div>
+            <img src="data:image/png;base64,{{ p.grafico_rosca }}" alt="Gráfico de rosca" class="grafico">
+          </div>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+  <script src="{% static 'js/SubMenu.js' %}"></script>
 </body>
 </html>

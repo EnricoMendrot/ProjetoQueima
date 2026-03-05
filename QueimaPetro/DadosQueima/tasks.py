@@ -51,4 +51,4 @@ def iniciar_gerador(intervalo_segundos=300):
         gerar_dados_queima()
         threading.Timer(intervalo_segundos, agendar).start()
 
-    threading.Timer(intervalo_segundos, agendar).start()
+    threading.Timer(intervalo_segundos, agendar).start() 

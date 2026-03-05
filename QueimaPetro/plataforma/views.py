@@ -5,7 +5,10 @@ import base64
 import io
 import unicodedata
 from datetime import timedelta
+from datetime import datetime
 
+import matplotlib
+matplotlib.use('Agg')
 import matplotlib.dates as mdates
 import matplotlib.pyplot as plt
 from django.contrib import messages
@@ -27,7 +30,7 @@ def pegar_pontos(qs, n_pontos=5):
     """
     Retorna n_pontos igualmente distribuídos do início ao fim do queryset
     """
-    total = qs.count()
+    total = len(qs)
 
     if total == 0:
         return []
@@ -57,12 +60,12 @@ def _salvar_grafico_em_base64() -> str:
     buffer.seek(0)
 
     imagem_base64 = base64.b64encode(buffer.getvalue()).decode("utf-8")
-    plt.close()
+    plt.close("all")
     return imagem_base64
 
 def gerar_grafico_linha(dados) -> str:
-    # garante ordem por id
-    dados = dados.order_by("id")
+    
+    dados = sorted(dados, key=lambda x: x.id)
 
     pontos = pegar_pontos(dados)
 
@@ -118,7 +121,7 @@ def gerar_grafico_rosca(dados) -> str:
     valores = list(tipos.values())
     total = sum(valores)
     
-    plt.figure(figsize=(6, 4))
+    plt.figure(figsize=(5, 4))
 
     if total <= 0:
         plt.text(0.5, 0.5, "Sem dados para rosca", ha="center", va="center", fontsize=12)
@@ -171,23 +174,52 @@ def gerar_grafico_barras(dados) -> str:
         gases[nome] = gases.get(nome, 0) + vol
 
     plt.figure(figsize=(5, 3))
+    if not gases:
+        plt.text(0.5, 0.5, "Sem dados para barras", ha="center", va="center", fontsize=12)
+        plt.axis("off")
+        return _salvar_grafico_em_base64()
+
     plt.barh(list(gases.keys()), list(gases.values()), color="#009c98")
     plt.xlabel("Volume (m³)")
 
     return _salvar_grafico_em_base64()
 
-# ==========================
-# Dashboard
-# ==========================
+# ========================== 
+# Dashboard                     
+# ========================== 
 
 def visualizacao_grafico(request):
     agora = timezone.now()
-
     dados = MaterialQueimado.objects.all()
 
-    grafico_linha = gerar_grafico_linha(dados)
-    grafico_rosca = gerar_grafico_rosca(dados)
-    grafico_barras = gerar_grafico_barras(dados)
+    nome_plataforma = request.GET.get('plataforma')
+    data_selecionada = request.GET.get('data')
+
+    # 🔹 Filtro por plataforma
+    if nome_plataforma:
+        dados = dados.filter(plataforma=nome_plataforma)
+
+    # 🔹 Filtro por data
+    if data_selecionada:
+        try:
+            data_convertida = datetime.strptime(data_selecionada, "%Y-%m-%d")
+
+            inicio = data_convertida
+            fim = data_convertida + timedelta(days=1)
+
+            dados = dados.filter(
+                data_queima__gte=inicio,
+                data_queima__lt=fim
+            )
+
+        except ValueError:
+            pass
+
+    dados_lista = list(dados)
+
+    grafico_linha = gerar_grafico_linha(dados_lista)
+    grafico_rosca = gerar_grafico_rosca(dados_lista)
+    grafico_barras = gerar_grafico_barras(dados_lista)
 
     eficiencias = []
     for d in dados:
@@ -207,16 +239,47 @@ def visualizacao_grafico(request):
         "grafico_barras": grafico_barras,
         "eficiencia_media": eficiencia_media,
         "ultima_atualizacao": agora,
-        "titulo": "Plataforma (todos os dados)",
+        "titulo": nome_plataforma,
+        "data_selecionada": data_selecionada,
     }
-    return render(request, "ExibiçãoDetalhada/Resumo_Detalhado.html", contexto)
 
+    return render(request, "ExibiçãoDetalhada/Resumo_Detalhado.html", contexto)
 
 
 # ==========================
 # CRUD - Plataforma
 # ==========================
 
+def home(request):
+    agora = timezone.now()
+
+    plataformas = MaterialQueimado.objects.values_list('plataforma', flat=True).distinct()
+    
+    plataformas_dados = []
+    
+    for plataforma in plataformas:
+        dados = MaterialQueimado.objects.filter(plataforma=plataforma)
+
+        volume_valor = sum([getattr(d, "volume_gas", 0) for d in dados if getattr(d, "volume_gas", 0) is not None])
+        
+        # Formata para o padrão brasileiro: 1.234.567,89
+        volume_total = f"{volume_valor:,.2f}".replace(",", "X").replace(".", ",").replace("X", ".") + " m³"
+
+        grafico_rosca = gerar_grafico_rosca(dados)
+
+        plataformas_dados.append({
+            "nome": plataforma,
+            "volume_total": volume_total,
+            "grafico_rosca": grafico_rosca
+        })
+
+    contexto = {
+        "plataformas_dados": plataformas_dados,
+        "ultima_atualizacao": agora,
+    }
+    
+    return render(request, "ExibicaoSimples/Resumo_Diario.html", contexto)
+    
 def cadastrar(request):
     if request.method == "POST":
         form = PlataformaForm(request.POST)
