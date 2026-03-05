@@ -404,10 +404,12 @@ body.blurred::before {
 /*==== GRÁFICOS ====*/
 .grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 colunas */
-  gap: 5%; /* espaço entre blocos */
-  height: 73vh;
-  padding-bottom: 5%;
+  grid-template-columns: repeat(2, 1fr); /* 2 colunas */
+  grid-template-columns: 40% 55%;
+  gap: 4%; /* espaço entre blocos */
+  height: 63vh;
+  justify-content: center;
+  margin-bottom: 33px;
 }
 
 .item h4, p {
@@ -418,28 +420,11 @@ body.blurred::before {
 
 .box {
   width: 100%;
-  height: 90%;
+  height: 100%;
   background: #ffffff;
   border-radius: 3px;
   border: 0.5px solid #008445;
   box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.3);
-}
-
-.volume {
-  margin: 4% auto 4%;
-  display: flex;
-  align-items: center;
-  width: 80%;
-  min-height: 20%;
-  border: 0.5px solid #008445;
-  border-radius: 3px;
-  box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.3);
-  padding-top: 2%;
-}
-
-.volume p {
-  padding-left: 4%;
-  font-size: 16px;
 }
 
 /*==== BOTÃO PARA EDITAR PERFIL ====*/
