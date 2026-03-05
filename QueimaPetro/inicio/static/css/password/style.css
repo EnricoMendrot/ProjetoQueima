@@ -1,0 +1,260 @@
+/* ===== RESET E CONFIGURAÇÕES ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+    font-family: "Rubik", sans-serif;
+}
+
+/* ===== FUNDO DA PÁGINA ===== */
+body {
+    background-image: url(../img/background.png);
+    background-position: center top;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+/* ===== BASE ===== */
+.base {
+    width: 100%;
+    position: relative;
+    min-height: 100vh;
+    padding: 1rem 4vw 0 4vw;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ===== HEADER ===== */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2.5rem 0 1rem 0;
+    width: 100%;
+}
+
+/* ===== LOGO ===== */
+header > .logo > img {
+    height: 2.8rem;
+    width: auto;
+}
+
+/* ===== CONTEÚDO PRINCIPAL ===== */
+main {
+    display: grid;
+    grid-template-columns: 60% 40%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    max-width: 100%;
+}
+
+/* ===== TÍTULO ===== */
+.title > p {
+    max-width: 38rem;
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 500;
+    color: white;
+}
+
+/* ===== CONTAINER DE TEXTO ===== */
+.container {
+    max-width: 42rem;
+    width: 100%;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    background-color: rgba(255, 255, 255, 0.096);
+    border: 1px solid #fff;
+    justify-content: center;
+    flex-direction: column;
+    display: flex;
+}
+
+/* ===== TEXTO ===== */
+.text > p {
+    font-family: Montserrat, sans-serif;
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    color: white;
+    line-height: 1.6;
+}
+
+/* ===== GRADIENTE ===== */
+.container-gradient {
+    grid-column: 2;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40%;
+    height: 100vh;
+    display: flex;
+    padding: 5rem;
+    background: linear-gradient(-45deg, #F2B544, #86A244, #238B3B, #006233);
+}
+
+/* ===== BOTÃO VOLTAR ===== */
+.cta-back {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+}
+
+.cta-back button {
+    border: 1px solid #fff;
+    height: 2.4rem;
+    width: 9.5rem;
+    border-radius: 0.5rem;
+    font-family: Rubik;
+    color: white;
+    background-color: rgba(255, 255, 255, 0.219);
+    cursor: pointer;
+    font-size: 0.95rem;
+}
+
+/* ===== CARD LOGIN ===== */
+.login-card {
+    background-color: #fff;
+    border-radius: 5px;
+    color: #000;
+    margin: auto;
+    min-width: 70%;
+
+    /* 🔧 CORREÇÃO DA ALTURA */
+    max-height: calc(100vh - 8rem);
+    overflow-y: auto;
+}
+
+/* ===== GRID ESQUERDA ===== */
+.title,
+.container {
+    grid-column: 1;
+}
+
+/* ===== FORMULÁRIO ===== */
+.forms {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto auto;
+    gap: 30px;
+    padding: 2rem;
+}
+
+.item1,
+.item2 {
+    grid-column: 1 / -1;
+    text-align: center;
+}
+
+.item3 {
+    grid-column: 1 / -1;
+}
+
+.item3 label {
+    font-weight: 400;
+}
+
+.item3 i {
+    margin-left: 5px;
+    vertical-align: middle;
+}
+
+.item3 input {
+    height: 2.6rem;
+    padding: 5px;
+    margin-top: 10px;
+    border-radius: 4px;
+    width: 100%;
+    border: 1px solid #ccc;
+}
+
+.item4 {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.item4 button {
+    width: 45%;
+    padding: 0.8rem;
+    background-color: #238B3B;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+/* ===== RESPONSIVIDADE ===== */
+@media (max-width: 1060px) {
+    main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .container-gradient {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        padding: 3rem;
+        margin-top: 2rem;
+        border-radius: 5px;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .login-card {
+        min-width: 100%;
+        min-height: auto;
+        overflow-y: auto;
+        margin-top: 3rem;
+    }
+
+    .forms {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 1rem;
+    }
+
+    .item4 button {
+        max-width: 80%;
+        padding: 0.6rem;
+    }
+
+    .cta-back {
+        top: 1rem;
+        left: 40px;
+        right: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .title > p {
+        font-size: clamp(1.5rem, 5vw, 2rem);
+    }
+
+    .container,
+    .login-card {
+        padding: 1rem;
+    }
+
+    .cta-back button {
+        max-width: 120px;
+        height: 2rem;
+        font-size: 0.85rem;
+    }
+
+    .item4 button {
+        width: 90%;
+        padding: 0.5rem;
+    }
+}

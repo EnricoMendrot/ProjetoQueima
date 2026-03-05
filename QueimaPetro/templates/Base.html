@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Queima Petro{% endblock %}</title>
+  
+  <!-- CSS -->
+  <link rel="stylesheet" href="{% static 'css/base.css' %}">
+  <link rel="stylesheet" href="{% static 'css/reset.css' %}">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+  
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+  </style>
+
+  {% block extra_css %}{% endblock %}
+</head>
+
+<body>
+
+  <div class="fundo">
+
+    <!-- LOGO TOPO DIREITO -->
+    <header class="topo">
+      <img src="{% static 'img/logo.png' %}" alt="Petrobras" class="logo">
+    </header>
+
+    <!-- ÍCONE DE LOGOUT -->
+    <a href="/login/index.html">
+      <span class="logout-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <!-- seu path do logout -->
+        </svg>
+      </span>
+    </a>
+
+    <!-- ÍCONE MENU PRINCIPAL (3x3) -->
+    <div class="menu-icon" id="menuToggle">
+      <!-- seu SVG do menu 3x3 -->
+    </div>
+
+    <!-- SUBMENU (fixed) -->
+    <div class="submenu" id="submenu">
+      <!-- todo o submenu aqui -->
+    </div>
+
+    <!-- CONTEÚDO PRINCIPAL (agora dentro do fundo) -->
+    <section class="base">
+      {% block content %}
+      {% endblock %}
+    </section>
+
+  </div>  <!-- fecha .fundo -->
+
+  <!-- JS do submenu -->
+  <script src="{% static 'js/SubMenu.js' %}"></script>
+
+  {% block extra_js %}{% endblock %}
+</body>
+
+</html>
