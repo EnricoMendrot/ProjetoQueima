@@ -401,13 +401,22 @@ body.blurred::before {
   margin-top: 9.5px;
 }
 
+.layout {
+  margin: 0 auto;
+  height: 69vh;
+  padding-top: 60px;
+  border: 1px solid #B3B3B3;
+  width: 90%;
+  background-color: white;
+}
+
 /*==== GRÁFICOS ====*/
 .grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr); /* 2 colunas */
   grid-template-columns: 40% 55%;
   gap: 4%; /* espaço entre blocos */
-  height: 63vh;
+  height: 53vh;
   justify-content: center;
   margin-bottom: 33px;
 }
@@ -423,8 +432,24 @@ body.blurred::before {
   height: 100%;
   background: #ffffff;
   border-radius: 3px;
-  border: 0.5px solid #008445;
+  border: 1px solid #B3B3B3;
   box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.3);
+}
+
+.userIcon {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+}
+
+.infoPerfil {
+  margin: 0 auto;
+}
+
+.userIcon .material-symbols-outlined {
+  font-size: 200px !important;
+  color: grey;
+  font-variation-settings: 'wght' 100;
 }
 
 /*==== BOTÃO PARA EDITAR PERFIL ====*/
