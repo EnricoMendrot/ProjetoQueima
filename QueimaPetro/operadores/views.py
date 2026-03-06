@@ -4,6 +4,8 @@ from database.models import Funcionario
 from django.http import HttpRequest
 from .forms import OperadorForm
 from django.contrib.auth.decorators import permission_required, login_required
+from django.db.models import Q
+
 # ========================== Visualização ========================== #
 
 @login_required
@@ -95,3 +97,20 @@ def cadastro_operadores(request):
         form = OperadorForm()
 
     return render(request, "Cadastro/CadastroOperador.html", {"form": form})
+
+# ========================== PERFIL ========================== #
+@login_required
+@permission_required('database.view_funcionario')
+def perfil_operador(request):
+    # Tenta pegar o funcionário pelo e-mail primeiro, depois pelo nome de usuário como fallback
+    funcionario = Funcionario.objects.filter(
+        Q(email__iexact=request.user.email) | Q(nome__icontains=request.user.username)
+    ).first()
+
+    if not funcionario:
+        messages.warning(request, "Seu perfil técnico de funcionário não foi vinculado automaticamente ao seu usuário de acesso.")
+
+    contexto = {
+        "funcionario": funcionario
+    }
+    return render(request, "Perfil/Perfil.html", contexto)

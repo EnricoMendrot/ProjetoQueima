@@ -7,4 +7,5 @@ urlpatterns = [
     path("cadastrar/",views.cadastro_operadores, name= 'cadastro'),
     path("<int:id>/",views.visualizarid_operador, name= 'visualizacaoid'),
     path("editar/<int:id>/",views.editar_operador, name= 'editar'),
+    path("perfil/",views.perfil_operador, name= 'perfil'),
 ]

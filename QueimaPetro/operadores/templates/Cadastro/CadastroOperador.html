@@ -221,7 +221,7 @@
       </div>
 
       <!--PERFIL-->
-      <div class="info-box">
+      <div class="info-box" onclick="window.location.href='{% url 'operadores:perfil' %}'">
         <p><strong>NOME:</strong><br>{{ user.username|upper }}</p>
         <p><strong>EMAIL:</strong><br>{{ user.email|default:"NÃO CADASTRADO"|upper }}</p>
         <div class="icon">
