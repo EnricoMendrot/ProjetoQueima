@@ -431,6 +431,7 @@ body.blurred::before {
 
 /* ===== FORM GRID ===== */
 .forms {
+  margin: auto;
   width: 90%;
   display: grid;
   gap: 25px;

@@ -18,7 +18,7 @@ from django.utils import timezone
 from DadosQueima.models import MaterialQueimado
 from database.models import Plataforma
 from .forms import PlataformaForm
-
+from django.contrib.auth.decorators import login_required, permission_required
 
 # Ativa/desativa modo de teste (período curto)
 MODO_TESTE = False
@@ -250,6 +250,7 @@ def visualizacao_grafico(request):
 # CRUD - Plataforma
 # ==========================
 
+@login_required
 def home(request):
     agora = timezone.now()
 
@@ -279,7 +280,9 @@ def home(request):
     }
     
     return render(request, "ExibicaoSimples/Resumo_Diario.html", contexto)
-    
+
+@login_required
+@permission_required('database.add_plataforma')
 def cadastrar(request):
     if request.method == "POST":
         form = PlataformaForm(request.POST)
@@ -296,6 +299,8 @@ def cadastrar(request):
     return render(request, "Cadastro/index2.html", {"form": form})
 
 # ========== Visualizar ========== #
+@login_required
+@permission_required('database.view_plataforma')
 def visualizar_plataforma(request):
 
     queryset = Plataforma.objects.all()
@@ -332,12 +337,14 @@ def visualizar_plataforma(request):
 
     return render(request, "Visualizar/plataformas_cadastradas.html", contexto)
 
-
+@login_required
+@permission_required('database.view_plataforma')
 def visualizar_plataformaid(request, id: int):
     plataforma = get_object_or_404(Plataforma, id=id)
     return render(request, "Visualizacao_PlataformaID/index.html", {"plataforma": plataforma})
 
-
+@login_required
+@permission_required('database.change_plataforma')
 def editar_plataforma(request, id: int):
     plataforma = get_object_or_404(Plataforma, id=id)
 

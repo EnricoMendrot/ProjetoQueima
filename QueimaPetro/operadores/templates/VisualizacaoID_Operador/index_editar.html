@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="{% static 'css/VisualizacaoID_Operador/style.css' %} ">
   <link rel="stylesheet" href="{% static 'css/reset.css' %}">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+  <link rel="icon" href="{% static 'img/favicon.png' %}" type="image/x-icon">
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
     .forms {
@@ -87,8 +88,8 @@
 
       <!--PERFIL-->
       <div class="info-box">
-        <p><strong>NOME:</strong><br>RAFAEL MONTEIRO DA SILVA</p>
-        <p><strong>FUNÇÃO:</strong><br>ANALISTA DE DADOS JÚNIOR</p>
+        <p><strong>NOME:</strong><br>{{ user.username|upper }}</p>
+        <p><strong>EMAIL:</strong><br>{{ user.email|default:"NÃO CADASTRADO"|upper }}</p>
         <div class="icon">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36">
             <path
@@ -109,32 +110,7 @@
         </button>
       </a>
 
-      <button class="menu-item"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="25" viewBox="0 0 20 25"
-          fill="none">
-          <path
-            d="M8.75 15.75H10.5V19.25H8.75V15.75ZM13.125 14H14.875V19.25H13.125V14ZM4.375 10.5H6.125V19.25H4.375V10.5Z"
-            fill="#008445" />
-          <path
-            d="M17.5 2.625H14.875V1.75C14.875 1.28587 14.6906 0.840752 14.3624 0.512563C14.0342 0.184374 13.5891 0 13.125 0H6.125C5.66087 0 5.21575 0.184374 4.88756 0.512563C4.55937 0.840752 4.375 1.28587 4.375 1.75V2.625H1.75C1.28587 2.625 0.840752 2.80937 0.512563 3.13756C0.184374 3.46575 0 3.91087 0 4.375V22.75C0 23.2141 0.184374 23.6592 0.512563 23.9874C0.840752 24.3156 1.28587 24.5 1.75 24.5H17.5C17.9641 24.5 18.4092 24.3156 18.7374 23.9874C19.0656 23.6592 19.25 23.2141 19.25 22.75V4.375C19.25 3.91087 19.0656 3.46575 18.7374 3.13756C18.4092 2.80937 17.9641 2.625 17.5 2.625ZM6.125 1.75H13.125V5.25H6.125V1.75ZM17.5 22.75H1.75V4.375H4.375V7H14.875V4.375H17.5V22.75Z"
-            fill="#008445" />
-        </svg>GERAÇÃO DE RELATÓRIOS <span class="icone-lapis">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10">
-            <path
-              d="M9.83752 2.24552C10.0542 2.02888 10.0542 1.66782 9.83752 1.4623L8.5377 0.162477C8.33218 -0.0541591 7.97112 -0.0541591 7.75448 0.162477L6.7324 1.179L8.81544 3.26205M0 7.91696V10H2.08304L8.22664 3.85085L6.14359 1.76781L0 7.91696Z" />
-          </svg>
-        </span>
-      </button>
 
-      <button class="menu-item"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="25" viewBox="0 0 20 25"
-          fill="none">
-          <path
-            d="M8.75 15.75H10.5V19.25H8.75V15.75ZM13.125 14H14.875V19.25H13.125V14ZM4.375 10.5H6.125V19.25H4.375V10.5Z"
-            fill="#008445" />
-          <path
-            d="M17.5 2.625H14.875V1.75C14.875 1.28587 14.6906 0.840752 14.3624 0.512563C14.0342 0.184374 13.5891 0 13.125 0H6.125C5.66087 0 5.21575 0.184374 4.88756 0.512563C4.55937 0.840752 4.375 1.28587 4.375 1.75V2.625H1.75C1.28587 2.625 0.840752 2.80937 0.512563 3.13756C0.184374 3.46575 0 3.91087 0 4.375V22.75C0 23.2141 0.184374 23.6592 0.512563 23.9874C0.840752 24.3156 1.28587 24.5 1.75 24.5H17.5C17.9641 24.5 18.4092 24.3156 18.7374 23.9874C19.0656 23.6592 19.25 23.2141 19.25 22.75V4.375C19.25 3.91087 19.0656 3.46575 18.7374 3.13756C18.4092 2.80937 17.9641 2.625 17.5 2.625ZM6.125 1.75H13.125V5.25H6.125V1.75ZM17.5 22.75H1.75V4.375H4.375V7H14.875V4.375H17.5V22.75Z"
-            fill="#008445" />
-        </svg>GERENCIAR RELATÓRIOS
-      </button>
 
       <a href="{% url 'equipamento:visualizacao' %}">
 
@@ -172,6 +148,7 @@
       </button>
       </a>
 
+      {% if perms.database.add_equipamento or perms.database.add_operador or perms.database.add_plataforma %}
       <div class="menu-cadastros">
 
         <!-- BOTÃO PRINCIPAL -->
@@ -262,6 +239,7 @@
                 </svg>
               </span>
           </button>
+            {% endif %}
             
           </div>
         </div>
@@ -378,16 +356,18 @@
           </div>
 
           <!-- BOTÃO -->
+          {% if perms.database.change_operador %}
           <div class="item12">
             <button type="submit" id="submit">Salvar Alterações</button>
           </div>
+          {% endif %}
 
         </div>
       </form>
 
       
     </section>
-    <script src="{% static '/js/SubMenu.js' %}"></script>
+    <script src="{% static '/js/SubMenu.js' %}?v=4"></script>
 </body>
 
 </html>

@@ -10,6 +10,8 @@
   <link rel="stylesheet" href="{% static 'css/login/style.css' %}" />
   <link rel="stylesheet" href="{% static 'css/reset.css' %}" />
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="icon" href="{% static 'img/favicon.png' %}" type="image/x-icon">
+
   <style>
     @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
     body {
@@ -69,25 +71,35 @@
 
         <!-- CARD DE LOGIN -->
         <div class="login-card">
-          <div class="forms">
+          <form method="POST" action="{% url 'inicio:telalogin' %}" class="forms">
+            {% csrf_token %}
 
             <!-- TÍTULO CARD -->
             <div class="item1">
               <h2>Portal de Prestadores de Serviços</h2>
             </div>
 
+            <!-- MENSAGENS DE ERRO (Opcional, mas muito bom ter) -->
+            {% if messages %}
+              <div class="item1" style="color: red; text-align: center;">
+                {% for message in messages %}
+                  <p>{{ message }}</p>
+                {% endfor %}
+              </div>
+            {% endif %}
+
             <!-- USUÁRIO -->
             <div class="item2">
               <label for="user">Usuário</label>
               <i class="material-icons">person</i>
-              <input type="text" id="user" />
+              <input type="text" id="user" name="username" required />
             </div>
 
             <!-- SENHA -->
             <div class="item3">
               <label for="password">Password</label>
               <i class="material-icons">lock</i>
-              <input type="password" id="password" />
+              <input type="password" id="password" name="password" required />
             </div>
 
             <!-- LEMBRAR ACESSO -->
@@ -98,16 +110,15 @@
 
             <!-- ESQUECI SENHA -->
             <div class="item5">
-              <a href= "{% url 'inicio:telasenha' %}">Esqueci minha senha</a>
+              <a href="{% url 'inicio:telasenha' %}">Esqueci minha senha</a>
             </div>
 
             <!-- BOTÃO LOGIN -->
             <div class="item6">
-              <a href= ""></a>
               <button type="submit">Login</button>
             </div>
 
-          </div>
+          </form>
         </div>
 
       </div>

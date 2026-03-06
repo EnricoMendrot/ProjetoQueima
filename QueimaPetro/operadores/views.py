@@ -3,9 +3,11 @@ from django.contrib import messages
 from database.models import Funcionario
 from django.http import HttpRequest
 from .forms import OperadorForm
-
+from django.contrib.auth.decorators import permission_required, login_required
 # ========================== Visualização ========================== #
 
+@login_required
+@permission_required('database.view_funcionario')
 def visualizar_operadores(request):
     queryset=Funcionario.objects.all()
     # Pegar os valores dos filtros (GET)
@@ -42,7 +44,8 @@ def visualizar_operadores(request):
     return render(request, "Visualizacao/operadores_cadastrados.html", contexto)
 
 # =================== Visualização por ID ======================= #
-
+@login_required
+@permission_required('database.view_funcionario')
 def visualizarid_operador (request, id):
     try:
         funcionario = Funcionario.objects.get(id = id)
@@ -55,7 +58,8 @@ def visualizarid_operador (request, id):
     return render(request, "VisualizacaoID_Operador/index.html", contexto)
 
 # =================== Editar por ID ======================= #
-
+@login_required
+@permission_required('database.change_funcionario')
 def editar_operador(request:HttpRequest, id):
     funcionario = get_object_or_404(Funcionario, id=id)
     if request.method == 'POST':
@@ -72,6 +76,8 @@ def editar_operador(request:HttpRequest, id):
     }
     return render(request, 'VisualizacaoID_Operador/index_editar.html',context)
 # ========================== CADASTRO ========================== #
+@login_required
+@permission_required('database.add_funcionario')
 def cadastro_operadores(request):
     if request.method == "POST":
         form = OperadorForm(request.POST)

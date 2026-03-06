@@ -1,56 +1,58 @@
-const menuToggle = document.getElementById('menuToggle');
-const submenu = document.getElementById('submenu');
-const submenuClose = document.getElementById('submenuClose');
-const body = document.querySelector('body');
+const menuToggle = document.getElementById("menuToggle");
+const submenu = document.getElementById("submenu");
+const submenuClose = document.getElementById("submenuClose");
+const body = document.querySelector("body");
 
 // Abre submenu
-menuToggle.addEventListener('click', (e) => {
+menuToggle.addEventListener("click", (e) => {
   e.stopPropagation();
-  submenu.classList.add('visible');
-  body.classList.add('blurred');
-  menuToggle.classList.add('hidden'); // esconde o botão principal
+  submenu.classList.add("visible");
+  body.classList.add("blurred");
+  menuToggle.classList.add("hidden"); // esconde o botão principal
 });
 
 // === FUNÇÃO PARA FECHAR SUBBOTÕES DE CADASTROS ===
 function fecharSubbotoes() {
-  const menuCadastros = document.querySelector(".menu-cadastros");
-  const btnCadastros = document.getElementById('btnCadastros');
-
-  // Fecha subbotões e desativa seta
-  menuCadastros.classList.remove("open");
-  btnCadastros.classList.remove("active");
+  try {
+    const menuCadastros = document.querySelector(".menu-cadastros");
+    const btnCadastros = document.getElementById("btnCadastros");
+    if (menuCadastros && btnCadastros) {
+        menuCadastros.classList.remove("open");
+        btnCadastros.classList.remove("active");
+    }
+  } catch(e) {}
 }
 
-// Fecha submenu clicando 
-submenuClose.addEventListener('click', (e) => {
-  e.stopPropagation();
+function fecharSubmenu() {
+  try {
+    if (submenu) submenu.classList.remove("visible");
+    if (body) body.classList.remove("blurred");
+    fecharSubbotoes();
+  } catch(e) {}
+  
+  if (menuToggle) {
+      setTimeout(() => {
+        menuToggle.classList.remove("hidden");
+        // Forçar display block pra ter certeza absoluta
+        menuToggle.style.display = "block";
+      }, 50);
+  }
+}
 
-  submenu.classList.remove('visible');
-  body.classList.remove('blurred');
-
-  // FECHA SUBBOTÕES DE CADASTRO AUTOMATICAMENTE
-  fecharSubbotoes();
-
-  // Delay para mostrar o botão após a animação terminar
-  setTimeout(() => {
-    menuToggle.classList.remove('hidden');
-  }, 150);
-});
+// Fecha submenu clicando
+if (submenuClose) {
+  submenuClose.addEventListener("click", (e) => {
+    e.stopPropagation();
+    fecharSubmenu();
+  });
+}
 
 // Fecha submenu clicando fora
-document.addEventListener('click', (e) => {
-  if (!submenu.contains(e.target) && !menuToggle.contains(e.target)) {
-
-    submenu.classList.remove('visible');
-    body.classList.remove('blurred');
-
-    // FECHA SUBBOTÕES AO FECHAR O SUBMENU
-    fecharSubbotoes();
-
-    // Delay para mostrar o botão após a animação terminar
-    setTimeout(() => {
-      menuToggle.classList.remove('hidden');
-    }, 150);
+document.addEventListener("click", (e) => {
+  if (submenu && menuToggle) {
+    if (!submenu.contains(e.target) && !menuToggle.contains(e.target)) {
+      fecharSubmenu();
+    }
   }
 });
 
@@ -59,8 +61,10 @@ const setaCadastros = document.getElementById('setaCadastros');
 const menuCadastros = document.querySelector(".menu-cadastros");
 const btnCadastros = document.getElementById('btnCadastros');
 
-setaCadastros.addEventListener('click', (e) => {
-  e.stopPropagation();
-  menuCadastros.classList.toggle("open");
-  btnCadastros.classList.toggle("active");
-});
+if (setaCadastros && menuCadastros && btnCadastros) {
+  setaCadastros.addEventListener('click', (e) => {
+    e.stopPropagation();
+    menuCadastros.classList.toggle("open");
+    btnCadastros.classList.toggle("active");
+  });
+}
