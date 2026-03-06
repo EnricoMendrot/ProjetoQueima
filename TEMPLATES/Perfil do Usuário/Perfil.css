@@ -14,10 +14,11 @@ html {
 /* ===== FUNDO ===== */
 .fundo {
   width: 100%;
-  height: 100vh;
-  background:  linear-gradient(-45deg, #F2B544, #86A244, #238B3B, #006233 );
+  min-height: 100vh;
+  background: linear-gradient(-45deg, #F2B544, #86A244, #238B3B, #006233);
   position: relative;
-  overflow: hidden;
+  padding-top: 75px;
+  padding-bottom: 75px;
 }
 
 /* ===== BOTÃO MENU PRINCIPAL ===== */
@@ -221,13 +222,11 @@ html {
 /* ===== QUADRADO BRANCO ===== */
 .white-box {
   width: 88.95%;
-  height: 85%;
-  flex-shrink: 0;
   border-radius: 3px;
   background: #F5F7FB;
-  margin-top: 75px;   /* move para baixo */
-  margin-left: 6%; /* move para a direita */
+  margin-left: 6%;
   padding-top: 1%;
+  padding-bottom: 70px;
 }
 
 /* ===== DESFOQUE DO FUNDO ===== */
@@ -372,6 +371,7 @@ body.blurred::before {
 .itens {
   margin-left: 5%;
   margin-right: 5%;
+  padding-bottom: 2%;
 }
 
 .cabecalho {
@@ -401,55 +401,102 @@ body.blurred::before {
   margin-top: 9.5px;
 }
 
-.layout {
-  margin: 0 auto;
-  height: 69vh;
-  padding-top: 60px;
-  border: 1px solid #B3B3B3;
-  width: 90%;
-  background-color: white;
-}
-
-/*==== GRÁFICOS ====*/
+/*==== GRADE DOS DOIS LAYOUTS DO USUÁRIO ====*/
 .grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr); /* 2 colunas */
   grid-template-columns: 40% 55%;
   gap: 4%; /* espaço entre blocos */
-  height: 53vh;
   justify-content: center;
   margin-bottom: 33px;
+  align-items: stretch;
 }
 
-.item h4, p {
-  margin-bottom: 2%;
-  font-weight: normal;
-  font-family: "Montserrat";
+.item {
+  display: flex;
 }
 
+/*==== FUNDO DOS LAYOUTS ====*/
+.layout {
+  margin: 0 auto;
+  padding-top: 60px;
+  border: 1px solid #B3B3B3;
+  border-radius: 3px;
+  width: 90%;
+  background-color: white;
+}
+
+/*==== LAYOUTS DO USUÁRIO ====*/
 .box {
   width: 100%;
-  height: 100%;
   background: #ffffff;
-  border-radius: 3px;
+  border-radius: 2px;
   border: 1px solid #B3B3B3;
   box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.3);
+  padding-bottom: 6%;
+  flex: 1;
 }
 
 .userIcon {
   display: flex;
   justify-content: center;
-  height: 100%;
-}
-
-.infoPerfil {
-  margin: 0 auto;
 }
 
 .userIcon .material-symbols-outlined {
-  font-size: 200px !important;
+  font-size: 250px !important;
   color: grey;
   font-variation-settings: 'wght' 100;
+}
+
+/*==== INFORMAÇÕES BÁSICAS DO USUÁRIO ====*/
+.userInfo {
+  margin-top: 47px;
+  margin-left: 46px;
+  color: grey;
+}
+
+.userInfo p {
+  margin-bottom: 42px;
+}
+
+/*==== TÍTULO DO LAYOUT DE INFORMAÇÕES TÉCNICAS DO USUÁRIO ====*/
+.titleInfo {
+  display: flex;
+  margin-top: 28px;
+  margin-bottom: 21px;
+}
+
+.titleInfo p {
+  margin: 0 auto;
+  color: #5C5C5C;
+  font-family: Rubik;
+  font-size: 20px;
+}
+
+.gridFields {
+  display: grid;
+  grid-template-columns: repeat(1, 7fr);
+  justify-content: center;
+}
+
+.gridFields p {
+  margin-left: 9%;
+  color: #5C5C5C;
+  font-family: Rubik;
+  font-size: 14px;
+  margin-bottom: 5px;
+  margin-top: 10px;
+}
+
+.field {
+  display: flex;
+  margin: 0 auto;
+  width: 82%;
+  height: 36px;
+  background: #ffffff;
+  border-radius: 3px;
+  border: 1px solid #B3B3B3;
+  box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.3);
 }
 
 /*==== BOTÃO PARA EDITAR PERFIL ====*/
