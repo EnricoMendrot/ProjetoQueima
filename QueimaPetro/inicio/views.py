@@ -26,12 +26,13 @@ def tela_login(request):
             login(request, user)
             
             # Mande ele pro painel inicial
-            return redirect('plataforma:home') # Altere pro nome correto da sua rota principal!
+            return redirect('plataforma:home')
             
         else:
             # Se errou, mande uma mensagem de erro e devolva a mesma tela
             messages.error(request, 'Usuário ou senha inválidos.')
-            return render(request, 'login/login.html') # ou o template que você usa
+            return render(request, 'login/login.html') 
+            
     # Se for só um GET (abriu a página agora), só mostra o HTML
     return render(request, 'login/login.html')
 

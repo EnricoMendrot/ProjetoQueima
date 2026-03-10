@@ -82,9 +82,9 @@
             <!-- MENSAGENS DE ERRO (Opcional, mas muito bom ter) -->
             {% if messages %}
               <div class="item1" style="color: red; text-align: center;">
-                {% for message in messages %}
+                {% if message.tags == "error" %}
                   <p>{{ message }}</p>
-                {% endfor %}
+                {% endif %}
               </div>
             {% endif %}
 
