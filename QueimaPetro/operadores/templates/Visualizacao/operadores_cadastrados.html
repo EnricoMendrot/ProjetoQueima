@@ -15,6 +15,7 @@
     @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
     a {
       text-decoration: none;
+      color: #008445;
     }
 
     a:hover { /* Quando o mouse passa por cima */
@@ -113,11 +114,14 @@
       </div>
 
       <!--ÍCONES DO SUBMENU-->
+      <a href = "{% url 'plataforma:home' %}">
 
-      <a href="{% url 'plataforma:home' %}" style="text-decoration: none;">
-        <button class="menu-item"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-          <path d="M10 20V14H14V20H19V12H22L12 3L2 12H5V20H10Z" fill="#008445" stroke="white" stroke-width="0.3"/>
-          </svg>HOME PLATAFORMA
+        <button class="menu-item"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 19 19"
+          fill="none">
+            <path
+               d="M18.8496 6.26953V18.416H10.8379V12.2275H8.16211V18.416H0.150391V6.26953L9.5 0.178711L18.8496 6.26953ZM16.7754 7.13867L16.707 7.09473L9.58203 2.45312L9.5 2.39941L9.41797 2.45312L2.29297 7.09473L2.22461 7.13867V16.6533H6.08789V10.4639H12.9121V16.6533H16.7754V7.13867Z"
+               fill="#008445" stroke="white" stroke-width="0.3" />
+            </svg>HOME
         </button>
       </a>
 

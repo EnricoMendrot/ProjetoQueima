@@ -1,0 +1,120 @@
+/* ===== RESET E CONFIGURAÇÕES GERAIS ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+    font-family: "Rubik", sans-serif;
+}
+
+/* ===== FUNDO DA PÁGINA ===== */
+body {
+    background-image: url(../img/background.png);
+    background-position: center top;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+/* ===== BASE DA ESTRUTURA ===== */
+.base {
+    width: 100%;
+    min-height: 100vh;
+    padding: 1rem 4vw 0 4vw;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ===== HEADER ===== */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2.5rem 0 1rem 0;
+    width: 100%;
+}
+
+/* ===== LOGO ===== */
+header > .logo > img {
+    height: 2.8rem;
+    width: auto;
+}
+
+/* ===== BOTÃO DE AÇÃO ===== */
+.cta > a > button {
+    border: 1px solid #fff;
+    height: 2.4rem;
+    width: 9.5rem;
+    border-radius: 0.5rem;
+    font-family: Rubik;
+    color: white;
+    background-color: rgba(255, 255, 255, 0.219);
+    cursor: pointer;
+    font-size: 0.95rem;
+}
+
+/* ===== CONTEÚDO PRINCIPAL ===== */
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    max-width: 70rem;
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* ===== TÍTULO ===== */
+.title > p {
+    max-width: 38rem;
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 500;
+    color: white;
+}
+
+/* ===== CONTAINER DE TEXTO ===== */
+.container {
+    max-width: 42rem;
+    width: 100%;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    background-color: rgba(255, 255, 255, 0.096);
+    border: 1px solid #fff;
+}
+
+/* ===== TEXTO ===== */
+.text > p {
+    font-family: Montserrat, sans-serif;
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    color: white;
+    line-height: 1.6;
+}
+
+/* ===== RESPONSIVIDADE ===== */
+@media (max-width: 768px) {
+
+    .base {
+        padding: 0 6vw;
+    }
+
+    main {
+        align-items: center;
+        text-align: center;
+    }
+
+    .title > p {
+        margin-top: 2.5rem;
+        margin-bottom: 1.8rem;
+    }
+
+    .container {
+        width: 100%;
+        padding: 1.6rem;
+    }
+}

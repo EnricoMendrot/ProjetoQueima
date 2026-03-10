@@ -1,0 +1,940 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body,
+html {
+  width: 100%;
+  height: 100%;
+  font-family: "Rubik", sans-serif;
+}
+
+/* ===== FUNDO ===== */
+.fundo {
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(-45deg, #f2b544, #86a244, #238b3b, #006233);
+  position: relative;
+  overflow: hidden;
+}
+
+/* ===== BOTÃO MENU PRINCIPAL ===== */
+.menu-icon {
+  position: absolute;
+  top: 22px;
+  left: 28px;
+  width: 26px;
+  height: 26px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 3px;
+  cursor: pointer;
+  z-index: 1002;
+  transition: opacity 0.3s ease;
+}
+
+.menu-icon div {
+  background-color: white;
+  width: 7px;
+  height: 7px;
+  border-radius: 1px;
+}
+
+/* ===== ESCONDER MENU PRINCIPAL ===== */
+.menu-icon.hidden {
+  display: none !important;
+}
+
+/* ===== LOGO DIREITA ===== */
+.topo {
+  position: absolute;
+  top: 17px;
+  right: 20px;
+}
+
+.logo {
+  width: 140px;
+  height: auto;
+}
+
+/* ===== LOGOUT ===== */
+.logout-icon {
+  position: absolute;
+  top: 75px;
+  right: 1.8%;
+  color: white;
+  cursor: pointer;
+  opacity: 0.9;
+  font-size: 22px;
+}
+
+/* ===== SUBMENU ===== */
+.submenu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 341px;
+  height: 100vh;
+  flex-shrink: 0;
+  background: linear-gradient(-45deg, #f2b544, #86a244, #238b3b, #006233);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transform: translateX(-110%);
+  transition: transform 0.4s ease;
+  z-index: 1000;
+}
+
+/* ===== CABEÇALHO SUBMENU ===== */
+.submenu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.logo-submenu {
+  width: 214px;
+  height: 59px;
+  flex-shrink: 0;
+  aspect-ratio: 214/59;
+}
+
+/* ===== ÍCONE DENTRO DO SUBMENU ===== */
+.submenu .menu-close {
+  width: 29px;
+  height: 27px;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.submenu .submenu-close div {
+  background-color: white;
+  width: 6px;
+  height: 6px;
+  border-radius: 2px;
+}
+
+/* ===== QUANDO VISÍVEL ===== */
+.submenu.visible {
+  transform: translateX(0);
+}
+
+/* ===== INFO BOX ===== */
+.info-box {
+  width: 285px;
+  height: 130px;
+  color: #008445;
+  border-radius: 3px;
+  border: 0.3px solid #008445;
+  background: #fff;
+  cursor: pointer;
+}
+
+.info-box:hover {
+  background-color: #e5f3e7;
+}
+
+/* ===== ESTILIZAR OS PARÁGRAFOS ===== */
+.info-box p {
+  margin: 10px 0;
+  font-size: 13px;
+  font-weight: normal;
+  line-height: 1.4;
+  margin-left: 6%;
+  margin-top: 6%;
+}
+
+/* ===== ESTILIZAR APENAS OS TÍTULOS ===== */
+.info-box p strong {
+  font-weight: bold;
+  font-size: 14px;
+  margin-bottom: 3px;
+  color: #008445;
+}
+
+/* ===== ÍCONE DE PERFIL ===== */
+.icon {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  margin-left: 82%;
+  margin-top: -37%;
+  fill: #008445;
+}
+
+/* ===== BOTÕES ===== */
+.menu-item {
+  width: 285px;
+  height: 51.818px;
+  border-radius: 3px;
+  border: 0.3px solid #008445;
+  color: #008445;
+  font-family: Rubik;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 16px;
+  cursor: pointer;
+  background: #fff;
+}
+
+.menu-item:hover {
+  background-color: #e5f3e7;
+}
+
+/* ===== QUADRADO BRANCO ===== */
+.white-box {
+  max-width: 88.95%;
+  max-height: 85%;
+  flex-shrink: 0;
+  border-radius: 3px;
+  background: #f5f7fb;
+  margin: 75px auto;
+  padding: 1% 8% 4% 8%;
+}
+
+/* ===== CONTEÚDO E TÍTULOS ===== */
+.conteudo {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 32px;
+  margin-top: 56px;
+}
+
+.titulo {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 24px;
+}
+
+.return {
+  width: 154px;
+  height: 34px;
+  border-radius: 3px;
+  border: 1px solid #00793f;
+  background: #00793f;
+  color: white;
+  margin-top: 25px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+/* ==== GRÁFICOS ==== */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  grid-auto-rows: 1fr;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.box {
+  width: 100%;
+  height: 400px;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 3px;
+  border: 0.3px solid #b3b3b3;
+  box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.3);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.box img.grafico {
+  max-width: 100%;
+  max-height: 300px;
+  margin: 10px auto 0 auto;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.box img.grafico:hover {
+  transform: scale(1.02);
+}
+
+.box img.grafico-rosca {
+  max-width: 100%;
+  max-height: 320px; /* Reduzido de 380px para caber no quadrado */
+  object-fit: contain;
+}
+
+/* ===== MODAL DE GRÁFICOS ===== */
+.modal-grafico {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(3px);
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.modal-conteudo {
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 100%;
+  border-radius: 5px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  background: white;
+  padding: 5px;
+  object-fit: contain;
+}
+
+.fechar-modal {
+  position: absolute;
+  top: 25px;
+  right: 40px;
+  color: #fff;
+  font-size: 50px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 2001;
+}
+
+.horario {
+  margin-left: 0;
+  margin-bottom: 20px;
+  color: #5c5c5c;
+  white-space: nowrap;
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+}
+
+.eficiencia_media {
+  font-size: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  color: #008445;
+  flex: 1;
+}
+
+/* =====================================================
+   EXCLUSIVOS DO ARQUIVO 2
+   ===================================================== */
+
+/* ===== DESFOQUE DO FUNDO ===== */
+body.blurred::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(2.5px);
+  background: rgba(0, 0, 0, 0.12);
+  z-index: 999;
+  pointer-events: none;
+}
+
+/* ===== CABEÇALHO ===== */
+.cabecalho {
+  margin: right;
+}
+
+.cabecalho h4 {
+  font-weight: normal;
+  font-family: "Montserrat";
+  white-space: nowrap;
+}
+
+/* ==== SUB-TÍTULO ==== */
+.subtitle {
+  display: flex;
+  color: grey;
+  font-size: 24px;
+}
+
+.yellow {
+  height: 6px;
+  width: 41px;
+  background-color: #f2b544;
+  margin-top: 12px;
+  margin-right: 30px;
+}
+
+/* ===== ÍCONES DO MENU ===== */
+.arrow {
+  margin-left: auto;
+  margin-top: 16px;
+}
+
+.icone-lapis {
+  width: 10px;
+  height: 10px;
+  margin-top: 17px;
+  margin-left: -80%;
+  fill: #008445;
+}
+
+.icone-seta {
+  width: 14px;
+  height: 13px;
+  margin-left: 40%;
+  fill: #008445;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.icone-lapis1 {
+  width: 10px;
+  height: 10px;
+  margin-top: 17px;
+  margin-left: -90%;
+  fill: #008445;
+}
+
+.icone-lapis2 {
+  width: 10px;
+  height: 10px;
+  margin-top: 17px;
+  margin-left: -79%;
+  fill: #008445;
+}
+
+.icone-lapis3 {
+  width: 10px;
+  height: 10px;
+  margin-top: 17px;
+  margin-left: -84%;
+  fill: #008445;
+}
+
+/* ===== CONTAINER PRINCIPAL DE CADASTROS ===== */
+.menu-cadastros {
+  width: 285px;
+  font-family: sans-serif;
+}
+
+.menu-cadastros.open .icone-seta {
+  transform: rotate(180deg);
+}
+
+/* ===== SUBMENU2 PARA SUBBOTÕES ===== */
+.sub-menu {
+  display: none;
+  flex-direction: column;
+  width: 100%;
+  border-left: 1px solid #008445;
+  border-right: 1px solid #008445;
+  border-bottom: 1px solid #008445;
+  border-radius: 0 0 4px 4px;
+  overflow: hidden;
+}
+
+.menu-cadastros.open .sub-menu {
+  display: flex;
+}
+
+/* ===== SUB-BOTÕES ===== */
+.sub-btn {
+  background: #fff;
+  border: none;
+  border-radius: 0;
+  padding: 10px;
+  color: #006c39;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  font-family: Rubik;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.menu-item2:hover,
+.sub-btn:hover {
+  background: #e9f5e8;
+}
+
+/* ===== BOTÃO DE CADASTRO ===== */
+#btnCadastros {
+  width: 285px;
+  height: 51.818px;
+  border-radius: 3px;
+  border-top: 0.3px solid #008445;
+  border-right: 0.3px solid #008445;
+  border-left: 0.3px solid #008445;
+  border-bottom: 0.3px solid #008445;
+  color: #008445;
+  font-family: Rubik;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 16px;
+  background: #fff;
+}
+
+#btnCadastros:hover {
+  background: #e5f3e7;
+}
+
+#btnCadastros.active {
+  border-bottom: none;
+}
+
+/* ==== ITEM H4 E P ==== */
+.item h4,
+p {
+  font-weight: normal;
+  font-family: "Rubik";
+}
+
+.item h4 {
+  font-size: 18px;
+}
+
+/* ==== VOLUME ==== */
+.volume {
+  display: flex;
+  align-items: center;
+  width: 48%;
+  height: 10%;
+  border-radius: 2px;
+  border: 0.3px solid #b3b3b3;
+  box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.25);
+  margin: 45vh auto 5vh;
+}
+
+.volume p {
+  margin: 0 auto;
+  font-size: 21px;
+}
+
+/* ==== BOTÃO PARA ABRIR JANELA DE RELATÓRIO ==== */
+.relatorio {
+  display: flex;
+  width: 154px;
+  height: 34px;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3px;
+  border: 1px solid #00793f;
+  background: #00793f;
+  color: white;
+  margin: 0 auto;
+  font-size: 15px;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.relatorio:hover {
+  transform: scale(1.04);
+}
+
+.relatorio:active {
+  transform: scale(0.99);
+}
+
+/* ==== ESCURECER FUNDO ==== */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.4) !important;
+  backdrop-filter: blur(4px);
+  z-index: 5000;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-overlay.active {
+  display: flex !important;
+}
+
+/* ==== JANELA DE ESCOLHA DE RELATÓRIO ==== */
+.pageReport {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  width: 800px;
+  max-width: 90%;
+  height: 300px;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+.btnClose {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 35px !important;
+  color: #666;
+  cursor: pointer;
+}
+
+.reportTitle {
+  font-size: 24px;
+  margin-bottom: 40px;
+  color: #333;
+}
+
+.btns {
+  display: flex;
+  gap: 30px;
+}
+
+.reportBtns {
+  display: flex;
+  width: 179px;
+  height: 44px;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3px;
+  border: 1px solid #00793f;
+  background: #00793f;
+  color: white;
+  margin: 0 auto;
+  font-size: 15px;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.reportBtns:active {
+  transform: scale(0.99);
+}
+
+/* ==== FILTRO DE DATA (ESTILO CADASTRO - COMPACTO) ==== */
+.filter-section {
+  display: flex;
+  justify-content: flex-start;
+  margin: 10px 0;
+  width: 100%;
+}
+
+.date-picker-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+}
+
+.date-picker-container label {
+  font-size: 14px;
+  color: #5c5c5c;
+  font-family: "Rubik", sans-serif;
+  white-space: nowrap;
+}
+
+.date-input {
+  width: 180px;
+  height: 36px;
+  font-size: 14px;
+  padding: 0 10px;
+  border: 1px solid #5c5c5c;
+  border-radius: 2px;
+  font-family: "Montserrat", sans-serif;
+  color: #333;
+  outline: none;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.date-input:focus {
+  border-color: #008445;
+}
+
+/* ==== JANELA PARA BAIXAR RELATÓRIO ==== */
+.downloadOverlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.4) !important;
+  backdrop-filter: blur(4px);
+  z-index: 5000;
+  justify-content: center;
+  align-items: center;
+  overflow: auto;
+}
+
+.downloadOverlay.active {
+  display: flex !important;
+}
+
+.downloadPage {
+  background: #fff;
+  width: 210mm;
+  min-height: 297mm;
+  padding: 20mm;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  position: relative;
+  transform-origin: top center;
+}
+
+/* Container para permitir scroll se a escala ainda for grande */
+.downloadOverlay {
+  overflow-y: auto;
+  padding: 40px 0;
+}
+
+/* ==== TOOLBAR ==== */
+.toolbar {
+  position: fixed;
+  top: 20px;
+  right: 50px;
+  display: flex;
+  gap: 40px;
+  z-index: 5001;
+}
+
+.tool-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  color: white;
+  transition: transform 0.2s;
+  font-size: 18px;
+}
+
+.tool-item:hover {
+  transform: scale(1.1);
+}
+
+.tool-item:active {
+  transform: scale(0.99);
+}
+
+.tool-item span:not(.material-symbols-outlined) {
+  font-size: 14px;
+  font-family: "Montserrat", sans-serif;
+}
+
+.tool-item .material-symbols-outlined {
+  font-size: 40px !important;
+}
+
+/* ==== LÓGICA PARA IMPRESSÃO ==== */
+@media print {
+  body * {
+    visibility: hidden !important;
+  }
+
+  #relatorioOverlay,
+  #relatorioOverlay .downloadPage,
+  #relatorioOverlay .downloadPage * {
+    visibility: visible !important;
+  }
+
+  #relatorioOverlay {
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+    background: white !important;
+    backdrop-filter: none !important;
+  }
+
+  .downloadPage {
+    box-shadow: none !important;
+    width: 100% !important;
+    height: auto !important;
+    position: relative !important;
+  }
+
+  .toolbar {
+    display: none !important;
+  }
+}
+/* ==== ESTILO DO RELATÓRIO PDF (DENTRO DO MODAL) ==== */
+.downloadPage {
+  background: #fff;
+  width: 210mm;
+  min-height: 297mm;
+  padding: 20mm;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  overflow-y: auto;
+  position: relative;
+  font-family: "Montserrat", sans-serif;
+  transform-origin: center;
+  margin: auto;
+  color: #333;
+  line-height: 1.6;
+}
+
+.report-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 3px solid #008445;
+  padding-bottom: 15px;
+  margin-bottom: 25px;
+}
+
+.report-logo {
+  width: 150px;
+}
+
+.report-title-container {
+  text-align: right;
+}
+
+.report-title-container h1 {
+  font-size: 22px;
+  color: #008445;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.report-title-container p {
+  font-size: 14px;
+  color: #666;
+  margin: 0;
+}
+
+.report-section {
+  margin-bottom: 25px;
+}
+
+.report-section-title {
+  background: #f4f4f4;
+  padding: 8px 15px;
+  border-left: 5px solid #f2b544;
+  font-size: 18px;
+  font-weight: 600;
+  color: #00793f;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+}
+
+.report-grid-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.report-grid-info .info-item {
+  flex: 1 1 45%;
+}
+
+.info-item {
+  font-size: 14px;
+}
+
+.info-item strong {
+  color: #008445;
+}
+
+.report-summary-cards {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.summary-card {
+  flex: 1;
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+  padding: 15px;
+  text-align: center;
+  border-radius: 4px;
+}
+
+.summary-card span {
+  display: block;
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+}
+
+.summary-card strong {
+  font-size: 20px;
+  color: #008445;
+}
+
+.report-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.report-table th {
+  background: #008445;
+  color: white;
+  text-align: left;
+  padding: 10px;
+  font-size: 14px;
+}
+
+.report-table td {
+  border-bottom: 1px solid #eee;
+  padding: 10px;
+  font-size: 13px;
+}
+
+.report-list {
+  padding-left: 20px;
+  margin: 0;
+}
+
+.report-list li {
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.report-footer {
+  position: absolute;
+  bottom: 20mm;
+  left: 20mm;
+  right: 20mm;
+  border-top: 1px solid #eee;
+  padding-top: 10px;
+  font-size: 10px;
+  color: #999;
+  text-align: center;
+}
+
+/* Garante que o PDF gerado mantenha as cores */
+@media print {
+  .downloadPage {
+    box-shadow: none !important;
+    padding: 0 !important;
+  }
+  .report-section-title {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}

@@ -1,0 +1,14 @@
+[tool.ruff]
+# Ruff lê as configurações abaixo automaticamente ao rodar `ruff check .` ou `ruff format .`
+
+[tool.ruff.format]
+# Opções de formatação (equivalente ao Black)
+quote-style = "double"
+indent-style = "space"
+
+[tool.ruff.lint]
+exclude = [
+    "migrations/*",
+    "venv/*",
+    "*.generated.py",
+]
