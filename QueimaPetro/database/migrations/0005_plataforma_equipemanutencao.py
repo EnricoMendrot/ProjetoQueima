@@ -4,16 +4,15 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('database', '0004_rename_responsavel_plataforma_operadorprincipal_and_more'),
+        ("database", "0004_rename_responsavel_plataforma_operadorprincipal_and_more"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='plataforma',
-            name='EquipeManutencao',
-            field=models.CharField(default='N/A', max_length=100),
+            model_name="plataforma",
+            name="EquipeManutencao",
+            field=models.CharField(default="N/A", max_length=100),
             preserve_default=False,
         ),
     ]

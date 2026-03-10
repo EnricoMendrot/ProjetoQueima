@@ -4,15 +4,21 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('database', '0005_plataforma_equipemanutencao'),
+        ("database", "0005_plataforma_equipemanutencao"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='equipamento',
-            name='Status_Operacional',
-            field=models.CharField(choices=[('ativo', 'Ativo'), ('inativo', 'Inativo'), ('manutencao', 'Em Manutenção')], max_length=20),
+            model_name="equipamento",
+            name="Status_Operacional",
+            field=models.CharField(
+                choices=[
+                    ("ativo", "Ativo"),
+                    ("inativo", "Inativo"),
+                    ("manutencao", "Em Manutenção"),
+                ],
+                max_length=20,
+            ),
         ),
     ]

@@ -4,45 +4,44 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('operadores', '0001_initial'),
+        ("operadores", "0001_initial"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='registroequipamento',
-            name='ID_Equipamento',
+            model_name="registroequipamento",
+            name="ID_Equipamento",
         ),
         migrations.RemoveField(
-            model_name='funcionario',
-            name='ID_Plataforma',
+            model_name="funcionario",
+            name="ID_Plataforma",
         ),
         migrations.RemoveField(
-            model_name='ocorrenciaqueima',
-            name='ID_Funcionario',
+            model_name="ocorrenciaqueima",
+            name="ID_Funcionario",
         ),
         migrations.RemoveField(
-            model_name='registroequipamento',
-            name='ID_Funcionario',
+            model_name="registroequipamento",
+            name="ID_Funcionario",
         ),
         migrations.RemoveField(
-            model_name='ocorrenciaqueima',
-            name='ID_Plataforma',
+            model_name="ocorrenciaqueima",
+            name="ID_Plataforma",
         ),
         migrations.DeleteModel(
-            name='Equipamento',
+            name="Equipamento",
         ),
         migrations.DeleteModel(
-            name='Funcionario',
+            name="Funcionario",
         ),
         migrations.DeleteModel(
-            name='RegistroEquipamento',
+            name="RegistroEquipamento",
         ),
         migrations.DeleteModel(
-            name='OcorrenciaQueima',
+            name="OcorrenciaQueima",
         ),
         migrations.DeleteModel(
-            name='Plataforma',
+            name="Plataforma",
         ),
     ]

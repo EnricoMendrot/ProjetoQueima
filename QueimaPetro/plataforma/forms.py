@@ -22,13 +22,9 @@ class PlataformaForm(forms.ModelForm):
 
         widgets = {
             "nome": forms.TextInput(attrs={"class": "form-control"}),
-
             "localizacao": forms.TextInput(attrs={"class": "form-control"}),
-
             "tipo": forms.Select(attrs={"class": "form-control"}),
-
             "status": forms.Select(attrs={"class": "form-control"}),
-
             "data_comissionamento": DateInput(
                 attrs={
                     "type": "date",
@@ -36,7 +32,6 @@ class PlataformaForm(forms.ModelForm):
                 },
                 format="%Y-%m-%d",
             ),
-
             "data_inspecao": DateInput(
                 attrs={
                     "type": "date",
@@ -44,15 +39,10 @@ class PlataformaForm(forms.ModelForm):
                 },
                 format="%Y-%m-%d",
             ),
-
             "supervisor": forms.TextInput(attrs={"class": "form-control"}),
-
             "responsavel_tecnico": forms.TextInput(attrs={"class": "form-control"}),
-
             "operador_principal": forms.TextInput(attrs={"class": "form-control"}),
-
             "equipe_manutencao": forms.TextInput(attrs={"class": "form-control"}),
-
             "observacoes": forms.Textarea(
                 attrs={
                     "class": "form-control",

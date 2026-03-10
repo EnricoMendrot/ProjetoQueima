@@ -4,15 +4,25 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('database', '0009_rename_statuscomunicacao_ocorrenciaqueima_statuscomunicacao_and_more'),
+        (
+            "database",
+            "0009_rename_statuscomunicacao_ocorrenciaqueima_statuscomunicacao_and_more",
+        ),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='funcionario',
-            name='Turno',
-            field=models.CharField(choices=[('matutino', 'Matutino'), ('vespertino', 'Vespertino'), ('noturno', 'Noturno'), ('diurno', 'Diurno')], max_length=50),
+            model_name="funcionario",
+            name="Turno",
+            field=models.CharField(
+                choices=[
+                    ("matutino", "Matutino"),
+                    ("vespertino", "Vespertino"),
+                    ("noturno", "Noturno"),
+                    ("diurno", "Diurno"),
+                ],
+                max_length=50,
+            ),
         ),
     ]

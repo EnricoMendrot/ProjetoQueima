@@ -4,18 +4,17 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('DadosQueima', '0004_rename_resumoqueima_queimadto'),
+        ("DadosQueima", "0004_rename_resumoqueima_queimadto"),
     ]
 
     operations = [
         migrations.DeleteModel(
-            name='QueimaDTO',
+            name="QueimaDTO",
         ),
         migrations.AddField(
-            model_name='materialqueimado',
-            name='nome_gas',
-            field=models.CharField(default='Gás A', max_length=100),
+            model_name="materialqueimado",
+            name="nome_gas",
+            field=models.CharField(default="Gás A", max_length=100),
         ),
     ]

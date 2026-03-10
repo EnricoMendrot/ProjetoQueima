@@ -5,182 +5,214 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('database', '0016_renames'),
+        ("database", "0016_renames"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='equipamento',
-            options={'ordering': ['nome'], 'verbose_name': 'Equipamento', 'verbose_name_plural': 'Equipamentos'},
+            name="equipamento",
+            options={
+                "ordering": ["nome"],
+                "verbose_name": "Equipamento",
+                "verbose_name_plural": "Equipamentos",
+            },
         ),
         migrations.AlterModelOptions(
-            name='funcionario',
-            options={'ordering': ['nome'], 'verbose_name': 'Funcionário', 'verbose_name_plural': 'Funcionários'},
+            name="funcionario",
+            options={
+                "ordering": ["nome"],
+                "verbose_name": "Funcionário",
+                "verbose_name_plural": "Funcionários",
+            },
         ),
         migrations.AlterModelOptions(
-            name='ocorrenciaqueima',
-            options={'ordering': ['-data_hora'], 'verbose_name': 'Ocorrência de Queima', 'verbose_name_plural': 'Ocorrências de Queima'},
+            name="ocorrenciaqueima",
+            options={
+                "ordering": ["-data_hora"],
+                "verbose_name": "Ocorrência de Queima",
+                "verbose_name_plural": "Ocorrências de Queima",
+            },
         ),
         migrations.AlterModelOptions(
-            name='plataforma',
-            options={'ordering': ['nome'], 'verbose_name': 'Plataforma', 'verbose_name_plural': 'Plataformas'},
+            name="plataforma",
+            options={
+                "ordering": ["nome"],
+                "verbose_name": "Plataforma",
+                "verbose_name_plural": "Plataformas",
+            },
         ),
-
         migrations.AlterField(
-            model_name='equipamento',
-            name='codigo',
+            model_name="equipamento",
+            name="codigo",
             field=models.CharField(blank=True, db_index=True, max_length=50, null=True),
         ),
         migrations.AlterField(
-            model_name='equipamento',
-            name='nome',
+            model_name="equipamento",
+            name="nome",
             field=models.CharField(db_index=True, max_length=100),
         ),
         migrations.AlterField(
-            model_name='equipamento',
-            name='numero_patrimonio',
+            model_name="equipamento",
+            name="numero_patrimonio",
             field=models.CharField(blank=True, max_length=50, null=True),
         ),
         migrations.AlterField(
-            model_name='equipamento',
-            name='plataforma',
+            model_name="equipamento",
+            name="plataforma",
             field=models.ForeignKey(
                 blank=True,
-                db_column='ID_Plataforma',
-                help_text='Plataforma onde o equipamento está instalado (se aplicável).',
+                db_column="ID_Plataforma",
+                help_text="Plataforma onde o equipamento está instalado (se aplicável).",
                 null=True,
                 on_delete=django.db.models.deletion.SET_NULL,
-                related_name='equipamentos',
-                to='database.plataforma'
+                related_name="equipamentos",
+                to="database.plataforma",
             ),
         ),
         migrations.AlterField(
-            model_name='equipamento',
-            name='status_operacional',
+            model_name="equipamento",
+            name="status_operacional",
             field=models.CharField(
-                choices=[('ativo', 'Ativo'), ('inativo', 'Inativo'), ('manutencao', 'Em Manutenção')],
+                choices=[
+                    ("ativo", "Ativo"),
+                    ("inativo", "Inativo"),
+                    ("manutencao", "Em Manutenção"),
+                ],
                 db_index=True,
-                default='ativo',
-                max_length=20
+                default="ativo",
+                max_length=20,
             ),
         ),
-
         migrations.AlterField(
-            model_name='funcionario',
-            name='email',
+            model_name="funcionario",
+            name="email",
             field=models.EmailField(max_length=254, unique=True),
         ),
         migrations.AlterField(
-            model_name='funcionario',
-            name='nome',
+            model_name="funcionario",
+            name="nome",
             field=models.CharField(db_index=True, max_length=100),
         ),
         migrations.AlterField(
-            model_name='funcionario',
-            name='permissao',
+            model_name="funcionario",
+            name="permissao",
             field=models.CharField(
-                choices=[('operador', 'Operador'), ('gerente', 'Gerente'), ('administrador', 'Administrador')],
+                choices=[
+                    ("operador", "Operador"),
+                    ("gerente", "Gerente"),
+                    ("administrador", "Administrador"),
+                ],
                 db_index=True,
-                max_length=20
+                max_length=20,
             ),
         ),
         migrations.AlterField(
-            model_name='funcionario',
-            name='plataforma',
+            model_name="funcionario",
+            name="plataforma",
             field=models.ForeignKey(
                 blank=True,
-                help_text='Plataforma onde o funcionário está alocado (se aplicável).',
+                help_text="Plataforma onde o funcionário está alocado (se aplicável).",
                 null=True,
                 on_delete=django.db.models.deletion.SET_NULL,
-                related_name='funcionarios',
-                to='database.plataforma'
+                related_name="funcionarios",
+                to="database.plataforma",
             ),
         ),
         migrations.AlterField(
-            model_name='funcionario',
-            name='turno',
+            model_name="funcionario",
+            name="turno",
             field=models.CharField(
-                choices=[('matutino', 'Matutino'), ('vespertino', 'Vespertino'), ('noturno', 'Noturno'), ('diurno', 'Diurno')],
+                choices=[
+                    ("matutino", "Matutino"),
+                    ("vespertino", "Vespertino"),
+                    ("noturno", "Noturno"),
+                    ("diurno", "Diurno"),
+                ],
                 db_index=True,
-                max_length=20
+                max_length=20,
             ),
         ),
-
         migrations.AlterField(
-            model_name='ocorrenciaqueima',
-            name='classificacao_queima',
+            model_name="ocorrenciaqueima",
+            name="classificacao_queima",
             field=models.CharField(db_index=True, max_length=50),
         ),
         migrations.AlterField(
-            model_name='ocorrenciaqueima',
-            name='data_hora',
+            model_name="ocorrenciaqueima",
+            name="data_hora",
             field=models.DateTimeField(db_index=True),
         ),
         migrations.AlterField(
-            model_name='ocorrenciaqueima',
-            name='funcionario',
+            model_name="ocorrenciaqueima",
+            name="funcionario",
             field=models.ForeignKey(
                 on_delete=django.db.models.deletion.CASCADE,
-                related_name='ocorrencias_queima',
-                to='database.funcionario'
+                related_name="ocorrencias_queima",
+                to="database.funcionario",
             ),
         ),
         migrations.AlterField(
-            model_name='ocorrenciaqueima',
-            name='plataforma',
+            model_name="ocorrenciaqueima",
+            name="plataforma",
             field=models.ForeignKey(
                 on_delete=django.db.models.deletion.CASCADE,
-                related_name='ocorrencias_queima',
-                to='database.plataforma'
+                related_name="ocorrencias_queima",
+                to="database.plataforma",
             ),
         ),
         migrations.AlterField(
-            model_name='ocorrenciaqueima',
-            name='status_comunicacao',
+            model_name="ocorrenciaqueima",
+            name="status_comunicacao",
             field=models.CharField(
-                choices=[('pendente', 'Pendente'), ('enviada', 'Enviada'), ('falha', 'Falha')],
+                choices=[
+                    ("pendente", "Pendente"),
+                    ("enviada", "Enviada"),
+                    ("falha", "Falha"),
+                ],
                 db_index=True,
-                default='pendente',
-                max_length=20
+                default="pendente",
+                max_length=20,
             ),
         ),
         migrations.AlterField(
-            model_name='ocorrenciaqueima',
-            name='vazao',
-            field=models.DecimalField(decimal_places=2, help_text='Vazão registrada na ocorrência.', max_digits=10),
+            model_name="ocorrenciaqueima",
+            name="vazao",
+            field=models.DecimalField(
+                decimal_places=2,
+                help_text="Vazão registrada na ocorrência.",
+                max_digits=10,
+            ),
         ),
-
         migrations.AlterField(
-            model_name='plataforma',
-            name='nome',
+            model_name="plataforma",
+            name="nome",
             field=models.CharField(db_index=True, max_length=100, unique=True),
         ),
         migrations.AlterField(
-            model_name='plataforma',
-            name='status',
+            model_name="plataforma",
+            name="status",
             field=models.CharField(
-                choices=[('ativa', 'Ativa'), ('inativa', 'Inativa')],
+                choices=[("ativa", "Ativa"), ("inativa", "Inativa")],
                 db_index=True,
-                default='ativa',
-                max_length=20
+                default="ativa",
+                max_length=20,
             ),
         ),
         migrations.AlterField(
-            model_name='plataforma',
-            name='tipo',
+            model_name="plataforma",
+            name="tipo",
             field=models.CharField(
                 choices=[
-                    ('fixa', 'Fixa'),
-                    ('autoelevavel', 'Autoelevável'),
-                    ('semissubmersivel', 'Semissubmersível'),
-                    ('navio_sonda', 'Navio-Sonda'),
-                    ('fpso', 'FPSO'),
-                    ('tlwp_tlp', 'TLWP/TLP')
+                    ("fixa", "Fixa"),
+                    ("autoelevavel", "Autoelevável"),
+                    ("semissubmersivel", "Semissubmersível"),
+                    ("navio_sonda", "Navio-Sonda"),
+                    ("fpso", "FPSO"),
+                    ("tlwp_tlp", "TLWP/TLP"),
                 ],
                 db_index=True,
-                max_length=30
+                max_length=30,
             ),
         ),
     ]

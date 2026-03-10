@@ -4,24 +4,30 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('database', '0011_funcionario_cidade_funcionario_supervisor'),
+        ("database", "0011_funcionario_cidade_funcionario_supervisor"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='funcionario',
-            name='Matricula',
+            model_name="funcionario",
+            name="Matricula",
         ),
         migrations.AddField(
-            model_name='funcionario',
-            name='Observacoes',
+            model_name="funcionario",
+            name="Observacoes",
             field=models.TextField(blank=True, null=True),
         ),
         migrations.AlterField(
-            model_name='funcionario',
-            name='Cargo',
-            field=models.CharField(choices=[('operador', 'Operador'), ('gerente', 'Gerente'), ('administrador', 'Administrador')], max_length=100),
+            model_name="funcionario",
+            name="Cargo",
+            field=models.CharField(
+                choices=[
+                    ("operador", "Operador"),
+                    ("gerente", "Gerente"),
+                    ("administrador", "Administrador"),
+                ],
+                max_length=100,
+            ),
         ),
     ]

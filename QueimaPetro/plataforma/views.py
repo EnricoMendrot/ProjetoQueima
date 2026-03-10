@@ -8,7 +8,8 @@ from datetime import timedelta
 from datetime import datetime
 
 import matplotlib
-matplotlib.use('Agg')
+
+matplotlib.use("Agg")
 import matplotlib.dates as mdates
 import matplotlib.pyplot as plt
 from django.contrib import messages
@@ -22,6 +23,7 @@ from django.contrib.auth.decorators import login_required, permission_required
 
 # Ativa/desativa modo de teste (período curto)
 MODO_TESTE = False
+
 
 # ==========================
 # Função para pegar dados
@@ -38,10 +40,7 @@ def pegar_pontos(qs, n_pontos=5):
     if total <= n_pontos:
         return list(qs)
 
-    indices = [
-        round(i * (total - 1) / (n_pontos - 1))
-        for i in range(n_pontos)
-    ]
+    indices = [round(i * (total - 1) / (n_pontos - 1)) for i in range(n_pontos)]
 
     return [qs[i] for i in indices]
 
@@ -49,6 +48,7 @@ def pegar_pontos(qs, n_pontos=5):
 # ==========================
 # Helpers de gráficos
 # ==========================
+
 
 def _salvar_grafico_em_base64() -> str:
     """
@@ -63,8 +63,9 @@ def _salvar_grafico_em_base64() -> str:
     plt.close("all")
     return imagem_base64
 
+
 def gerar_grafico_linha(dados) -> str:
-    
+
     dados = sorted(dados, key=lambda x: x.id)
 
     pontos = pegar_pontos(dados)
@@ -104,6 +105,7 @@ def gerar_grafico_linha(dados) -> str:
 
     return _salvar_grafico_em_base64()
 
+
 def gerar_grafico_rosca(dados) -> str:
     tipos = {}
 
@@ -120,11 +122,13 @@ def gerar_grafico_rosca(dados) -> str:
 
     valores = list(tipos.values())
     total = sum(valores)
-    
+
     plt.figure(figsize=(5, 4))
 
     if total <= 0:
-        plt.text(0.5, 0.5, "Sem dados para rosca", ha="center", va="center", fontsize=12)
+        plt.text(
+            0.5, 0.5, "Sem dados para rosca", ha="center", va="center", fontsize=12
+        )
         plt.axis("off")
         return _salvar_grafico_em_base64()
 
@@ -135,7 +139,7 @@ def gerar_grafico_rosca(dados) -> str:
 
     # labels com o nome + %
     labels_formatadas = [
-        f"{nome} {valor/total*100:.2f}%" for nome, valor in tipos.items()
+        f"{nome} {valor / total * 100:.2f}%" for nome, valor in tipos.items()
     ]
 
     wedges, texts = plt.pie(
@@ -144,16 +148,17 @@ def gerar_grafico_rosca(dados) -> str:
         wedgeprops=dict(width=0.4),
         startangle=90,
         labeldistance=1.2,
-        colors=cores
+        colors=cores,
     )
 
     # Ajuste a fonte dos textos
     for text in texts:
-        text.set_fontsize(11)   
-    
+        text.set_fontsize(11)
+
     plt.axis("equal")  # mantém o formato circular
 
     return _salvar_grafico_em_base64()
+
 
 def normalizar_nome_gas(s: str) -> str:
     if not s:
@@ -166,6 +171,7 @@ def normalizar_nome_gas(s: str) -> str:
     s = " ".join(s.split())
     return s
 
+
 def gerar_grafico_barras(dados) -> str:
     gases = {}
     for d in dados:
@@ -175,7 +181,9 @@ def gerar_grafico_barras(dados) -> str:
 
     plt.figure(figsize=(5, 3))
     if not gases:
-        plt.text(0.5, 0.5, "Sem dados para barras", ha="center", va="center", fontsize=12)
+        plt.text(
+            0.5, 0.5, "Sem dados para barras", ha="center", va="center", fontsize=12
+        )
         plt.axis("off")
         return _salvar_grafico_em_base64()
 
@@ -184,16 +192,18 @@ def gerar_grafico_barras(dados) -> str:
 
     return _salvar_grafico_em_base64()
 
-# ========================== 
-# Dashboard                     
-# ========================== 
+
+# ==========================
+# Dashboard
+# ==========================
+
 
 def visualizacao_grafico(request):
     agora = timezone.now()
     dados = MaterialQueimado.objects.all()
 
-    nome_plataforma = request.GET.get('plataforma')
-    data_selecionada = request.GET.get('data')
+    nome_plataforma = request.GET.get("plataforma")
+    data_selecionada = request.GET.get("data")
 
     # 🔹 Filtro por plataforma
     if nome_plataforma:
@@ -207,10 +217,7 @@ def visualizacao_grafico(request):
             inicio = data_convertida
             fim = data_convertida + timedelta(days=1)
 
-            dados = dados.filter(
-                data_queima__gte=inicio,
-                data_queima__lt=fim
-            )
+            dados = dados.filter(data_queima__gte=inicio, data_queima__lt=fim)
 
         except ValueError:
             pass
@@ -231,7 +238,9 @@ def visualizacao_grafico(request):
         if e is not None:
             eficiencias.append(e)
 
-    eficiencia_media = round(sum(eficiencias) / len(eficiencias), 2) if eficiencias else 0
+    eficiencia_media = (
+        round(sum(eficiencias) / len(eficiencias), 2) if eficiencias else 0
+    )
 
     contexto = {
         "grafico_linha": grafico_linha,
@@ -250,39 +259,54 @@ def visualizacao_grafico(request):
 # CRUD - Plataforma
 # ==========================
 
+
 @login_required
 def home(request):
     agora = timezone.now()
 
-    plataformas = MaterialQueimado.objects.values_list('plataforma', flat=True).distinct()
-    
+    plataformas = MaterialQueimado.objects.values_list(
+        "plataforma", flat=True
+    ).distinct()
+
     plataformas_dados = []
-    
+
     for plataforma in plataformas:
         dados = MaterialQueimado.objects.filter(plataforma=plataforma)
 
-        volume_valor = sum([getattr(d, "volume_gas", 0) for d in dados if getattr(d, "volume_gas", 0) is not None])
-        
+        volume_valor = sum(
+            [
+                getattr(d, "volume_gas", 0)
+                for d in dados
+                if getattr(d, "volume_gas", 0) is not None
+            ]
+        )
+
         # Formata para o padrão brasileiro: 1.234.567,89
-        volume_total = f"{volume_valor:,.2f}".replace(",", "X").replace(".", ",").replace("X", ".") + " m³"
+        volume_total = (
+            f"{volume_valor:,.2f}".replace(",", "X").replace(".", ",").replace("X", ".")
+            + " m³"
+        )
 
         grafico_rosca = gerar_grafico_rosca(dados)
 
-        plataformas_dados.append({
-            "nome": plataforma,
-            "volume_total": volume_total,
-            "grafico_rosca": grafico_rosca
-        })
+        plataformas_dados.append(
+            {
+                "nome": plataforma,
+                "volume_total": volume_total,
+                "grafico_rosca": grafico_rosca,
+            }
+        )
 
     contexto = {
         "plataformas_dados": plataformas_dados,
         "ultima_atualizacao": agora,
     }
-    
+
     return render(request, "ExibicaoSimples/Resumo_Diario.html", contexto)
 
+
 @login_required
-@permission_required('database.add_plataforma')
+@permission_required("database.add_plataforma")
 def cadastrar(request):
     if request.method == "POST":
         form = PlataformaForm(request.POST)
@@ -298,18 +322,19 @@ def cadastrar(request):
 
     return render(request, "Cadastro/index2.html", {"form": form})
 
+
 # ========== Visualizar ========== #
 @login_required
-@permission_required('database.view_plataforma')
+@permission_required("database.view_plataforma")
 def visualizar_plataforma(request):
 
     queryset = Plataforma.objects.all()
 
     # Pegar os valores dos filtros (GET)
-    nome = request.GET.get('nome', '').strip()
-    status = request.GET.get('status', '').strip()
-    id_plt = request.GET.get('id', '').strip()
-    localizacao = request.GET.get('localizacao', '').strip()
+    nome = request.GET.get("nome", "").strip()
+    status = request.GET.get("status", "").strip()
+    id_plt = request.GET.get("id", "").strip()
+    localizacao = request.GET.get("localizacao", "").strip()
 
     # Aplicar filtros apenas se o campo tiver valor
     if nome:
@@ -329,22 +354,26 @@ def visualizar_plataforma(request):
         queryset = queryset.filter(localizacao__icontains=localizacao)
 
     # Ordenar (opcional, mas recomendado)
-    queryset = queryset.order_by('id')
+    queryset = queryset.order_by("id")
 
     contexto = {
-        'plataforma': queryset,
+        "plataforma": queryset,
     }
 
     return render(request, "Visualizar/plataformas_cadastradas.html", contexto)
 
-@login_required
-@permission_required('database.view_plataforma')
-def visualizar_plataformaid(request, id: int):
-    plataforma = get_object_or_404(Plataforma, id=id)
-    return render(request, "Visualizacao_PlataformaID/index.html", {"plataforma": plataforma})
 
 @login_required
-@permission_required('database.change_plataforma')
+@permission_required("database.view_plataforma")
+def visualizar_plataformaid(request, id: int):
+    plataforma = get_object_or_404(Plataforma, id=id)
+    return render(
+        request, "Visualizacao_PlataformaID/index.html", {"plataforma": plataforma}
+    )
+
+
+@login_required
+@permission_required("database.change_plataforma")
 def editar_plataforma(request, id: int):
     plataforma = get_object_or_404(Plataforma, id=id)
 

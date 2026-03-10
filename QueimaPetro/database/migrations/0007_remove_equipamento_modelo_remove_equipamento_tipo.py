@@ -4,18 +4,17 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('database', '0006_alter_equipamento_status_operacional'),
+        ("database", "0006_alter_equipamento_status_operacional"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='equipamento',
-            name='Modelo',
+            model_name="equipamento",
+            name="Modelo",
         ),
         migrations.RemoveField(
-            model_name='equipamento',
-            name='Tipo',
+            model_name="equipamento",
+            name="Tipo",
         ),
     ]

@@ -5,15 +5,16 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('DadosQueima', '0006_alter_materialqueimado_data_queima'),
+        ("DadosQueima", "0006_alter_materialqueimado_data_queima"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='materialqueimado',
-            name='plataforma',
-            field=models.CharField(default=DadosQueima.models.plataforma_aleatoria, max_length=100),
+            model_name="materialqueimado",
+            name="plataforma",
+            field=models.CharField(
+                default=DadosQueima.models.plataforma_aleatoria, max_length=100
+            ),
         ),
     ]

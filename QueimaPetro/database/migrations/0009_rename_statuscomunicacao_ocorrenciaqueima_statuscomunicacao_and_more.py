@@ -4,25 +4,36 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('database', '0008_remove_equipamento_funcionario'),
+        ("database", "0008_remove_equipamento_funcionario"),
     ]
 
     operations = [
         migrations.RenameField(
-            model_name='ocorrenciaqueima',
-            old_name='StatusComunicacao',
-            new_name='statuscomunicacao',
+            model_name="ocorrenciaqueima",
+            old_name="StatusComunicacao",
+            new_name="statuscomunicacao",
         ),
         migrations.AlterField(
-            model_name='plataforma',
-            name='Status',
-            field=models.CharField(choices=[('ativa', 'Ativa'), ('inativa', 'Inativa')], max_length=100),
+            model_name="plataforma",
+            name="Status",
+            field=models.CharField(
+                choices=[("ativa", "Ativa"), ("inativa", "Inativa")], max_length=100
+            ),
         ),
         migrations.AlterField(
-            model_name='plataforma',
-            name='Tipo',
-            field=models.CharField(choices=[('fixa', 'Fixas'), ('autoelevável', 'Autoelevável'), ('semissubmersível', 'Semissubmersível'), ('navio-sonda', 'Navio-Sonda'), ('FPSO', 'FPSO'), ('TLWP/TLP', 'TLWP/TLP')], max_length=100),
+            model_name="plataforma",
+            name="Tipo",
+            field=models.CharField(
+                choices=[
+                    ("fixa", "Fixas"),
+                    ("autoelevável", "Autoelevável"),
+                    ("semissubmersível", "Semissubmersível"),
+                    ("navio-sonda", "Navio-Sonda"),
+                    ("FPSO", "FPSO"),
+                    ("TLWP/TLP", "TLWP/TLP"),
+                ],
+                max_length=100,
+            ),
         ),
     ]

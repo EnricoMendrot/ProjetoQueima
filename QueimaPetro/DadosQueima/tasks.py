@@ -12,7 +12,6 @@ def pegar_plataforma():
     return None
 
 
-
 def gerar_dados_queima():
     plataforma_escolhida = pegar_plataforma()
 
@@ -40,10 +39,12 @@ def gerar_dados_queima():
         data_queima=data_queima,
         nome_gas=nome_gas,
         volume_gas=volume_gas,
-        plataforma=plataforma_escolhida
+        plataforma=plataforma_escolhida,
     )
 
-    print(f"[AUTO GERADOR] Queima criada: ID={registro.id} | {tipo_queima} | {temperatura}°C | {massa}kg | {duracao}s | {eficiencia}% | {nome_gas}| {plataforma_escolhida}")
+    print(
+        f"[AUTO GERADOR] Queima criada: ID={registro.id} | {tipo_queima} | {temperatura}°C | {massa}kg | {duracao}s | {eficiencia}% | {nome_gas}| {plataforma_escolhida}"
+    )
 
 
 def iniciar_gerador(intervalo_segundos=300):
@@ -51,4 +52,4 @@ def iniciar_gerador(intervalo_segundos=300):
         gerar_dados_queima()
         threading.Timer(intervalo_segundos, agendar).start()
 
-    threading.Timer(intervalo_segundos, agendar).start() 
+    threading.Timer(intervalo_segundos, agendar).start()

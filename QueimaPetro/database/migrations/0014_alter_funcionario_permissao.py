@@ -4,15 +4,21 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('database', '0013_funcionario_permissao_alter_funcionario_cargo'),
+        ("database", "0013_funcionario_permissao_alter_funcionario_cargo"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='funcionario',
-            name='Permissao',
-            field=models.CharField(choices=[('operador', 'Operador'), ('gerente', 'Gerente'), ('administrador', 'Administrador')], max_length=100),
+            model_name="funcionario",
+            name="Permissao",
+            field=models.CharField(
+                choices=[
+                    ("operador", "Operador"),
+                    ("gerente", "Gerente"),
+                    ("administrador", "Administrador"),
+                ],
+                max_length=100,
+            ),
         ),
     ]

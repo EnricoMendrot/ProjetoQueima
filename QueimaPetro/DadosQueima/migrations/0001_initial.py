@@ -4,21 +4,25 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='MaterialQueimado',
+            name="MaterialQueimado",
             fields=[
-                ('id', models.AutoField(primary_key=True, serialize=False)),
-                ('massa_kg', models.FloatField(verbose_name='Massa (kg)')),
-                ('temperatura_c', models.FloatField(verbose_name='Temperatura de Queima (°C)')),
-                ('duracao_s', models.FloatField(verbose_name='Duração (segundos)')),
-                ('data_queima', models.DateTimeField(verbose_name='Data/Hora da Queima')),
+                ("id", models.AutoField(primary_key=True, serialize=False)),
+                ("massa_kg", models.FloatField(verbose_name="Massa (kg)")),
+                (
+                    "temperatura_c",
+                    models.FloatField(verbose_name="Temperatura de Queima (°C)"),
+                ),
+                ("duracao_s", models.FloatField(verbose_name="Duração (segundos)")),
+                (
+                    "data_queima",
+                    models.DateTimeField(verbose_name="Data/Hora da Queima"),
+                ),
             ],
         ),
     ]

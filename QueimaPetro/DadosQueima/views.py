@@ -7,43 +7,50 @@ from django.views.decorators.csrf import csrf_exempt
 # Usado para ativar/desativar o teste
 modo_teste = False
 
+
 # =========== Gera dados Diarios =========== #
 def dados_diarios():
     dia = timezone.now().date()
 
     if modo_teste == True:
-        dia_teste = dia - timedelta(minutes=2) # Define um dia com 2 min de duração
+        dia_teste = dia - timedelta(minutes=2)  # Define um dia com 2 min de duração
         return MaterialQueimado.objects.filter(data_queima__date=dia_teste)
     else:
         return MaterialQueimado.objects.filter(data_queima__date=dia)
 
+
 # =========== Gera dados Semanais =========== #
 def dados_semanais():
-    semana = timezone.now() - timedelta(days=7) 
+    semana = timezone.now() - timedelta(days=7)
     if modo_teste == True:
-        semana_teste = semana - timedelta(minutes=3) # Define uma semana com 3 min de duração
+        semana_teste = semana - timedelta(
+            minutes=3
+        )  # Define uma semana com 3 min de duração
         return MaterialQueimado.objects.filter(data_queima__gte=semana_teste)
     else:
         return MaterialQueimado.objects.filter(data_queima__gte=semana)
-    
+
+
 # =========== Gera dados Mensais =========== #
 def dados_mensais():
     mes = timezone.now().replace(day=1)
     if modo_teste == True:
-        mes_teste = mes - timedelta(minutes=5) # Define um mês com 5 minutos
+        mes_teste = mes - timedelta(minutes=5)  # Define um mês com 5 minutos
         return MaterialQueimado.objects.filter(data_queima__gte=mes_teste)
     else:
         return MaterialQueimado.objects.filter(data_queima__gte=mes)
+
 
 # ====== Gera dados Anuais ======= #
 def dados_anuais():
     ano = timezone.now()
 
     if modo_teste == True:
-        ano_teste = ano - timedelta(minutes=6) # Define um ano com duração de 6 minutos
+        ano_teste = ano - timedelta(minutes=6)  # Define um ano com duração de 6 minutos
         return MaterialQueimado.objects.filter(data_queima__gte=ano_teste)
     else:
         return MaterialQueimado.objects.filter(data_queima__year=ano.year)
+
 
 # ====== Manipulação dos Dados para criação de gráficos ======= #
 def plataforma_dashboard(request):
@@ -60,7 +67,9 @@ def plataforma_dashboard(request):
 
     # --- Gera estatísticas básicas ---
     total_vq = sum(d.volume_gas for d in dados)
-    eficiencia_media = round(sum(d.eficiencia for d in dados) / len(dados), 2) if dados else 0
+    eficiencia_media = (
+        round(sum(d.eficiencia for d in dados) / len(dados), 2) if dados else 0
+    )
 
     # --- Gera listas para o gráfico de linha (horas x volume total) ---
     horas = [d.data_queima.strftime("%H:%M") for d in dados]
@@ -82,5 +91,5 @@ def plataforma_dashboard(request):
         "volumes": volumes,
         "tipos": tipos,
         "gases": gases,
-        "total_vq": total_vq
-    } 
+        "total_vq": total_vq,
+    }

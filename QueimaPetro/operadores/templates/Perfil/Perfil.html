@@ -11,6 +11,25 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap">
   <link rel="icon" href="{% static 'img/logo.png' %}" type="image/x-icon">
   <style>
+    
+    a {
+      text-decoration: none;
+      color: #008445;
+    }
+
+    a:hover { /* Quando o mouse passa por cima */
+      text-decoration: none;
+    }
+
+    a:focus { /* Quando o link está em foco (pelo teclado) */
+      text-decoration: none;
+    }
+
+    a:visited { /* Links já visitados */
+      text-decoration: none;
+      color: #008445;
+    }
+    
     .logout-link { color: white; text-decoration: none; }
     .logout-icon svg { cursor: pointer; }
     .field { padding: 5px 10px; display: flex; align-items: center; color: #5C5C5C; font-family: Rubik; font-size: 14px; }

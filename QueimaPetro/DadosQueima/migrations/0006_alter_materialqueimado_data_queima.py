@@ -4,15 +4,14 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('DadosQueima', '0005_delete_queimadto_materialqueimado_nome_gas'),
+        ("DadosQueima", "0005_delete_queimadto_materialqueimado_nome_gas"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='materialqueimado',
-            name='data_queima',
+            model_name="materialqueimado",
+            name="data_queima",
             field=models.DateTimeField(auto_now_add=True),
         ),
     ]

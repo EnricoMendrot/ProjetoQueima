@@ -4,20 +4,27 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('DadosQueima', '0002_materialqueimado_eficiencia_and_more'),
+        ("DadosQueima", "0002_materialqueimado_eficiencia_and_more"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='ResumoQueima',
+            name="ResumoQueima",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('periodo', models.DateField()),
-                ('tipo_queima', models.CharField(max_length=50)),
-                ('total_volume', models.FloatField()),
-                ('media_eficiencia', models.FloatField()),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("periodo", models.DateField()),
+                ("tipo_queima", models.CharField(max_length=50)),
+                ("total_volume", models.FloatField()),
+                ("media_eficiencia", models.FloatField()),
             ],
         ),
     ]

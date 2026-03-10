@@ -5,33 +5,42 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('database', '0001_initial'),
+        ("database", "0001_initial"),
     ]
 
     operations = [
         migrations.RenameField(
-            model_name='equipamento',
-            old_name='Status',
-            new_name='Status_Operacional',
+            model_name="equipamento",
+            old_name="Status",
+            new_name="Status_Operacional",
         ),
         migrations.RemoveField(
-            model_name='equipamento',
-            name='ID_Plataforma',
+            model_name="equipamento",
+            name="ID_Plataforma",
         ),
         migrations.AddField(
-            model_name='equipamento',
-            name='Funcionario',
-            field=models.ForeignKey(db_column='ID_Funcionario', default=1, on_delete=django.db.models.deletion.CASCADE, to='database.funcionario'),
+            model_name="equipamento",
+            name="Funcionario",
+            field=models.ForeignKey(
+                db_column="ID_Funcionario",
+                default=1,
+                on_delete=django.db.models.deletion.CASCADE,
+                to="database.funcionario",
+            ),
             preserve_default=False,
         ),
         migrations.AddField(
-            model_name='equipamento',
-            name='Plataforma',
-            field=models.ForeignKey(db_column='ID_Plataforma', null=True, on_delete=django.db.models.deletion.SET_NULL, to='database.plataforma'),
+            model_name="equipamento",
+            name="Plataforma",
+            field=models.ForeignKey(
+                db_column="ID_Plataforma",
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                to="database.plataforma",
+            ),
         ),
         migrations.DeleteModel(
-            name='RegistroEquipamento',
+            name="RegistroEquipamento",
         ),
     ]

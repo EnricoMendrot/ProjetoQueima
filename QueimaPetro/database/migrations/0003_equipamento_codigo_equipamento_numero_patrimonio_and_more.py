@@ -4,25 +4,24 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('database', '0002_rename_status_equipamento_status_operacional_and_more'),
+        ("database", "0002_rename_status_equipamento_status_operacional_and_more"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='equipamento',
-            name='Codigo',
+            model_name="equipamento",
+            name="Codigo",
             field=models.CharField(blank=True, max_length=50, null=True),
         ),
         migrations.AddField(
-            model_name='equipamento',
-            name='Numero_Patrimonio',
+            model_name="equipamento",
+            name="Numero_Patrimonio",
             field=models.CharField(blank=True, max_length=50, null=True),
         ),
         migrations.AddField(
-            model_name='equipamento',
-            name='Observacoes',
+            model_name="equipamento",
+            name="Observacoes",
             field=models.TextField(blank=True, null=True),
         ),
     ]

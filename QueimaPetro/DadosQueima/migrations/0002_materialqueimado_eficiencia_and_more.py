@@ -4,26 +4,25 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('DadosQueima', '0001_initial'),
+        ("DadosQueima", "0001_initial"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='materialqueimado',
-            name='eficiencia',
+            model_name="materialqueimado",
+            name="eficiencia",
             field=models.FloatField(default=0.0),
             preserve_default=False,
         ),
         migrations.AddField(
-            model_name='materialqueimado',
-            name='tipo_queima',
-            field=models.CharField(default='Rotineira', max_length=50),
+            model_name="materialqueimado",
+            name="tipo_queima",
+            field=models.CharField(default="Rotineira", max_length=50),
         ),
         migrations.AddField(
-            model_name='materialqueimado',
-            name='volume_gas',
+            model_name="materialqueimado",
+            name="volume_gas",
             field=models.FloatField(default=0.0),
             preserve_default=False,
         ),

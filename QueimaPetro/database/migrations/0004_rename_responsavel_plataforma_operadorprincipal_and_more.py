@@ -5,56 +5,55 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('database', '0003_equipamento_codigo_equipamento_numero_patrimonio_and_more'),
+        ("database", "0003_equipamento_codigo_equipamento_numero_patrimonio_and_more"),
     ]
 
     operations = [
         migrations.RenameField(
-            model_name='plataforma',
-            old_name='Responsavel',
-            new_name='OperadorPrincipal',
+            model_name="plataforma",
+            old_name="Responsavel",
+            new_name="OperadorPrincipal",
         ),
         migrations.AddField(
-            model_name='plataforma',
-            name='DataComissionamento',
+            model_name="plataforma",
+            name="DataComissionamento",
             field=models.DateTimeField(default=django.utils.timezone.now),
             preserve_default=False,
         ),
         migrations.AddField(
-            model_name='plataforma',
-            name='DataInspecao',
+            model_name="plataforma",
+            name="DataInspecao",
             field=models.DateTimeField(default=django.utils.timezone.now),
             preserve_default=False,
         ),
         migrations.AddField(
-            model_name='plataforma',
-            name='Observacoes',
+            model_name="plataforma",
+            name="Observacoes",
             field=models.TextField(blank=True, null=True),
         ),
         migrations.AddField(
-            model_name='plataforma',
-            name='ResponsavelTecnico',
-            field=models.CharField(default='N/A', max_length=100),
+            model_name="plataforma",
+            name="ResponsavelTecnico",
+            field=models.CharField(default="N/A", max_length=100),
             preserve_default=False,
         ),
         migrations.AddField(
-            model_name='plataforma',
-            name='Status',
-            field=models.CharField(default='N/A', max_length=100),
+            model_name="plataforma",
+            name="Status",
+            field=models.CharField(default="N/A", max_length=100),
             preserve_default=False,
         ),
         migrations.AddField(
-            model_name='plataforma',
-            name='Supervisor',
-            field=models.CharField(default='N/A', max_length=100),
+            model_name="plataforma",
+            name="Supervisor",
+            field=models.CharField(default="N/A", max_length=100),
             preserve_default=False,
         ),
         migrations.AddField(
-            model_name='plataforma',
-            name='Tipo',
-            field=models.CharField(default='N/A', max_length=100),
+            model_name="plataforma",
+            name="Tipo",
+            field=models.CharField(default="N/A", max_length=100),
             preserve_default=False,
         ),
     ]
