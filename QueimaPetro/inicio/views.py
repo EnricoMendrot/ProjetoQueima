@@ -10,7 +10,6 @@ from database.models import Equipamento
 def tela_inicial(request):
     return render(request, "home/index.html")
 
-
 def tela_login(request):
     # Se o formulário foi submetido (POST)
     if request.method == "POST":
@@ -18,6 +17,7 @@ def tela_login(request):
         # O nome do campo entre aspas DEVE ser igual ao atributo 'name' da tag <input> no seu login.html
         u = request.POST.get("username")
         s = request.POST.get("password")
+        remember = request.POST.get("remember_me")  # captura o checkbox
 
         # 2. Peça pro Django conferir se existe no banco de dados
         user = authenticate(request, username=u, password=s)
@@ -26,6 +26,12 @@ def tela_login(request):
         if user is not None:
             # Efetive o login na sessão
             login(request, user)
+
+            # Define tempo da sessão baseado no checkbox
+            if remember:
+                request.session.set_expiry(60 * 60 * 24 * 30)  # 30 dias
+            else:
+                request.session.set_expiry(0)  # expira ao fechar o navegador
 
             # Mande ele pro painel inicial
             return redirect("plataforma:home")

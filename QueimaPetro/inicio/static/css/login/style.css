@@ -132,6 +132,10 @@ main {
     overflow-y: auto;
 }
 
+#togglePassword {
+    user-select: none;
+}
+
 /* ===== GRID ESQUERDA ===== */
 .title,
 .container {

@@ -96,15 +96,38 @@
             </div>
 
             <!-- SENHA -->
-            <div class="item3">
+            <div class="item3" style="position: relative;">
               <label for="password">Password</label>
               <i class="material-icons">lock</i>
+
               <input type="password" id="password" name="password" required />
+
+              <span class="material-icons" 
+                    id="togglePassword"
+                    onclick="toggleSenha()"
+                    style="position: absolute; right: 10px; top: 2.7rem; cursor: pointer;">
+                visibility
+              </span>
             </div>
+
+            <script>
+              function toggleSenha() {
+                const input = document.getElementById("password");
+                const icon = document.getElementById("togglePassword");
+
+                if (input.type === "password") {
+                  input.type = "text";
+                  icon.textContent = "visibility_off";
+                } else {
+                  input.type = "password";
+                  icon.textContent = "visibility";
+                }
+              }
+            </script>
 
             <!-- LEMBRAR ACESSO -->
             <div class="item4">
-              <input type="checkbox" id="checkbox"/>
+              <input type="checkbox" id="checkbox" name="remember_me"/>
               <span>Lembre meu acesso</span>
             </div>
 
