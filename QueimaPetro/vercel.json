@@ -1,12 +1,12 @@
 {
-  "buildCommand": "python manage.py collectstatic --noinput",
   "builds": [
     {
       "src": "QueimaPetro/wsgi.py",
       "use": "@vercel/python",
       "config": {
         "maxLambdaSize": "15mb",
-        "runtime": "python3.12"
+        "runtime": "python3.12",
+        "build": "python manage.py collectstatic --noinput"
       }
     },
     {
