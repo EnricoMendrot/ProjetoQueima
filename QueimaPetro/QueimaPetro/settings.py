@@ -14,7 +14,7 @@ SECRET_KEY = "django-insecure-dkb(zo4w^hu_(2fxe7(f93gh%_afab*bl3s$kk!xnx!#-+y*lt
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["projeto-queima-ty1q.vercel.app", "localhost", "127.0.0.1"]
 
 
 # Application definition
