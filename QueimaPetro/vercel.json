@@ -1,7 +1,7 @@
 {
+  "buildCommand": "python manage.py collectstatic --noinput",
   "builds": [
     {
-      "buildCommand": "python manage.py collectstatic --noinput",
       "src": "QueimaPetro/wsgi.py",
       "use": "@vercel/python",
       "config": {
